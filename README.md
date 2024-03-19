@@ -29,10 +29,12 @@ sw_studio
 ├── README.md
 ├── app/
 |    └── main.py
+├── modules/
+|    └── __init__.py
 ├── templates/
 |    └── index.html
 ├── database/
-├── public/
+├── assets/
 |    ├── css/
 |    |    └── style.css
 |    ├── js/
