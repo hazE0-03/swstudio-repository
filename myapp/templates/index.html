@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>そどわすたじお</title>
+</head>
+
+<body>
+    <h1>そどわすたじお</h1>
+    <h2>キャラクター一覧</h2>
+    {% for character in characters %}
+    <p>{{ character.image_url }}</p>
+    <table border="1">
+        <tr>
+            <th>名前</th>
+            <th>更新日時</th>
+        </tr>
+        <tr>
+            <td>{{ character.name }}</td>
+            <td>{{ character.update_time }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+    <a href="{{url_for('editor') }}">編集</a>
+</body>
+
+</html>
