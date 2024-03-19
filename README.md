@@ -27,7 +27,15 @@
 ## 構成
 sw_studio
 ├── README.md
-├── app
-├── database
-├── public
-└── tests
+├── app/
+|    └── main.py
+├── templates/
+|    └── index.html
+├── database/
+├── public/
+|    ├── css/
+|    |    └── style.css
+|    ├── js/
+|    |    └── script.js
+|    └── image/
+└── tests/
