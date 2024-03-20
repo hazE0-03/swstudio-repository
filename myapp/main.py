@@ -24,12 +24,12 @@ async def index(request: Request):
 
 @app.get("/create")
 async def create(request: Request):
+    # race_features = {"人間":"[剣の加護／運命変転]",
+    # "エルフ": "[暗視][剣の加護／優しき水]",
+    # "ドワーフ":"[暗視][剣の加護／炎身]"},
     return templates.TemplateResponse(
-    race_features = {"人間":"[剣の加護／運命変転]",
-    "エルフ": "[暗視][剣の加護／優しき水]",
-    "ドワーフ":"[暗視][剣の加護／炎身]"}
         "create.html",
-        {"request": request, "race_features":race_features}
+        {"request": request}
     )
 
 # @app.post("/create")
