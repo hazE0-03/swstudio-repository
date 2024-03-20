@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from random import randint
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -23,7 +24,8 @@ async def index(request: Request):
 
 @app.get("/editor")
 async def editor(request: Request):
+    random_number = randint(1, 100)
     return templates.TemplateResponse(
         "editor.html",
-        {"request": request}
+        {"request": request, "random_number": random_number}
     )
