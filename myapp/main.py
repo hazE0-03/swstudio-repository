@@ -22,10 +22,19 @@ async def index(request: Request):
         {"request": request, "characters": characters}
     )
 
-@app.get("/editor")
-async def editor(request: Request):
-    random_number = randint(1, 100)
+@app.get("/create")
+async def create(request: Request):
     return templates.TemplateResponse(
-        "editor.html",
-        {"request": request, "random_number": random_number}
+    race_features = {"人間":"[剣の加護／運命変転]",
+    "エルフ": "[暗視][剣の加護／優しき水]",
+    "ドワーフ":"[暗視][剣の加護／炎身]"}
+        "create.html",
+        {"request": request, "race_features":race_features}
     )
+
+# @app.post("/create")
+# async def create(request: Request):
+#     return templates.TemplateResponse(
+#         "create.html",
+#         {"request": request}
+#     )

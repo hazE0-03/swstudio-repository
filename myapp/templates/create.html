@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>そどわすたじお</h1>
+<h2>新規作成</h2>
+<form method="POST">
+    キャラクター名：<input name="name">
+    種族：
+    <select name="race">
+        {% for race in race_features.keys %}
+        <option value="{{ race }}">{{ race }}</option>
+        {% endfor %}
+    </select>
+    <!-- <select name="sub_race">
+        {% for sub_race in sub_races %}
+        <option value="{{ sub_race }}">{{ sub_race }}</option>
+        {% endfor %}
+    </select> -->
+    <br>
+    種族特徴：<p>{{ race_features.get(race) }}</p>
+    穢れ：
+    <select name="impurity">
+        {% for i in range(1, 6) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    器用：
+    <select name="dexterity">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    敏捷：
+    <select name="agility">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    筋力：
+    <select name="strength">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    体力：
+    <select name="vitality">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    知力：
+    <select name="intelligence">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    精神：
+    <select name="spirit">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+    </select>
+    メモ：<input name="memo">
+    <input type="submit" value="新規保存">
+</form>
+
+{% endblock %}
