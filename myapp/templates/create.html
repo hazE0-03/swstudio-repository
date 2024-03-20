@@ -3,21 +3,9 @@
 
 <h1>そどわすたじお</h1>
 <h2>新規作成</h2>
+<input type="submit" value="新規保存">
 <form method="POST">
     キャラクター名：<input name="name">
-    <!-- 種族：
-    <select name="race">
-        {% for race in race_features.keys %}
-        <option value="{{ race }}">{{ race }}</option>
-        {% endfor %}
-    </select> -->
-    <!-- <select name="sub_race">
-        {% for sub_race in sub_races %}
-        <option value="{{ sub_race }}">{{ sub_race }}</option>
-        {% endfor %}
-    </select> -->
-    <br>
-    <!-- 種族特徴：<p>{{ race_features.get(race) }}</p> -->
     穢れ：
     <select name="impurity">
         {% for i in range(1, 6) %}
@@ -61,8 +49,9 @@
         <option value="{{ i }}">{{ i }}</option>
         {% endfor %}
     </select>
+    <br>
     メモ：<input name="memo">
-    <input type="submit" value="新規保存">
 </form>
+<a href="{{url_for('index') }}">一覧に戻る</a>
 
 {% endblock %}
