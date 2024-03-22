@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>そどわすたじお</title>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
-    <h1>そどわすたじお</h1>
-    <p>編集画面</p>
+    {% block content %}
+    {% endblock %}
 </body>
 
 </html>

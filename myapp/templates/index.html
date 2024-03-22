@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="ja">
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>そどわすたじお</title>
-</head>
+<h1>そどわすたじお</h1>
+<div>
+    <p>{{ username }}</p>
+    <a href="{{url_for('logout')}}">ログアウト</a>
+</div>
+<h2>キャラクター一覧</h2>
+<a href="{{url_for('create') }}">新規作成</a>
+{% for character in characters %}
+<div>
+    <a href="/{{ character.id }}/update">{{ character.name }}</a>
+    <p>{{ character.update_time }}</p>
+    <button onclick="location.href='/{{ character.id }}/delete'">削除</button>
+    <br>
+</div>
+{% endfor %}
 
-<body>
-    <h1>そどわすたじお</h1>
-    <h2>キャラクター一覧</h2>
-    {% for character in characters %}
-    <p>{{ character.image_url }}</p>
-    <table border="1">
-        <tr>
-            <th>名前</th>
-            <th>更新日時</th>
-        </tr>
-        <tr>
-            <td>{{ character.name }}</td>
-            <td>{{ character.update_time }}</td>
-        </tr>
-    </table>
-    {% endfor %}
-    <a href="{{url_for('editor') }}">編集</a>
-</body>
-
-</html>
+{% endblock %}
