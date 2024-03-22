@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>そどわすたじお</h1>
+<form method="POST">
+    <input type="submit" value="上書き保存">
+    キャラクター名：<input name="name" value="{{ character.name }}">
+    穢れ：
+    <select name="impurity" value="{{ character.impurity }}">
+        {% for i in range(0, 6) %}
+        <option value="{{ i }}" {% if i==character.impurity %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    器用：<select name="dexterity">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}" {% if i==character.dexterity %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+
+    敏捷：<select name="agility">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}" {% if i==character.agility %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+
+    筋力：<select name="strength">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}" {% if i==character.strength %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+
+    体力：<select name="vitality">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}" {% if i==character.vitality %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+
+    知力：<select name="intelligence">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}" {% if i==character.intelligence %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+
+    精神：<select name="spirit">
+        {% for i in range(2, 19) %}
+        <option value="{{ i }}" {% if i==character.spirit %} selected {% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    メモ：<input name="memo" value="{{ character.memo }}">
+</form>
+<a href="{{url_for('index') }}">一覧に戻る</a>
+
+{% endblock %}

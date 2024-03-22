@@ -3,19 +3,14 @@
 
 <h1>そどわすたじお</h1>
 <h2>キャラクター一覧</h2>
-{% for character in characters %}
-<p>{{ character.image_url }}</p>
-<table border="1">
-    <tr>
-        <th>名前</th>
-        <th>更新日時</th>
-    </tr>
-    <tr>
-        <td>{{ character.name }}</td>
-        <td>{{ character.update_time }}</td>
-    </tr>
-</table>
-{% endfor %}
 <a href="{{url_for('create') }}">新規作成</a>
+{% for character in characters %}
+<div>
+    <a href="/{{ character.id }}/update">{{ character.name }}</a>
+    <p>{{ character.update_time }}</p>
+    <button onclick="location.href='/{{ character.id }}/delete'">削除</button>
+    <br>
+</div>
+{% endfor %}
 
 {% endblock %}

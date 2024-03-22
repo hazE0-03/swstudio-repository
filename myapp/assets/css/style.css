@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: blue;
+}
+
+h2 {
+    color: green;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    /* dark gray */
+}
+
+div {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* light gray */
+}
+
+p {
+    font-style: italic;
+}
