@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, inspect
-from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.orm import scoped_session, sessionmaker, relationship
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from datetime import datetime
 import pytz
 
@@ -52,8 +52,18 @@ class Character(Base):
     # warleader = Column(Integer)
     # geomancer = Column(Integer)
     memo = Column(String)
-    user_name = Column(String(50))
     update_time = Column(DateTime)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user = relationship("User", back_populates="characters")
+
+class User(Base):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True)
+    username = Column(String(30), unique=True)
+    password = Column(String(12))
+    characters = relationship("Character", back_populates="user")
 
 if not inspect(engine).has_table("character_class"):
     Base.metadata.create_all(bind=engine, tables=[Character.__table__])
+if not inspect(engine).has_table("users"):
+    Base.metadata.create_all(bind=engine, tables=[User.__table__])

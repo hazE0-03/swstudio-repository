@@ -2,6 +2,10 @@
 {% block content %}
 
 <h1>そどわすたじお</h1>
+<div>
+    <p>{{ username }}</p>
+    <a href="{{url_for('logout')}}">ログアウト</a>
+</div>
 <form method="POST">
     <input type="submit" value="新規保存">
     キャラクター名：<input name="name">

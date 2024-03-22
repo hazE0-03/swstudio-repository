@@ -2,6 +2,14 @@
 {% block content %}
 
 <h1>そどわすたじお</h1>
+<div>
+    {% if username != None %}
+    <p>{{ username }}</p>
+    <a href="{{url_for('logout')}}">ログアウト</a>
+    {% else %}
+    <a href="{{url_for('login')}}">ログイン</a>
+    {% endif %}
+</div>
 <form method="POST">
     <input type="submit" value="上書き保存">
     キャラクター名：<input name="name" value="{{ character.name }}">
