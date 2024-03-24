@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.security import APIKeyCookie
+from fastapi.staticfiles import StaticFiles
 from passlib.hash import sha256_crypt
 from sqlalchemy import desc
 from sqlalchemy.orm import Session
@@ -12,6 +13,7 @@ from db import db_session, Character, User
 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)

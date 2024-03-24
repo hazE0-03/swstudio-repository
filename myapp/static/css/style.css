@@ -1,0 +1,28 @@
+:root {
+    --background-body: #f9f9f9;
+    --background-alt: #eeeeee;
+    --text-strong: #222222;
+    --text-main: #444444;
+    --text-muted: #888888;
+    --accent: lightseagreen;
+    --focus: #4a8aa1;
+    --visited: violet;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: var(--background-body);
+    color: var(--text-main);
+}
+
+h1,
+h2,
+h3,
+strong {
+    color: var(--text-strong);
+}
+
+small {
+    color: var(--text-muted);
+}
