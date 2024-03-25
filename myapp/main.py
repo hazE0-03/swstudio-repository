@@ -19,12 +19,13 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     if request.cookies.get("user_id") != None :
+        login_status = True
         username = request.cookies.get("username")
         user_id = int(request.cookies.get("user_id"))
         characters = db_session.query(Character).filter(Character.user_id == user_id).order_by(desc(Character.update_time)).all()
         return templates.TemplateResponse(
             "index.html",
-            {"request": request, "characters": characters, "username": username}
+            {"request": request, "characters": characters, "username": username, "login_status": login_status}
         )
     else :
         return RedirectResponse("/login")
@@ -94,10 +95,11 @@ async def create(request: Request):
     if request.cookies.get("user_id") == None :
         return RedirectResponse("/login", status_code=303)
     else :
+        login_status = True
         username = request.cookies.get("username")
         return templates.TemplateResponse(
             "create.html",
-            {"request": request, "username": username}
+            {"request": request, "username": username, "login_status": login_status}
         )
 
 @app.post("/create")
@@ -128,10 +130,17 @@ async def update(request: Request, id: int):
     character = db_session.query(Character).get(id)
     if request.cookies.get("user_id") != None :
         username = request.cookies.get("username")
-    return templates.TemplateResponse(
-        "update.html",
-        {"request": request, "character": character, "username": username}
-    )
+        login_status = True
+        return templates.TemplateResponse(
+            "update.html",
+            {"request": request, "character": character, "username": username, "login_status": login_status}
+        )
+    else :
+        login_status = False
+        return templates.TemplateResponse(
+            "update.html",
+            {"request": request, "character": character, "login_status": login_status}
+        )
 
 @app.post("/{id:int}/update")
 async def update(request: Request, id: int):

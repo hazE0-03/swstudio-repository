@@ -1,28 +1,19 @@
+@charset "utf-8";
+
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
 :root {
-    --background-body: #f9f9f9;
-    --background-alt: #eeeeee;
-    --text-strong: #222222;
-    --text-main: #444444;
-    --text-muted: #888888;
-    --accent: lightseagreen;
-    --focus: #4a8aa1;
-    --visited: violet;
+    --primary: #0d6efd;
+    --dark: #21252f;
+    --body: #888;
+    /* --orange: rgb(221, 155, 94); */
+    --box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
 }
 
 body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: var(--background-body);
-    color: var(--text-main);
-}
-
-h1,
-h2,
-h3,
-strong {
-    color: var(--text-strong);
-}
-
-small {
-    color: var(--text-muted);
+    font-family: Sora, "sans-serif";
+    line-height: 1.7;
+    color: var(--body);
 }

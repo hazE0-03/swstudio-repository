@@ -3,27 +3,72 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>そどわすたじお</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/image/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/image/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/image/favicon-16x16.png">
-    <link rel="manifest" href="/static/image/site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="/static/image/favicon.ico">
+    <meta name="description" content="「そどわすたじお」はソードワールド2.5（sw2.5）専用のキャラシ作成、管理サイトです。ココフォリアへの駒出力も可能！ サプリ初出の種族や技能、流派にも対応！">
+    <link rel="stylesheet" href="../static/css/sanitize.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/image/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/image/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/image/favicon-16x16.png">
+    <link rel="manifest" href="../static/image/site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/image/favicon.ico">
+    <script>
+        (function (global) {
+            if (localStorage.getItem("dark")) {
+                global.document.documentElement.classList.add("Dark");
+            }
+        })(globalThis);
+    </script>
+    <script src="../static/js/script.js" defer></script>
 </head>
 
 <body>
-    <div class="DarkMode">
-        <button type="button" aria-label="ライトモードにする" id="DarkMode-off" class="DarkMode-off">
-            ライトモード
-        </button>
-        <button type="button" aria-label="ダークモードにする" id="DarkMode-on" class="DarkMode-on">
-            ダークモード
-        </button>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-md">
+                <a class="navbar-brand" href="{{url_for('index') }}">そどわすたじお</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav ms-auto">
+                        {% if login_status %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('index') }}">{{ username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('logout')}}" role="button">ログアウト</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('signup') }}">ユーザー登録</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('login')}}" role="button">ログイン</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">ヘルプ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="row">
+        <div class="col-3"></div>
+        {% block content %}
+        {% endblock %}
+        <div class="col-3"></div>
     </div>
-    {% block content %}
-    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
