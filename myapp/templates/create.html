@@ -1,54 +1,110 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form method="POST">
-    <input type="submit" value="新規保存">
-    キャラクター名：<input name="name">
-    穢れ：
-    <select name="impurity">
-        {% for i in range(0, 6) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    器用：
-    <select name="dexterity">
-        {% for i in range(2, 19) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    敏捷：
-    <select name="agility">
-        {% for i in range(2, 19) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    筋力：
-    <select name="strength">
-        {% for i in range(2, 19) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    体力：
-    <select name="vitality">
-        {% for i in range(2, 19) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    知力：
-    <select name="intelligence">
-        {% for i in range(2, 19) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    精神：
-    <select name="spirit">
-        {% for i in range(2, 19) %}
-        <option value="{{ i }}">{{ i }}</option>
-        {% endfor %}
-    </select>
-    <br>
-    メモ：<input name="memo">
-</form>
+<div class="container-md">
+    <form method="POST">
+        <input type="submit" value="新規保存">
+        <div>
+            キャラクター名：<input name="name">
+        </div>
+        <div>
+            穢れ：
+            <select name="impurity">
+                {% for i in range(0, 6) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>種族</th>
+                        <th>
+                            <select name="race" id="">
+                                <option value="人間">人間</option>
+                                <option value="エルフ">エルフ</option>
+                                <option value="ドワーフ">ドワーフ</option>
+                            </select>
+                        </th>
+                        <th>希少種</th>
+                        <th>
+                            <select name="subrace" id="">
+                                <option value=""></option>
+                                <option value="ミストエルフ">ミストエルフ</option>
+                                <option value="スノーエルフ">スノーエルフ</option>
+                            </select>
+                        </th>
+                        <td>種族特徴：[暗視][剣の加護／優しき水]</td>
+                    </tr>
+                    <tr>
+                        <th>生まれ</th>
+                        <th>
+                            <select name="birth" id="">
+                                <option value=""></option>
+                                <option value="薬師">薬師</option>
+                                <option value="魔導師">魔導師</option>
+                            </select>
+                        </th>
+                        <td>
+                            技：
+                            <input type="text">
+                        </td>
+                        <td>
+                            体：
+                            <input type="text">
+                        </td>
+                        <td>
+                            心：
+                            <input type="text">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div>
+
+            器用：
+            <select name="dexterity">
+                {% for i in range(2, 19) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            敏捷：
+            <select name="agility">
+                {% for i in range(2, 19) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            筋力：
+            <select name="strength">
+                {% for i in range(2, 19) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            生命：
+            <select name="vitality">
+                {% for i in range(2, 19) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            知力：
+            <select name="intelligence">
+                {% for i in range(2, 19) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+            精神：
+            <select name="spirit">
+                {% for i in range(2, 19) %}
+                <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        メモ：<input name="memo">
+    </form>
+</div>
 
 {% endblock %}

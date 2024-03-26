@@ -16,6 +16,10 @@ body {
     color: var(--body);
 }
 
+.character-name-link-for-update {
+    text-decoration: none;
+}
+
 .form-signup {
     max-width: 330px;
     padding: 1rem;
@@ -56,4 +60,19 @@ body {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.list-group-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.update-time-block {
+    display: table;
+
+    &>p {
+        display: table-cell;
+        vertical-align: middle;
+    }
 }

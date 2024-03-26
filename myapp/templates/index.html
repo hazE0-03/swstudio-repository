@@ -1,33 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="ms-2 me-2">
+<div class="container-md">
     <p class="fs-4">キャラクター一覧</p>
-    <div class="d-grid gap-2">
-        <a class="btn btn-primary" role="button" href="{{url_for('create') }}">キャラクター新規作成</a>
-    </div>
-    <br>
-    {% for character in characters %}
-    <div class="container-md">
-        <div class="row">
-            <div class="col-5">
-                <a class="fs-5" href="/{{ character.id }}/update">{{ character.name }}</a>
-            </div>
-            <div class="col-md-auto">
-                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <button type="button" class="btn btn-outline-secondary">ココフォリア駒出力</button>
-                    <button type="button" class="btn btn-outline-secondary">複製</button>
-                    <button type="button" class="btn btn-outline-danger"
-                        onclick="location.href='/{{ character.id }}/delete'">削除</button>
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action active fs-5" aria-current="true"
+            href="{{url_for('create') }}">キャラクター新規作成</a>
+        {% for character in characters %}
+        <li class="list-group-item">
+            <div class="container-md">
+                <div class="row">
+                    <div class="col-5">
+                        <a class="character-name-link-for-update fs-5" href="/{{ character.id }}/update">{{
+                            character.name }}</a>
+                    </div>
+                    <div class="col-md-auto">
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-outline-secondary">ココフォリア駒出力</button>
+                            <button type="button" class="btn btn-outline-secondary">複製</button>
+                            <button type="button" class="btn btn-outline-danger"
+                                onclick="location.href='/{{ character.id }}/delete'">削除</button>
+                        </div>
+                    </div>
+                    <div class="update-time-block col-md-4 text-xxl-end">
+                        <p>{{ character.update_time }}</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-2 text-end">
-                <p>{{ character.update_time }}</p>
-            </div>
-        </div>
+        </li>
+        {% endfor %}
     </div>
-    <br>
-    {% endfor %}
 </div>
 
 {% endblock %}
