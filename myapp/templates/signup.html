@@ -1,10 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form method="POST">
-    ユーザー名：<input type="text" name="username">
-    パスワード：<input type="password" name="password">
-    <input type="submit" value="新規登録">
-</form>
-<a href="{{url_for('login')}}">ログイン</a>
+<main class="form-signup w-100 mt-5 m-auto">
+    <form method="POST">
+        <img class="mb-4" src="../static/image/android-chrome-512x512.png" alt="" width="65" height="65">
+        <h1 class="h3 mb-3 fw-normal">新規登録</h1>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingUsername" name="username" placeholder="User Name"
+                required>
+            <label class="fw-light" for="floatingUsername">ユーザー名</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password"
+                required>
+            <label class="fw-light" for="floatingPassword">パスワード</label>
+        </div>
+        <button class="btn btn-primary w-100 py-2" type="submit">新規登録</button>
+    </form>
+    <br>
+    <a href="{{url_for('login')}}">すでにアカウントをお持ちの方</a>
+</main>
 {% endblock %}

@@ -16,6 +16,12 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+def get_current_time():
+    current_datetime = datetime.now(pytz.timezone('Asia/Tokyo'))
+    current_date = current_datetime.date
+    current_time = current_datetime.time
+    return current_date, current_time
+
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
     if request.cookies.get("user_id") != None :
@@ -106,7 +112,7 @@ async def create(request: Request):
 async def create(request: Request):
     form = await request.form()
     current_time = datetime.now(pytz.timezone('Asia/Tokyo'))
-    update_time = current_time
+    update_time = current_time.replace(microsecond = 0)
     name = form["name"]
     impurity = form["impurity"]
     dexterity = form["dexterity"]
@@ -148,7 +154,7 @@ async def update(request: Request, id: int):
     if request.cookies.get("user_id") == str(character.user_id) :
         form = await request.form()
         current_time = datetime.now(pytz.timezone('Asia/Tokyo'))
-        character.update_time = current_time
+        character.update_time = current_time.replace(microsecond = 0)
         character.name = form["name"]
         character.impurity = form["impurity"]
         character.dexterity = form["dexterity"]
@@ -170,3 +176,19 @@ async def delete(request: Request, id: int):
     db_session.delete(character)
     db_session.commit()
     return RedirectResponse("/", status_code=303)
+
+@app.get("/help", response_class=HTMLResponse)
+async def help(request: Request):
+    if request.cookies.get("user_id") != None :
+        username = request.cookies.get("username")
+        login_status = True
+        return templates.TemplateResponse(
+            "help.html",
+            {"request": request, "username": username, "login_status": login_status}
+        )
+    else :
+        login_status = False
+        return templates.TemplateResponse(
+            "help.html",
+            {"request": request, "login_status": login_status}
+        )
