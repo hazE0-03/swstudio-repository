@@ -111,8 +111,7 @@ async def create(request: Request):
 @app.post("/create")
 async def create(request: Request):
     form = await request.form()
-    current_time = datetime.now(pytz.timezone('Asia/Tokyo'))
-    update_time = current_time.replace(microsecond = 0)
+    update_time = datetime.now(pytz.timezone('Asia/Tokyo')).replace(microsecond = 0)
     name = form["name"]
     impurity = form["impurity"]
     dexterity = form["dexterity"]
@@ -153,8 +152,7 @@ async def update(request: Request, id: int):
     character = db_session.query(Character).get(id)
     if request.cookies.get("user_id") == str(character.user_id) :
         form = await request.form()
-        current_time = datetime.now(pytz.timezone('Asia/Tokyo'))
-        character.update_time = current_time.replace(microsecond = 0)
+        character.update_time = datetime.now(pytz.timezone('Asia/Tokyo')).replace(microsecond = 0)
         character.name = form["name"]
         character.impurity = form["impurity"]
         character.dexterity = form["dexterity"]
