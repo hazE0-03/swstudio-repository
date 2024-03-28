@@ -76,3 +76,21 @@ body {
         vertical-align: middle;
     }
 }
+
+dl {
+    margin-bottom: 0px !important;
+}
+
+dd {
+    margin-bottom: 3px !important;
+}
+
+@media (min-width: 800px) {
+    .container-fluid.custom-container {
+        max-width: 900px !important;
+    }
+}
+
+dt {
+    font-size: 14px;
+}
