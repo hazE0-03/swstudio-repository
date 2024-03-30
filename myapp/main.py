@@ -28,7 +28,7 @@ async def index(request: Request):
         login_status = True
         username = request.cookies.get("username")
         user_id = int(request.cookies.get("user_id"))
-        characters = db_session.query(Character).filter(Character.user_id == user_id).order_by(desc(Character.update_time)).all()
+        characters = db_session.query(Character).filter(Character.user_id == user_id).order_by(desc(Character.updated_at)).all()
         return templates.TemplateResponse(
             "index.html",
             {"request": request, "characters": characters, "username": username, "login_status": login_status}
@@ -111,7 +111,7 @@ async def create(request: Request):
 @app.post("/create")
 async def create(request: Request):
     form = await request.form()
-    update_time = datetime.now(pytz.timezone('Asia/Tokyo')).replace(microsecond = 0)
+    updated_at = datetime.now(pytz.timezone('Asia/Tokyo')).replace(microsecond = 0)
     name = form["name"]
     impurity = form["impurity"]
     dexterity = form["dexterity"]
@@ -124,7 +124,7 @@ async def create(request: Request):
     user_id = int(request.cookies.get("user_id"))
 
 
-    character = Character(name=name, impurity=impurity, dexterity=dexterity, agility=agility, strength=strength, vitality=vitality, intelligence=intelligence, spirit=spirit, memo=memo, update_time=update_time, user_id=user_id)
+    character = Character(name=name, impurity=impurity, dexterity=dexterity, agility=agility, strength=strength, vitality=vitality, intelligence=intelligence, spirit=spirit, memo=memo, updated_at=updated_at, user_id=user_id)
 
     db_session.add(character)
     db_session.commit()
@@ -152,7 +152,7 @@ async def update(request: Request, id: int):
     character = db_session.query(Character).get(id)
     if request.cookies.get("user_id") == str(character.user_id) :
         form = await request.form()
-        character.update_time = datetime.now(pytz.timezone('Asia/Tokyo')).replace(microsecond = 0)
+        character.updated_at = datetime.now(pytz.timezone('Asia/Tokyo')).replace(microsecond = 0)
         character.name = form["name"]
         character.impurity = form["impurity"]
         character.dexterity = form["dexterity"]

@@ -3,146 +3,54 @@
 
 <div class="container-fluid custom-container min-vh-100">
     <h1 class="fs-3">新規作成</h1>
-    <!-- <form method="POST">
-        <input type="submit" value="新規保存">
-        <section>
-            <div class="box">
-                <dl>
-                    <dt>キャラクター名</dt>
-                    <dd><input name="name"></dd>
-                </dl>
-            </div>
-            <div>
-                <dl>
-                    <dt>冒険者レベル</dt>
-                    <dd id="level-value">0</dd>
-                </dl>
-            </div>
-            <div>
-                穢れ：
-                <select name="impurity">
-                    {% for i in range(0, 6) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <th nowrap="nowrap">種族</th>
-                            <th>
-                                <select name="race" id="">
-                                    <option value="人間">人間</option>
-                                    <option value="エルフ">エルフ</option>
-                                    <option value="ドワーフ">ドワーフ</option>
-                                </select>
-                            </th>
-                            <th>希少種</th>
-                            <th>
-                                <select name="subrace" id="">
-                                    <option value=""></option>
-                                    <option value="ミストエルフ">ミストエルフ</option>
-                                    <option value="スノーエルフ">スノーエルフ</option>
-                                </select>
-                            </th>
-                            <td colspan="15">
-                                種族特徴：
-                                <input size="60" type="text" value="[暗視][剣の加護／優しき水]">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>生まれ</th>
-                            <th>
-                                <select name="birth" id="">
-                                    <option value=""></option>
-                                    <option value="薬師">薬師</option>
-                                    <option value="魔導師">魔導師</option>
-                                </select>
-                            </th>
-                            <td>
-                                技：
-                                <input type="text" value="7" size="3">
-                            </td>
-                            <td>
-                                体：
-                                <input type="text" value="12" size="3">
-                            </td>
-                            <td>
-                                心：
-                                <input type="text" value="9" size="3">
-                            </td>
-                        </tr>
-                        <tr>
-
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-            <div>
-
-                器用：
-                <select name="dexterity">
-                    {% for i in range(2, 19) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-                敏捷：
-                <select name="agility">
-                    {% for i in range(2, 19) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-                筋力：
-                <select name="strength">
-                    {% for i in range(2, 19) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-                生命：
-                <select name="vitality">
-                    {% for i in range(2, 19) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-                知力：
-                <select name="intelligence">
-                    {% for i in range(2, 19) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-                精神：
-                <select name="spirit">
-                    {% for i in range(2, 19) %}
-                    <option value="{{ i }}">{{ i }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <br>
-            メモ：<input name="memo">
-        </section>
-    </form> -->
     <form name="sheet" method="post" action="./" enctype="multipart/form-data">
         <section id="section-common" style="display: block;">
             <div class="card my-1 px-2" id="name-form">
                 <h2 class="fs-4">基本情報</h2>
                 <div class="row">
-                    <dl class="col" id="character-name">
+                    <dl class="col-6 pe-2" id="character-name">
                         <dt>キャラクター名</dt>
                         <dd><input class="form-control form-control-sm" type="text" name="characterName" value=""
                                 oninput="nameSet()">
                         </dd>
                     </dl>
-                    <dl class="col-1" id="level">
+                    <dl class="col-1 px-2" id="level">
                         <dt>冒Lv</dt>
                         <dd id="level-value">
-                            <input type="text" readonly="true" class="form-control form-control-sm">
+                            <input class="form-control form-control-sm" type="text" name="" readonly="true">
                         </dd>
                     </dl>
-                    <dl class="col-1" id="sin">
+                    <dl class="col-1 px-2" id="sin">
                         <dt>穢れ</dt>
                         <dd><input class="form-control form-control-sm" type="number" name="sin" value="" min="0">
+                        </dd>
+                    </dl>
+                    <dl class="col-1 px-2">
+                        <dt id="vit-resist">生命抵抗
+                        </dt>
+                        <dd><input class="form-control form-control-sm" type="number" name="vitResistAdd" value=""
+                                oninput="calcSubStt()">
+                        </dd>
+                    </dl>
+                    <dl class="col-1 px-2">
+                        <dt id="mnd-resist">精神抵抗
+                        </dt>
+                        <dd><input class="form-control form-control-sm" type="number" name="mndResistAdd" value=""
+                                oninput="calcSubStt()">
+                        </dd>
+                    </dl>
+                    <dl class="col-1 px-2">
+                        <dt id="hp">ＨＰ
+                        </dt>
+                        <dd><input class="form-control form-control-sm" type="number" name="hpAdd" value=""
+                                oninput="calcSubStt()">
+                        </dd>
+                    </dl>
+                    <dl class="col-1 ps-2">
+                        <dt id="mp">ＭＰ
+                        </dt>
+                        <dd><input class="form-control form-control-sm" type="number" name="mpAdd" value=""
+                                oninput="calcSubStt()">
                         </dd>
                     </dl>
                 </div>
@@ -222,7 +130,7 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt>あ</dt>
+                            <dt>能力補正値</dt>
                             <dd>
                                 <div class="d-grid">
                                     <button type="button" class="btn btn-primary btn-sm">ランダム</button>
@@ -233,58 +141,70 @@
                     <div class="col">
                         <div class="row">
 
-                            <dl class="col" id="stt-base-tec">
+                            <dl class="col">
                                 <dt>技</dt>
-                                <dd class="form-control form-control-sm" type="number" name="sttBaseTec" value=""
-                                    oninput="calcStt()"><span>0</span></dd>
+                                <dd>
+                                    <input type="number" class="form-control form-control-sm text-center"
+                                        id="technical_satus" value="" readonly>
+                                </dd>
                             </dl>
-                            <dl class="col" id="stt-base-phy">
+                            <dl class="col">
                                 <dt>体</dt>
-                                <dd class="form-control form-control-sm" type="number" name="sttBasePhy" value=""
-                                    oninput="calcStt()"><span>0</span></dd>
+                                <dd>
+                                    <input type="number" class="form-control form-control-sm text-center"
+                                        id="physical_status" value="" readonly>
+                                </dd>
                             </dl>
-                            <dl class="col" id="stt-base-spi">
+                            <dl class="col">
                                 <dt>心</dt>
-                                <dd class="form-control form-control-sm" type="number" name="sttBaseSpi" value=""
-                                    oninput="calcStt()"><span>0</span></dd>
+                                <dd>
+                                    <input type="number" class="form-control form-control-sm text-center"
+                                        id="mental_status" value="" readonly>
+                                </dd>
                             </dl>
                         </div>
                         <div class="row">
 
                             <dl class="col" id="stt-base-A">
                                 <dt>Ａ</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttBaseA" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number"
+                                        name="sttBaseA" value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-B">
                                 <dt>Ｂ</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttBaseB" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number"
+                                        name="sttBaseB" value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-C">
                                 <dt>Ｃ</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttBaseC" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number"
+                                        name="sttBaseC" value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-D">
                                 <dt>Ｄ</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttBaseD" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number"
+                                        name="sttBaseD" value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-E">
                                 <dt>Ｅ</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttBaseE" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number"
+                                        name="sttBaseE" value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-F">
                                 <dt>Ｆ</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttBaseF" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number"
+                                        name="sttBaseF" value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                         </div>
@@ -292,1204 +212,1082 @@
                         <div class="row">
                             <dl class="col" id="stt-grow-A">
                                 <dt>成長</dt>
-                                <dd class="form-control form-control-sm" id="stt-grow-A-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-grow-A-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-grow-B">
                                 <dt>成長</dt>
-                                <dd class="form-control form-control-sm" id="stt-grow-B-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-grow-B-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-grow-C">
                                 <dt>成長</dt>
-                                <dd class="form-control form-control-sm" id="stt-grow-C-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-grow-C-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-grow-D">
                                 <dt>成長</dt>
-                                <dd class="form-control form-control-sm" id="stt-grow-D-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-grow-D-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-grow-E">
                                 <dt>成長</dt>
-                                <dd class="form-control form-control-sm" id="stt-grow-E-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-grow-E-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-grow-F">
                                 <dt>成長</dt>
-                                <dd class="form-control form-control-sm" id="stt-grow-F-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-grow-F-value">0</dd>
                             </dl>
                         </div>
                         <div class="row">
                             <dl class="col" id="stt-add-A">
                                 <dt>増強</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttAddA" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number" name="sttAddA"
+                                        value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-B">
                                 <dt>増強</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttAddB" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number" name="sttAddB"
+                                        value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-C">
                                 <dt>増強</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttAddC" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number" name="sttAddC"
+                                        value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-D">
                                 <dt>増強</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttAddD" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number" name="sttAddD"
+                                        value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-E">
                                 <dt>増強</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttAddE" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number" name="sttAddE"
+                                        value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-F">
                                 <dt>増強</dt>
-                                <dd><input class="form-control form-control-sm" type="number" name="sttAddF" value=""
-                                        oninput="calcStt()">
+                                <dd>
+                                    <input class="form-control form-control-sm text-center" type="number" name="sttAddF"
+                                        value="" oninput="calcStt()">
                                 </dd>
                             </dl>
                         </div>
                         <div class="row">
                             <dl class="col" id="stt-dex">
                                 <dt>器用度</dt>
-                                <dd class="form-control form-control-sm" id="stt-dex-value"><span>0</span></dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-dex-value"><span>0</span>
+                                </dd>
                             </dl>
                             <dl class="col" id="stt-agi">
                                 <dt>敏捷度</dt>
-                                <dd class="form-control form-control-sm" id="stt-agi-value"><span>0</span></dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-agi-value"><span>0</span>
+                                </dd>
                             </dl>
                             <dl class="col" id="stt-str">
                                 <dt>筋力 </dt>
-                                <dd class="form-control form-control-sm" id="stt-str-value"><span>0</span></dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-str-value"><span>0</span>
+                                </dd>
                             </dl>
                             <dl class="col" id="stt-vit">
                                 <dt>生命力</dt>
-                                <dd class="form-control form-control-sm" id="stt-vit-value"><span>0</span></dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-vit-value"><span>0</span>
+                                </dd>
                             </dl>
                             <dl class="col" id="stt-int">
                                 <dt>知力 </dt>
-                                <dd class="form-control form-control-sm" id="stt-int-value"><span>0</span></dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-int-value"><span>0</span>
+                                </dd>
                             </dl>
                             <dl class="col" id="stt-mnd">
                                 <dt>精神力</dt>
-                                <dd class="form-control form-control-sm" id="stt-mnd-value"><span>0</span></dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-mnd-value"><span>0</span>
+                                </dd>
                             </dl>
                         </div>
                         <div class="row">
                             <dl class="col" id="stt-bonus-dex">
                                 <dt>器用度ボーナス</dt>
-                                <dd class="form-control form-control-sm" id="stt-bonus-dex-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-bonus-dex-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-bonus-agi">
                                 <dt>敏捷度ボーナス</dt>
-                                <dd class="form-control form-control-sm" id="stt-bonus-agi-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-bonus-agi-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-bonus-str">
                                 <dt>筋力ボーナス </dt>
-                                <dd class="form-control form-control-sm" id="stt-bonus-str-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-bonus-str-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-bonus-vit">
                                 <dt>生命力ボーナス</dt>
-                                <dd class="form-control form-control-sm" id="stt-bonus-vit-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-bonus-vit-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-bonus-int">
                                 <dt>知力ボーナス </dt>
-                                <dd class="form-control form-control-sm" id="stt-bonus-int-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-bonus-int-value">0</dd>
                             </dl>
                             <dl class="col" id="stt-bonus-mnd">
                                 <dt>精神力ボーナス</dt>
-                                <dd class="form-control form-control-sm" id="stt-bonus-mnd-value">0</dd>
+                                <dd class="form-control form-control-sm text-center" id="stt-bonus-mnd-value">0</dd>
                             </dl>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <dl class="col-3">
-                        <dt id="vit-resist">生命抵抗力
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="vitResistAdd" value=""
-                                oninput="calcSubStt()">
-                        </dd>
-                    </dl>
-                    <dl class="col-3">
-                        <dt id="mnd-resist">精神抵抗力
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="mndResistAdd" value=""
-                                oninput="calcSubStt()">
-                        </dd>
-                    </dl>
-                    <dl class="col-3">
-                        <dt id="hp">ＨＰ
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="hpAdd" value=""
-                                oninput="calcSubStt()">
-                        </dd>
-                    </dl>
-                    <dl class="col-3">
-                        <dt id="mp">ＭＰ
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="mpAdd" value=""
-                                oninput="calcSubStt()">
-                        </dd>
-                    </dl>
                 </div>
             </div>
-            <div id="area-classes">
-                <div class="card mb-1 px-2" id="classes">
-                    <h2 class="fs-4">技能</h2>
-                    <div class="row">
-                        <div class="col" id="classes-weapon-user">
-                            <dl class="edit-table side-margin">
-                                <dt id="classFig">ファイター</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvFig" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classGra">グラップラー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvGra" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classBat">バトルダンサー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvBat" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classFen">フェンサー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvFen" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classSho">シューター</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvSho" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                            </dl>
+            <div class="card mb-1 px-2" id="classes">
+                <h2 class="fs-4 mb-0">技能</h2>
+                <div class="row">
+                    <div class="col" id="classes-weapon-user">
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classFig">ファイター</span>
+                            <input type="number" class="form-control form-control text-end" name="lvFig" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
-                        <div class="col" id="classes-magic-user">
-                            <dl class="edit-table side-margin">
-                                <dt id="classSor">ソーサラー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvSor" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classCon">コンジャラー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvCon" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classPri">プリースト</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvPri" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classMag">マギテック</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvMag" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classFai">フェアリーテイマー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvFai" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classDru">ドルイド</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvDru" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classDem">デーモンルーラー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvDem" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                            </dl>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classGra">グラップラー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvGra" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
-                        <div class="col" id="classes-other-user">
-                            <dl class="edit-table side-margin">
-                                </dd>
-                                <dt id="classEnh">エンハンサー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvEnh" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classBar">バード</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvBar" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classRid">ライダー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvRid" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classAlc">アルケミスト</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvAlc" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classGeo">ジオマンサー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvGeo" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classWar">ウォーリーダー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvWar" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                            </dl>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classBat">バトルダンサー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvBat" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
-                        <div class="col">
-                            <dl>
-                                <dt id="classSco">スカウト</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvSco" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classRan">レンジャー</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvRan" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                                </dd>
-                                <dt id="classSag">セージ</dt>
-                                <dd><input type="number" class="form-control form-control-sm" name="lvSag" value=""
-                                        min="0" max="17" oninput="changeLv()">
-                            </dl>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classFen">フェンサー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvFen" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
-                        <div class="col">
-                            <dl>
-                                <dt>総経験点</dt>
-                                <dd>
-                                    <input type="text" class="form-control form-control-sm" readonly="true">
-                                </dd>
-                                <dt>使用経験点</dt>
-                                <dd>
-                                    <input type="text" class="form-control form-control-sm" readonly="true">
-                                </dd>
-                                <dt>残り経験点</dt>
-                                <dd>
-                                    <input type="text" class="form-control form-control-sm" readonly="true">
-                                </dd>
-                            </dl>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classSho">シューター</span>
+                            <input type="number" class="form-control form-control text-end" name="lvSho" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
                     </div>
-                </div>
-                <div>
-                    <div class="card mb-1 px-2" id="combat-feats">
-                        <h2 class="fs-4">戦闘特技</h2>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>冒Lv</th>
-                                    <th>戦闘特技</th>
-                                    <th>効果</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="col pe-0">
-                                        <input class="form-control form-control-sm" type="text" readonly value="1(踊)">
-                                    </td>
-                                    <td class="col-2 px-0" id="combat-feats-lv1bat" data-lv="1+">
-                                        <select class="form-control form-control-sm" name="combatFeatsLv1bat"
-                                            oninput="checkFeats()">
-                                            <option></option>
-                                            <optgroup label="常時特技"></optgroup>
-                                            <optgroup label="宣言特技">
-                                                <option>囮攻撃Ⅰ</option>
-                                                <option>囮攻撃Ⅱ</option>
-                                                <option>斬り返しⅠ</option>
-                                                <option>斬り返しⅡ</option>
-                                                <option>牽制攻撃Ⅰ</option>
-                                                <option>牽制攻撃Ⅱ</option>
-                                                <option>牽制攻撃Ⅲ</option>
-                                                <option>全力攻撃Ⅰ</option>
-                                                <option>全力攻撃Ⅱ</option>
-                                                <option>挑発攻撃Ⅰ</option>
-                                                <option>挑発攻撃Ⅱ</option>
-                                                <option>必殺攻撃Ⅰ</option>
-                                                <option>必殺攻撃Ⅱ</option>
-                                                <option>必殺攻撃Ⅲ</option>
-                                                <option>魔力撃</option>
-                                            </optgroup>
-                                            <optgroup label="主動作特技"></optgroup>
-                                        </select>
-                                    </td>
-                                    <td class="col-9 ps-0">
-                                        <input class="form-control form-control-sm" type="text" readonly>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col pe-0">
-                                        <input class="form-control form-control-sm" type="text" readonly value="1">
-                                    </td>
-                                    <td class="col-2 px-0" id="combat-feats-lv1" data-lv="1">
-                                        <select class="form-control form-control-sm" name="combatFeatsLv1"
-                                            oninput="checkFeats()">
-                                            <option></option>
-                                            <optgroup label="常時特技">
-                                                <option>かいくぐり</option>
-                                                <option>鼓咆陣率追加Ⅰ</option>
-                                                <option>鼓咆陣率追加Ⅱ</option>
-                                                <option>鼓咆陣率追加Ⅲ</option>
-                                                <option>呪歌追加Ⅰ</option>
-                                                <option>呪歌追加Ⅱ</option>
-                                                <option>呪歌追加Ⅲ</option>
-                                                <option>スローイングⅠ</option>
-                                                <option>スローイングⅡ</option>
-                                                <option>相克の標的</option>
-                                                <option>ターゲッティング</option>
-                                                <option>特殊楽器習熟</option>
-                                                <option>武器習熟Ａ／ソード</option>
-                                                <option>武器習熟Ａ／アックス</option>
-                                                <option>武器習熟Ａ／スピア</option>
-                                                <option>武器習熟Ａ／メイス</option>
-                                                <option>武器習熟Ａ／スタッフ</option>
-                                                <option>武器習熟Ａ／フレイル</option>
-                                                <option>武器習熟Ａ／ウォーハンマー</option>
-                                                <option>武器習熟Ａ／絡み</option>
-                                                <option>武器習熟Ａ／格闘</option>
-                                                <option>武器習熟Ａ／投擲</option>
-                                                <option>武器習熟Ａ／ボウ</option>
-                                                <option>武器習熟Ａ／クロスボウ</option>
-                                                <option>武器習熟Ａ／ブロウガン</option>
-                                                <option>武器習熟Ａ／ガン</option>
-                                                <option>防具習熟Ａ／金属鎧</option>
-                                                <option>防具習熟Ａ／非金属鎧</option>
-                                                <option>防具習熟Ａ／盾</option>
-                                                <option>両手利き</option>
-                                            </optgroup>
-                                        </select>
-                                    </td>
-                                    <td class="col-9 ps-0">
-                                        <input class="form-control form-control-sm" type="text" readonly>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="card mb-1 px-2" id="weapons">
-                        <h2 class="fs-4">武器・防具</h2>
-                        <table class="table table-striped" id="weapons-table">
-                            <thead id="weapon-head">
-                                <tr>
-                                    <th>武器：用法</th>
-                                    <th>必筋</th>
-                                    <th>命中力</th>
-                                    <th>威力</th>
-                                    <th>Ｃ値</th>
-                                    <th>追加Ｄ</th>
-                                    <th>カテゴリ</th>
-                                    <th>技能</th>
-                                    <th>価格</th>
-                                    <th>備考</th>
-                                </tr>
-                            </thead>
-                            <template id="weapon-template">
-                                <tbody id="weapon-rowTMPL">
-                                    <tr>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="weaponTMPLName" value=""><span class="handle"></span>
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="weaponTMPLReqd" value="" oninput="calcWeapon()">
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text" name="weaponTMPLAcc"
-                                                value="" oninput="calcWeapon()"><b id="weaponTMPL-acc-total">0</b>
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="weaponTMPLRate" value="">
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="weaponTMPLCrit" value="">
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text" name="weaponTMPLDmg"
-                                                value="" oninput="calcWeapon()"><b id="weaponTMPL-dmg-total">0</b>
-                                        </td>
-                                        <td>
-                                            <select class="form-control form-control-sm" name="weaponTMPLCategory"
-                                                oninput="calcWeapon()">
-                                                <option value=""></option>
-                                                <option value="ソード">ソード</option>
-                                                <option value="アックス">アックス</option>
-                                                <option value="スピア">スピア</option>
-                                                <option value="メイス">メイス</option>
-                                                <option value="スタッフ">スタッフ</option>
-                                                <option value="フレイル">フレイル</option>
-                                                <option value="ウォーハンマー">ウォーハンマー</option>
-                                                <option value="絡み">絡み</option>
-                                                <option value="格闘">格闘</option>
-                                                <option value="投擲">投擲</option>
-                                                <option value="ボウ">ボウ</option>
-                                                <option value="クロスボウ">クロスボウ</option>
-                                                <option value="ブロウガン">ブロウガン</option>
-                                                <option value="ガン">ガン</option>
-                                                <option value="ガン（物理）">ガン（物理）</option>
-                                                <option value="盾">盾</option>
-                                            </select>
-                                        </td>
-                                        <td><select class="form-control form-control-sm" name="weaponTMPLClass"
-                                                oninput="calcWeapon()">
-                                                <option value=""></option>
-                                                <option value="戦">戦</option>
-                                                <option value="拳">拳</option>
-                                                <option value="踊">踊</option>
-                                                <option value="軽">軽</option>
-                                                <option value="射">射</option>
-                                                <option value="練">練</option>
-                                                <option value="魔">魔</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text">
-                                        </td>
-                                        <td>
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="weaponTMPLNote" value="" oninput="calcWeapon()">
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </template>
-                            <tbody id="weapon-row1">
-                                <tr>
-                                    <td class="col-2 pe-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Name"
-                                            value=""><span class="handle"></span>
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Reqd"
-                                            value="" oninput="calcWeapon()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Acc"
-                                            value="" oninput="calcWeapon()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Rate"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Crit"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Dmg"
-                                            value="" oninput="calcWeapon()">
-                                    </td>
-                                    <td class="col-2 px-0">
-                                        <select class="form-control form-control-sm" name="weapon1Category"
-                                            oninput="calcWeapon()">
-                                            <option value=""></option>
-                                            <option value="ソード">ソード</option>
-                                            <option value="アックス">アックス</option>
-                                            <option value="スピア">スピア</option>
-                                            <option value="メイス">メイス</option>
-                                            <option value="スタッフ">スタッフ</option>
-                                            <option value="フレイル">フレイル</option>
-                                            <option value="ウォーハンマー">ウォーハンマー</option>
-                                            <option value="絡み">絡み</option>
-                                            <option value="格闘">格闘</option>
-                                            <option value="投擲">投擲</option>
-                                            <option value="ボウ">ボウ</option>
-                                            <option value="クロスボウ">クロスボウ</option>
-                                            <option value="ブロウガン">ブロウガン</option>
-                                            <option value="ガン">ガン</option>
-                                            <option value="ガン（物理）">ガン（物理）</option>
-                                            <option value="盾">盾</option>
-                                        </select>
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="weapon1Class"
-                                            oninput="calcWeapon()">
-                                            <option value=""></option>
-                                            <option value="戦">戦</option>
-                                            <option value="拳">拳</option>
-                                            <option value="踊">踊</option>
-                                            <option value="軽">軽</option>
-                                            <option value="射">射</option>
-                                            <option value="練">練</option>
-                                            <option value="魔">魔</option>
-                                        </select>
-                                    </td>
-                                    <td class="col-1 px-0">
-                                        <input class="form-control form-control-sm" type="text">
-                                    </td>
-                                    <td class="col-4 ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="weapon1Note"
-                                            value="" oninput="calcWeapon()">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="add-del-button">
-                            <a onclick="addWeapons()">▼</a><a onclick="delWeapons()">▲</a>
+                    <div class="col" id="classes-magic-user">
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classSor">ソーサラー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvSor" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th class="type">
-                                    </th>
-                                    <th class="cate">カテゴリ
-                                    </th>
-                                    <th class="name">防具
-                                    </th>
-                                    <th class="reqd">必筋
-                                    </th>
-                                    <th class="eva ">回避
-                                    </th>
-                                    <th class="def ">防護
-                                    </th>
-                                    <th class="price">価格
-                                    </th>
-                                    <th class="note">備考
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <template id="armour-template">
-                                    <tr id="armourTMPL" data-type="">
-                                        <th class="type handle">
-                                        </th>
-                                        <td class="col-1 px-0">
-                                            <select class="form-control form-control-sm" name="armourTMPLCategory"
-                                                oninput="calcDefense()">
-                                                <option value=""></option>
-                                                <option value="金属鎧">金属鎧</option>
-                                                <option value="非金属鎧">非金属鎧</option>
-                                                <option value="盾">盾</option>
-                                                <option value="その他">その他</option>
-                                            </select>
-                                        </td>
-                                        <td class="col-2 px-0">
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="armourTMPLName" value="" oninput="calcDefense()">
-                                        </td>
-                                        <td class="col px-0">
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="armourTMPLReqd" value="" oninput="calcDefense()">
-                                        </td>
-                                        <td class="col px-0">
-                                            <input class="form-control form-control-sm" type="number"
-                                                name="armourTMPLEva" value="" oninput="calcDefense()">
-                                        </td>
-                                        <td class="col px-0">
-                                            <input class="form-control form-control-sm" type="number"
-                                                name="armourTMPLDef" value="" oninput="calcDefense()">
-                                        </td>
-                                        <td class="col px-0">
-                                            <input class="form-control form-control-sm" type="text">
-                                        </td>
-                                        <td class="col-5 ps-0">
-                                            <input class="form-control form-control-sm" type="text"
-                                                name="armourTMPLNote" value="">
-                                        </td>
-                                    </tr>
-                                </template>
-                                <tr id="armour1" data-type="">
-                                    <th class="type handle">鎧</th>
-                                    <td class="col-1 px-0">
-                                        <select class="form-control form-control-sm" name="armour1Category"
-                                            oninput="calcDefense()">
-                                            <option value=""></option>
-                                            <option value="金属鎧">金属鎧</option>
-                                            <option value="非金属鎧">非金属鎧</option>
-                                        </select>
-                                    </td>
-                                    <td class="col-2 px-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour1Name"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour1Reqd"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="number" name="armour1Eva"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="number" name="armour1Def"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text">
-                                    </td>
-                                    <td class="col-5 ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour1Note"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="armour2" data-type="">
-                                    <th class="type handle">盾</th>
-                                    <td class="col-1 px-0">
-                                        <select class="form-control form-control-sm" name="armour2Category"
-                                            oninput="calcDefense()">
-                                            <option value=""></option>
-                                            <option value="盾">盾</option>
-                                        </select>
-                                    </td>
-                                    <td class="col-2 px-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour2Name"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour2Reqd"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="number" name="armour2Eva"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="number" name="armour2Def"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text">
-                                    </td>
-                                    <td class="col-5 ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour2Note"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="armour3" data-type="">
-                                    <th class="type handle">他</th>
-                                    <td class="col-1 px-0">
-                                        <select class="form-control form-control-sm" name="armour3Category"
-                                            oninput="calcDefense()">
-                                            <option value=""></option>
-                                            <option value="金属鎧">金属鎧</option>
-                                            <option value="非金属鎧">非金属鎧</option>
-                                            <option value="盾">盾</option>
-                                            <option value="その他">その他</option>
-                                        </select>
-                                    </td>
-                                    <td class="col-2 px-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour3Name"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour3Reqd"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="number" name="armour3Eva"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="number" name="armour3Def"
-                                            value="" oninput="calcDefense()">
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text">
-                                    </td>
-                                    <td class="col-5 ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="armour3Note"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td class="col-1 px-0"></td>
-                                    <td class="col-2 px-0"></td>
-                                    <th class="col px-0 text-center">合計</th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" readonly>
-                                    </td>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" readonly>
-                                    </td>
-                                    <td class="col px-0"></td>
-                                    <td class="col-5 ps-0"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        </dd>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classCon">コンジャラー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvCon" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        </dd>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classPri">プリースト</span>
+                            <input type="number" class="form-control form-control text-end" name="lvPri" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        </dd>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classMag">マギテック</span>
+                            <input type="number" class="form-control form-control text-end" name="lvMag" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        </dd>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classFai">フェアリーテイマー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvFai" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        </dd>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classDru">ドルイド</span>
+                            <input type="number" class="form-control form-control text-end" name="lvDru" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        </dd>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classDem">デーモンルーラー</span>
+                            <input type="number" class="form-control form-control text-end" name="lvDem" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        </dd>
                     </div>
-                    <div class="card mb-1 px-2" id="accessories">
-                        <h2 class="fs-4">装飾品</h2>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>
-                                    </th>
-                                    <th>装飾品
-                                    </th>
-                                    <th>専用
-                                    </th>
-                                    <th>効果
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="accessories-table">
-                                <tr id="accessory-rowHead" data-type="Head">
-                                    <th>頭
-                                    </th>
-                                    <td class="col-3 px-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryHeadName"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryHeadOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col-7 ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryHeadNote"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowFace" data-type="Face">
-                                    <th>顔
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryFaceName"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryFaceOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryFaceNote"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowEar" data-type="Ear">
-                                    <th>耳
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryEarName"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryEarOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryEarNote"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowNeck" data-type="Neck">
-                                    <th>首
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryNeckName"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryNeckOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryNeckNote"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowBack" data-type="Back">
-                                    <th>背中
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryBackName"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryBackOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0"><input class="form-control form-control-sm" type="text"
-                                            name="accessoryBackNote" value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowHandR" data-type="HandR">
-                                    <th>右手
-                                    </th>
-                                    <td class="col px-0"><input class="form-control form-control-sm" type="text"
-                                            name="accessoryHandRName" value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryHandROwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryHandRNote" value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowHandL" data-type="HandL">
-                                    <th>左手
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryHandLName" value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryHandLOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryHandLNote" value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowWaist" data-type="Waist">
-                                    <th>腰
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryWaistName" value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryWaistOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryWaistNote" value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowLeg" data-type="Leg">
-                                    <th>足
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryLegName"
-                                            value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryLegOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text" name="accessoryLegNote"
-                                            value="">
-                                    </td>
-                                </tr>
-                                <tr id="accessory-rowOther" data-type="Other">
-                                    <th>他
-                                    </th>
-                                    <td class="col px-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryOtherName" value="">
-                                    </td>
-                                    <td class="col px-0">
-                                        <select class="form-control form-control-sm" name="accessoryOtherOwn"
-                                            oninput="calcSubStt()">
-                                            <option></option>
-                                            <option value="HP">HP</option>
-                                            <option value="MP">MP</option>
-                                        </select>
-                                    </td>
-                                    <td class="col ps-0">
-                                        <input class="form-control form-control-sm" type="text"
-                                            name="accessoryOtherNote" value="">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div id="area-items">
-                    <div id="area-items-L">
-                        <dl class="card mb-1 px-2" id="money">
-                            <dt>所持金</dt>
-                            <dd><input type="text" name="money" value="自動"> G
-                            </dd>
-                            <dt>預金／借金</dt>
-                            <dd><input type="text" name="deposit" value="自動"> G
-                            </dd>
-                        </dl>
-                        <div class="card mb-1 px-2" id="items">
-                            <h2 class="fs-4">所持品</h2>
-                            <textarea name="items"></textarea>
+                    <div class="col" id="classes-other-user">
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classEnh">エンハンサー</span>
+                            <input type="number" class="form-control form-control-sm text-end" name="lvEnh" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classBar">バード</span>
+                            <input type="number" class="form-control form-control-sm text-end" name="lvBar" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classRid">ライダー</span>
+                            <input type="number" class="form-control form-control-sm text-end" name="lvRid" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classAlc">アルケミスト</span>
+                            <input type="number" class="form-control form-control-sm text-end" name="lvAlc" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classGeo">ジオマンサー</span>
+                            <input type="number" class="form-control form-control-sm text-end" name="lvGeo" value=""
+                                min="0" max="17" oninput="changeLv()">
+                        </div>
+                        <div class="input-group input-group-sm my-3">
+                            <span class="input-group-text" id="classWar">ウォーリーダー</span>
+                            <input type="number" class="form-control form-control-sm text-end" name="lvWar" value=""
+                                min="0" max="17" oninput="changeLv()">
                         </div>
                     </div>
-                    <div id="area-items-R">
-                        <dl class="card mb-1 px-2" id="honor">
-                            <dt>名誉点</dt>
-                            <dd id="honor-value">0</dd>
-                            <dt>ランク
-                            </dt>
-                            <dd id="honor-rank"><select name="rank" oninput="calcHonor()">
-                                    <option value=""></option>
-                                    <option value="ダガー">ダガー</option>
-                                    <option value="レイピア">レイピア</option>
-                                    <option value="ブロードソード">ブロードソード</option>
-                                    <option value="グレートソード">グレートソード</option>
-                                    <option value="フランベルジュ">フランベルジュ</option>
-                                    <option value="センチネル">センチネル</option>
-                                    <option value="ハイペリオン">ハイペリオン</option>
-                                    <option value="〈始まりの剣〉">〈始まりの剣〉</option>
-                                    <option value="〈始まりの剣〉★">〈始まりの剣〉★</option>
-                                </select><input type="number" name="rankStar" value="" min="1" oninput="calcHonor()"
-                                    style="display: none;">
-                            </dd>
-                        </dl>
-                        <div class="card mb-1 px-2 honor-items" id="honor-items">
-                            <h2 class="fs-4">名誉アイテム</h2>
-                            <table class="edit-table side-margin">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th></th>
-                                        <th>点数
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="center" colspan="2">冒険者ランク</td>
-                                        <td id="rank-honor-value">0</td>
-                                    </tr>
-                                </tbody>
-                                <tbody id="honor-items-table">
-                                    <template id="honor-item-template">
-                                        <tr id="honor-itemTMPL">
-                            </table>
-                            <td class="handle"></td>
-                            <td><input type="text" name="honorItemTMPL" value=""></td>
-                            <td><input type="number" name="honorItemTMPLPt" value="" oninput="calcHonor()">
-                            </td>
-                            </tr>
-                            </template>
-                            <tr id="honor-item1">
-                                <td class="handle"></td>
-                                <td><input type="text" name="honorItem1" value=""></td>
-                                <td><input type="number" name="honorItem1Pt" value="" oninput="calcHonor()">
-                                </td>
-                            </tr>
-                            <tr id="honor-item2">
-                                <td class="handle"></td>
-                                <td><input type="text" name="honorItem2" value=""></td>
-                                <td><input type="number" name="honorItem2Pt" value="" oninput="calcHonor()">
-                                </td>
-                            </tr>
-                            <tr id="honor-item3">
-                                <td class="handle"></td>
-                                <td><input type="text" name="honorItem3" value=""></td>
-                                <td><input type="number" name="honorItem3Pt" value="" oninput="calcHonor()">
-                                </td>
-                            </tr>
-                            </tbody>
-                            </table>
-                            <div class="add-del-button"><a onclick="addHonorItems()">▼</a><a
-                                    onclick="delHonorItems()">▲</a>
+                    <div class="col">
+                        <dl>
+                            <div class="input-group input-group-sm my-3">
+                                <span class="input-group-text" id="classSco">スカウト</span>
+                                <input type="number" class="form-control form-control-sm text-end" name="lvSco" value=""
+                                    min="0" max="17" oninput="changeLv()">
                             </div>
-                            <dl class="edit-table side-margin" id="honor-offset">
-                                <dt>不名誉点相殺</dt>
-                                <dd><input type="number" name="honorOffset" value=""
-                                        oninput="calcHonor();calcDishonor()">
-                                </dd>
-                            </dl>
-                        </div>
+
+                            <div class="input-group input-group-sm my-3">
+                                <span class="input-group-text" id="classRan">レンジャー</span>
+                                <input type="number" class="form-control form-control-sm text-end" name="lvRan" value=""
+                                    min="0" max="17" oninput="changeLv()">
+                            </div>
+
+                            <div class="input-group input-group-sm my-3">
+                                <span class="input-group-text" id="classSag">セージ</span>
+                                <input type="number" class="form-control form-control-sm text-end" name="lvSag" value=""
+                                    min="0" max="17" oninput="changeLv()">
+                            </div>
+                    </div>
+                    <div class="col">
+                        <dt>総経験点</dt>
+                        <dd>
+                            <input type="text" class="form-control form-control-sm" readonly="true">
+                        </dd>
+                        <dt>使用経験点</dt>
+                        <dd>
+                            <input type="text" class="form-control form-control-sm" readonly="true">
+                        </dd>
+                        <dt>残り経験点</dt>
+                        <dd>
+                            <input type="text" class="form-control form-control-sm" readonly="true">
+                        </dd>
                     </div>
                 </div>
+            </div>
+            <div class="card mb-1 px-2" id="combat-feats">
+                <h2 class="fs-4">戦闘特技</h2>
+                <table class="table table-sm table-striped mb-2">
+                    <thead>
+                        <tr>
+                            <th>冒Lv</th>
+                            <th>戦闘特技</th>
+                            <th>効果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col pe-0">
+                                <input class="form-control form-control-sm" type="text" readonly value="1(踊)">
+                            </td>
+                            <td class="col-2 px-0" id="combat-feats-lv1bat" data-lv="1+">
+                                <select class="form-control form-control-sm" name="combatFeatsLv1bat"
+                                    oninput="checkFeats()">
+                                    <option></option>
+                                    <optgroup label="常時特技"></optgroup>
+                                    <optgroup label="宣言特技">
+                                        <option>囮攻撃Ⅰ</option>
+                                        <option>囮攻撃Ⅱ</option>
+                                        <option>斬り返しⅠ</option>
+                                        <option>斬り返しⅡ</option>
+                                        <option>牽制攻撃Ⅰ</option>
+                                        <option>牽制攻撃Ⅱ</option>
+                                        <option>牽制攻撃Ⅲ</option>
+                                        <option>全力攻撃Ⅰ</option>
+                                        <option>全力攻撃Ⅱ</option>
+                                        <option>挑発攻撃Ⅰ</option>
+                                        <option>挑発攻撃Ⅱ</option>
+                                        <option>必殺攻撃Ⅰ</option>
+                                        <option>必殺攻撃Ⅱ</option>
+                                        <option>必殺攻撃Ⅲ</option>
+                                        <option>魔力撃</option>
+                                    </optgroup>
+                                    <optgroup label="主動作特技"></optgroup>
+                                </select>
+                            </td>
+                            <td class="col-9 ps-0">
+                                <input class="form-control form-control-sm" type="text" readonly>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col pe-0">
+                                <input class="form-control form-control-sm" type="text" readonly value="1">
+                            </td>
+                            <td class="col-2 px-0" id="combat-feats-lv1" data-lv="1">
+                                <select class="form-control form-control-sm" name="combatFeatsLv1"
+                                    oninput="checkFeats()">
+                                    <option></option>
+                                    <optgroup label="常時特技">
+                                        <option>かいくぐり</option>
+                                        <option>鼓咆陣率追加Ⅰ</option>
+                                        <option>鼓咆陣率追加Ⅱ</option>
+                                        <option>鼓咆陣率追加Ⅲ</option>
+                                        <option>呪歌追加Ⅰ</option>
+                                        <option>呪歌追加Ⅱ</option>
+                                        <option>呪歌追加Ⅲ</option>
+                                        <option>スローイングⅠ</option>
+                                        <option>スローイングⅡ</option>
+                                        <option>相克の標的</option>
+                                        <option>ターゲッティング</option>
+                                        <option>特殊楽器習熟</option>
+                                        <option>武器習熟Ａ／ソード</option>
+                                        <option>武器習熟Ａ／アックス</option>
+                                        <option>武器習熟Ａ／スピア</option>
+                                        <option>武器習熟Ａ／メイス</option>
+                                        <option>武器習熟Ａ／スタッフ</option>
+                                        <option>武器習熟Ａ／フレイル</option>
+                                        <option>武器習熟Ａ／ウォーハンマー</option>
+                                        <option>武器習熟Ａ／絡み</option>
+                                        <option>武器習熟Ａ／格闘</option>
+                                        <option>武器習熟Ａ／投擲</option>
+                                        <option>武器習熟Ａ／ボウ</option>
+                                        <option>武器習熟Ａ／クロスボウ</option>
+                                        <option>武器習熟Ａ／ブロウガン</option>
+                                        <option>武器習熟Ａ／ガン</option>
+                                        <option>防具習熟Ａ／金属鎧</option>
+                                        <option>防具習熟Ａ／非金属鎧</option>
+                                        <option>防具習熟Ａ／盾</option>
+                                        <option>両手利き</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td class="col-9 ps-0">
+                                <input class="form-control form-control-sm" type="text" readonly>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card mb-1 px-2" id="weapons">
+                <h2 class="fs-4">武器・防具</h2>
+                <table class="table table-sm table-striped mb-2" id="weapons-table">
+                    <thead id="weapon-head">
+                        <tr>
+                            <th>武器：用法</th>
+                            <th>必筋</th>
+                            <th>命中力</th>
+                            <th>威力</th>
+                            <th>Ｃ値</th>
+                            <th>追加Ｄ</th>
+                            <th>カテゴリ</th>
+                            <th>技能</th>
+                            <th>価格</th>
+                            <th>備考</th>
+                        </tr>
+                    </thead>
+                    <template id="weapon-template">
+                        <tbody id="weapon-rowTMPL">
+                            <tr>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLName"
+                                        value=""><span class="handle"></span>
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLReqd"
+                                        value="" oninput="calcWeapon()">
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLAcc"
+                                        value="" oninput="calcWeapon()"><b id="weaponTMPL-acc-total">0</b>
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLRate"
+                                        value="">
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLCrit"
+                                        value="">
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLDmg"
+                                        value="" oninput="calcWeapon()"><b id="weaponTMPL-dmg-total">0</b>
+                                </td>
+                                <td>
+                                    <select class="form-control form-control-sm" name="weaponTMPLCategory"
+                                        oninput="calcWeapon()">
+                                        <option value=""></option>
+                                        <option value="ソード">ソード</option>
+                                        <option value="アックス">アックス</option>
+                                        <option value="スピア">スピア</option>
+                                        <option value="メイス">メイス</option>
+                                        <option value="スタッフ">スタッフ</option>
+                                        <option value="フレイル">フレイル</option>
+                                        <option value="ウォーハンマー">ウォーハンマー</option>
+                                        <option value="絡み">絡み</option>
+                                        <option value="格闘">格闘</option>
+                                        <option value="投擲">投擲</option>
+                                        <option value="ボウ">ボウ</option>
+                                        <option value="クロスボウ">クロスボウ</option>
+                                        <option value="ブロウガン">ブロウガン</option>
+                                        <option value="ガン">ガン</option>
+                                        <option value="ガン（物理）">ガン（物理）</option>
+                                        <option value="盾">盾</option>
+                                    </select>
+                                </td>
+                                <td><select class="form-control form-control-sm" name="weaponTMPLClass"
+                                        oninput="calcWeapon()">
+                                        <option value=""></option>
+                                        <option value="戦">戦</option>
+                                        <option value="拳">拳</option>
+                                        <option value="踊">踊</option>
+                                        <option value="軽">軽</option>
+                                        <option value="射">射</option>
+                                        <option value="練">練</option>
+                                        <option value="魔">魔</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text">
+                                </td>
+                                <td>
+                                    <input class="form-control form-control-sm" type="text" name="weaponTMPLNote"
+                                        value="" oninput="calcWeapon()">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </template>
+                    <tbody id="weapon-row1">
+                        <tr>
+                            <td class="col-2 pe-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Name"
+                                    value=""><span class="handle"></span>
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Reqd" value=""
+                                    oninput="calcWeapon()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Acc" value=""
+                                    oninput="calcWeapon()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Rate" value="">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Crit" value="">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Dmg" value=""
+                                    oninput="calcWeapon()">
+                            </td>
+                            <td class="col-2 px-0">
+                                <select class="form-control form-control-sm" name="weapon1Category"
+                                    oninput="calcWeapon()">
+                                    <option value=""></option>
+                                    <option value="ソード">ソード</option>
+                                    <option value="アックス">アックス</option>
+                                    <option value="スピア">スピア</option>
+                                    <option value="メイス">メイス</option>
+                                    <option value="スタッフ">スタッフ</option>
+                                    <option value="フレイル">フレイル</option>
+                                    <option value="ウォーハンマー">ウォーハンマー</option>
+                                    <option value="絡み">絡み</option>
+                                    <option value="格闘">格闘</option>
+                                    <option value="投擲">投擲</option>
+                                    <option value="ボウ">ボウ</option>
+                                    <option value="クロスボウ">クロスボウ</option>
+                                    <option value="ブロウガン">ブロウガン</option>
+                                    <option value="ガン">ガン</option>
+                                    <option value="ガン（物理）">ガン（物理）</option>
+                                    <option value="盾">盾</option>
+                                </select>
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="weapon1Class" oninput="calcWeapon()">
+                                    <option value=""></option>
+                                    <option value="戦">戦</option>
+                                    <option value="拳">拳</option>
+                                    <option value="踊">踊</option>
+                                    <option value="軽">軽</option>
+                                    <option value="射">射</option>
+                                    <option value="練">練</option>
+                                    <option value="魔">魔</option>
+                                </select>
+                            </td>
+                            <td class="col-1 px-0">
+                                <input class="form-control form-control-sm" type="text">
+                            </td>
+                            <td class="col-4 ps-0">
+                                <input class="form-control form-control-sm" type="text" name="weapon1Note" value=""
+                                    oninput="calcWeapon()">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-del-button mx-auto">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-weapons">＋増やす</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="del-weapons">－減らす</button>
+                </div>
+                <table class="table table-sm table-striped mb-2">
+                    <thead>
+                        <tr>
+                            <th class="type">
+                            </th>
+                            <th class="cate">カテゴリ
+                            </th>
+                            <th class="name">防具
+                            </th>
+                            <th class="reqd">必筋
+                            </th>
+                            <th class="eva ">回避
+                            </th>
+                            <th class="def ">防護
+                            </th>
+                            <th class="price">価格
+                            </th>
+                            <th class="note">備考
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template id="armour-template">
+                            <tr id="armourTMPL" data-type="">
+                                <th class="type handle">
+                                </th>
+                                <td class="col-1 px-0">
+                                    <select class="form-control form-control-sm" name="armourTMPLCategory"
+                                        oninput="calcDefense()">
+                                        <option value=""></option>
+                                        <option value="金属鎧">金属鎧</option>
+                                        <option value="非金属鎧">非金属鎧</option>
+                                        <option value="盾">盾</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                </td>
+                                <td class="col-2 px-0">
+                                    <input class="form-control form-control-sm" type="text" name="armourTMPLName"
+                                        value="" oninput="calcDefense()">
+                                </td>
+                                <td class="col px-0">
+                                    <input class="form-control form-control-sm" type="text" name="armourTMPLReqd"
+                                        value="" oninput="calcDefense()">
+                                </td>
+                                <td class="col px-0">
+                                    <input class="form-control form-control-sm" type="number" name="armourTMPLEva"
+                                        value="" oninput="calcDefense()">
+                                </td>
+                                <td class="col px-0">
+                                    <input class="form-control form-control-sm" type="number" name="armourTMPLDef"
+                                        value="" oninput="calcDefense()">
+                                </td>
+                                <td class="col px-0">
+                                    <input class="form-control form-control-sm" type="text">
+                                </td>
+                                <td class="col-5 ps-0">
+                                    <input class="form-control form-control-sm" type="text" name="armourTMPLNote"
+                                        value="">
+                                </td>
+                            </tr>
+                        </template>
+                        <tr id="armour1" data-type="">
+                            <th class="type handle">鎧</th>
+                            <td class="col-1 px-0">
+                                <select class="form-control form-control-sm" name="armour1Category"
+                                    oninput="calcDefense()">
+                                    <option value=""></option>
+                                    <option value="金属鎧">金属鎧</option>
+                                    <option value="非金属鎧">非金属鎧</option>
+                                </select>
+                            </td>
+                            <td class="col-2 px-0">
+                                <input class="form-control form-control-sm" type="text" name="armour1Name" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="armour1Reqd" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="number" name="armour1Eva" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="number" name="armour1Def" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text">
+                            </td>
+                            <td class="col-5 ps-0">
+                                <input class="form-control form-control-sm" type="text" name="armour1Note" value="">
+                            </td>
+                        </tr>
+                        <tr id="armour2" data-type="">
+                            <th class="type handle">盾</th>
+                            <td class="col-1 px-0">
+                                <select class="form-control form-control-sm" name="armour2Category"
+                                    oninput="calcDefense()">
+                                    <option value=""></option>
+                                    <option value="盾">盾</option>
+                                </select>
+                            </td>
+                            <td class="col-2 px-0">
+                                <input class="form-control form-control-sm" type="text" name="armour2Name" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="armour2Reqd" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="number" name="armour2Eva" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="number" name="armour2Def" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text">
+                            </td>
+                            <td class="col-5 ps-0">
+                                <input class="form-control form-control-sm" type="text" name="armour2Note" value="">
+                            </td>
+                        </tr>
+                        <tr id="armour3" data-type="">
+                            <th class="type handle">他</th>
+                            <td class="col-1 px-0">
+                                <select class="form-control form-control-sm" name="armour3Category"
+                                    oninput="calcDefense()">
+                                    <option value=""></option>
+                                    <option value="金属鎧">金属鎧</option>
+                                    <option value="非金属鎧">非金属鎧</option>
+                                    <option value="盾">盾</option>
+                                    <option value="その他">その他</option>
+                                </select>
+                            </td>
+                            <td class="col-2 px-0">
+                                <input class="form-control form-control-sm" type="text" name="armour3Name" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="armour3Reqd" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="number" name="armour3Eva" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="number" name="armour3Def" value=""
+                                    oninput="calcDefense()">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text">
+                            </td>
+                            <td class="col-5 ps-0">
+                                <input class="form-control form-control-sm" type="text" name="armour3Note" value="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td class="col-1 px-0"></td>
+                            <td class="col-2 px-0"></td>
+                            <th class="col px-0 text-center">合計</th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" readonly>
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" readonly>
+                            </td>
+                            <td class="col px-0"></td>
+                            <td class="col-5 ps-0"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card mb-1 px-2" id="accessories">
+                <h2 class="fs-4">装飾品</h2>
+                <table class="table table-sm table-striped mb-2">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>装飾品</th>
+                            <th>価格</th>
+                            <th>効果</th>
+                        </tr>
+                    </thead>
+                    <tbody id="accessories-table">
+                        <tr id="accessory-rowHead" data-type="Head">
+                            <th>頭
+                            </th>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm" name="accessoryHeadName"
+                                    value="">
+                            </td>
+                            <td class="col-1 px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col-7 ps-0">
+                                <input type="text" class="form-control form-control-sm" name="accessoryHeadNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowFace" data-type="Face">
+                            <th>顔
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryFaceName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryFaceNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowEar" data-type="Ear">
+                            <th>耳
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryEarName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryEarNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowNeck" data-type="Neck">
+                            <th>首
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryNeckName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryNeckNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowBack" data-type="Back">
+                            <th>背中
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryBackName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0"><input class="form-control form-control-sm" type="text"
+                                    name="accessoryBackNote" value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowHandR" data-type="HandR">
+                            <th>右手
+                            </th>
+                            <td class="col px-0"><input class="form-control form-control-sm" type="text"
+                                    name="accessoryHandRName" value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryHandRNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowHandL" data-type="HandL">
+                            <th>左手
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryHandLName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryHandLNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowWaist" data-type="Waist">
+                            <th>腰
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryWaistName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryWaistNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowLeg" data-type="Leg">
+                            <th>足
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryLegName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryLegNote"
+                                    value="">
+                            </td>
+                        </tr>
+                        <tr id="accessory-rowOther" data-type="Other">
+                            <th>他
+                            </th>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryOtherName"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col ps-0">
+                                <input class="form-control form-control-sm" type="text" name="accessoryOtherNote"
+                                    value="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-del-button mx-auto mb-1">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-accessory()">＋増やす</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="del-accessory()">－減らす</button>
+                </div>
+            </div>
+            <div class="card mb-1 px-2" id="area-items">
+                <h2 class="fs-4">所持品・所持金</h2>
+                <table class="table table-sm table-striped mb-2" id="items">
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>単価</th>
+                            <th>個数</th>
+                            <th>価格</th>
+                            <th>効果・備考</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-3 pe-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col px-0">
+                                <input type="number" class="form-control form-control-sm">
+                            </td>
+                            <td class="col px-0">
+                                <input type="text" class="form-control form-control-sm" readonly>
+                            </td>
+                            <td class="col-6 ps-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-del-button mx-auto">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-item()">＋増やす</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="del-item()" disabled>－減らす</button>
+                </div>
+                <dl class="ms-auto" id="money">
+                    <dt>所持金</dt>
+                    <dd>
+                        <input type="text" class="form-control form-control-sm" name="money" value="自動"> G
+                    </dd>
+                </dl>
+            </div>
+            <div class="card mb-1 px-2">
+                <h2 class="fs-4">名誉点</h2>
+                <table class="table table-sm table-striped mb-2">
+                    <thead>
+                        <tr>
+                            <th>名誉点消費</th>
+                            <th>点数</th>
+                            <th>備考</th>
+                        </tr>
+                    </thead>
+                    <tbody id="honor-items-table">
+                        <template id="honor-item-template">
+                            <tr id="honor-itemTMPL">
+                                <td>
+                                    <input type="text" class="form-control form-control-sm" name="honorItemTMPL"
+                                        value="">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control form-control-sm" name="honorItemTMPLPt"
+                                        value="" oninput="calcHonor()">
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control form-control-sm">
+                                </td>
+                            </tr>
+                        </template>
+                        <tr id="honor-item1">
+                            <td class="col pe-0">
+                                <input type="text" class="form-control form-control-sm" name="honorItem1" value="">
+                            </td>
+                            <td class="col-1 px-0">
+                                <input type="text" class="form-control form-control-sm" name="honorItem1Pt" value=""
+                                    oninput="calcHonor()">
+                            </td>
+                            <td class="col-7 ps-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                        </tr>
+                        <tr id="honor-item2">
+                            <td class="col pe-0">
+                                <input type="text" class="form-control form-control-sm" name="honorItem2" value="">
+                            </td>
+                            <td class="col-1 px-0">
+                                <input type="text" class="form-control form-control-sm" name="honorItem2Pt" value=""
+                                    oninput="calcHonor()">
+                            </td>
+                            <td class="col-7 ps-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                        </tr>
+                        <tr id="honor-item3">
+                            <td class="col pe-0">
+                                <input type="text" class="form-control form-control-sm" name="honorItem3" value="">
+                            </td>
+                            <td class="col-1 px-0">
+                                <input type="text" class="form-control form-control-sm" name="honorItem3Pt" value=""
+                                    oninput="calcHonor()">
+                            </td>
+                            <td class="col-7 ps-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-del-button mx-auto">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-hornor-item()">＋増やす</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="del-hornor-item()"
+                        disabled>－減らす</button>
+                </div>
+                <dl class="ms-auto" id="honor">
+                    <dt>名誉点</dt>
+                    <dd>
+                        <input type="text" class="form-control form-control-sm" name="honor" value="自動">
+                    </dd>
+                </dl>
             </div>
             <div class="card mb-1 px-2" id="craft-enhance" style="display: block;">
                 <h2 class="fs-4">練技</h2>
-                <div class="row select-input ">
-                    <dl class="col-3">
-                        <dt></dt>
-                        <dd>
-                            <select class="form-control form-control-sm" name="craftEnhance1"
-                                oninput="selectInputCheck('craftEnhance1',this);">
-                                <option></option>
-                                <option value="アンチボディ">アンチボディ</option>
-                                <option value="オウルビジョン">オウルビジョン</option>
-                                <option value="ガゼルフット">ガゼルフット</option>
-                                <option value="キャッツアイ">キャッツアイ</option>
-                                <option value="スケイルレギンス">スケイルレギンス</option>
-                                <option value="ストロングブラッド">ストロングブラッド</option>
-                                <option value="チックチック">チックチック</option>
-                                <option value="ドラゴンテイル">ドラゴンテイル</option>
-                                <option value="ビートルスキン">ビートルスキン</option>
-                                <option value="マッスルベアー">マッスルベアー</option>
-                                <option value="メディテーション">メディテーション</option>
-                                <option value="ラビットイヤー">ラビットイヤー</option>
-                                <option value="free">その他（自由記入）</option>
-                            </select>
-                        </dd>
-                    </dl>
-                    <dl class="col">
-                        <dt></dt>
-                        <dd>
-                            <input class="col form-control form-control-sm" type="text" name="craftEnhance1Free">
-                        </dd>
-                    </dl>
-                </div>
-                <div class="row select-input">
-                    <dl class="col-3">
-                        <dt></dt>
-                        <dd>
-                            <select class="form-control form-control-sm" name="craftEnhance17"
-                                oninput="selectInputCheck('craftEnhance17',this);">
-                                <option></option>
-                                <option value="アンチボディ">アンチボディ</option>
-                                <option value="オウルビジョン">オウルビジョン</option>
-                                <option value="ガゼルフット">ガゼルフット</option>
-                                <option value="キャッツアイ">キャッツアイ</option>
-                                <option value="スケイルレギンス">スケイルレギンス</option>
-                                <option value="ストロングブラッド">ストロングブラッド</option>
-                                <option value="チックチック">チックチック</option>
-                                <option value="ドラゴンテイル">ドラゴンテイル</option>
-                                <option value="ビートルスキン">ビートルスキン</option>
-                                <option value="マッスルベアー">マッスルベアー</option>
-                                <option value="メディテーション">メディテーション</option>
-                                <option value="ラビットイヤー">ラビットイヤー</option>
-                                <option value="ケンタウロスレッグ">ケンタウロスレッグ</option>
-                                <option value="シェイプアニマル">シェイプアニマル</option>
-                                <option value="ジャイアントアーム">ジャイアントアーム</option>
-                                <option value="スフィンクスノレッジ">スフィンクスノレッジ</option>
-                                <option value="デーモンフィンガー">デーモンフィンガー</option>
-                                <option value="ファイアブレス">ファイアブレス</option>
-                                <option value="リカバリィ">リカバリィ</option>
-                                <option value="ワイドウィング">ワイドウィング</option>
-                                <option value="カメレオンカムフラージュ">カメレオンカムフラージュ</option>
-                                <option value="クラーケンスタビリティ">クラーケンスタビリティ</option>
-                                <option value="ジィプロフェシー">ジィプロフェシー</option>
-                                <option value="ストライダーウォーク">ストライダーウォーク</option>
-                                <option value="スパイダーウェブ">スパイダーウェブ</option>
-                                <option value="タイタンフット">タイタンフット</option>
-                                <option value="トロールバイタル">トロールバイタル</option>
-                                <option value="バルーンシードショット">バルーンシードショット</option>
-                                <option value="フェンリルバイト">フェンリルバイト</option>
-                                <option value="ヘルシーボディ">ヘルシーボディ</option>
-                                <option value="アナライズブレイン">アナライズブレイン</option>
-                                <option value="ウェンディゴハイド">ウェンディゴハイド</option>
-                                <option value="ヴジャドーアイ">ヴジャドーアイ</option>
-                                <option value="free">その他（自由記入）</option>
-                            </select>
-                        </dd>
-                    </dl>
-                    <dl class="col">
-                        <dt></dt>
-                        <dd>
-                            <input class="col form-control form-control-sm" type="text" name="craftEnhance17Free">
-                        </dd>
-                    </dl>
-                </div>
+                <table class="table table-sm table-striped mb-2">
+                    <thead>
+                        <tr>
+                            <th>Lv</th>
+                            <th>練技</th>
+                            <th>効果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="craftEnhance1"
+                                    oninput="selectInputCheck('craftEnhance1',this);">
+                                    <option></option>
+                                    <option value="アンチボディ">アンチボディ</option>
+                                    <option value="オウルビジョン">オウルビジョン</option>
+                                    <option value="ガゼルフット">ガゼルフット</option>
+                                    <option value="キャッツアイ">キャッツアイ</option>
+                                    <option value="スケイルレギンス">スケイルレギンス</option>
+                                    <option value="ストロングブラッド">ストロングブラッド</option>
+                                    <option value="チックチック">チックチック</option>
+                                    <option value="ドラゴンテイル">ドラゴンテイル</option>
+                                    <option value="ビートルスキン">ビートルスキン</option>
+                                    <option value="マッスルベアー">マッスルベアー</option>
+                                    <option value="メディテーション">メディテーション</option>
+                                    <option value="ラビットイヤー">ラビットイヤー</option>
+                                    <option value="free">その他（自由記入）</option>
+                                </select>
+                            </td>
+                            <td class="col-9 ps-0">
+                                <dd>
+                                    <input type="text" class="col form-control form-control-sm"
+                                        name="craftEnhance1Free">
+                                </dd>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="card mb-1 px-2" id="craft-song" style="display: block;">
                 <h2 class="fs-4">呪歌</h2>
-                <div class="row select-input ">
-                    <dl class="col-3">
-                        <dt></dt>
-                        <dd>
-                            <select class="form-control form-control-sm" name="craftSong1"
-                                oninput="selectInputCheck('craftSong1',this);">
-                                <option></option>
-                                <option value="アーリーバード">アーリーバード</option>
-                                <option value="アンビエント">アンビエント</option>
-                                <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
-                                <option value="サモン・フィッシュ">サモン・フィッシュ</option>
-                                <option value="ノイズ">ノイズ</option>
-                                <option value="バラード">バラード</option>
-                                <option value="モラル">モラル</option>
-                                <option value="レクイエム">レクイエム</option>
-                                <option value="レジスタンス">レジスタンス</option>
-                                <option value="終律：春の強風">終律：春の強風</option>
-                                <option value="終律：夏の生命">終律：夏の生命</option>
-                                <option value="終律：秋の実り">終律：秋の実り</option>
-                                <option value="終律：冬の寒風">終律：冬の寒風</option>
-                                <option value="free">その他（自由記入）</option>
-                            </select>
-                        </dd>
-                    </dl>
-                    <dl class="col">
-                        <dt></dt>
-                        <dd>
-                            <input class="col form-control form-control-sm" type="text" name="craftEnhance1Free">
-                        </dd>
-                    </dl>
-                </div>
-                <div class="row select-input">
-                    <dl class="col-3">
-                        <dt></dt>
-                        <dd>
-                            <select class="col form-control form-control-sm" name="craftSong20"
-                                oninput="selectInputCheck('craftSong20',this);">
-                                <option></option>
-                                <option value="アーリーバード">アーリーバード</option>
-                                <option value="アンビエント">アンビエント</option>
-                                <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
-                                <option value="サモン・フィッシュ">サモン・フィッシュ</option>
-                                <option value="ノイズ">ノイズ</option>
-                                <option value="バラード">バラード</option>
-                                <option value="モラル">モラル</option>
-                                <option value="レクイエム">レクイエム</option>
-                                <option value="レジスタンス">レジスタンス</option>
-                                <option value="アトリビュート">アトリビュート</option>
-                                <option value="キュアリオスティ">キュアリオスティ</option>
-                                <option value="チャーミング">チャーミング</option>
-                                <option value="トランス">トランス</option>
-                                <option value="ノスタルジィ">ノスタルジィ</option>
-                                <option value="ブレイク">ブレイク</option>
-                                <option value="ラブソング">ラブソング</option>
-                                <option value="ララバイ">ララバイ</option>
-                                <option value="クラップ">クラップ</option>
-                                <option value="コーラス">コーラス</option>
-                                <option value="ダル">ダル</option>
-                                <option value="ダンス">ダンス</option>
-                                <option value="フォール">フォール</option>
-                                <option value="リダクション">リダクション</option>
-                                <option value="レイジィ">レイジィ</option>
-                                <option value="終律：春の強風">終律：春の強風</option>
-                                <option value="終律：夏の生命">終律：夏の生命</option>
-                                <option value="終律：秋の実り">終律：秋の実り</option>
-                                <option value="終律：冬の寒風">終律：冬の寒風</option>
-                                <option value="終律：獣の咆吼">終律：獣の咆吼</option>
-                                <option value="終律：草原の息吹">終律：草原の息吹</option>
-                                <option value="終律：華の宴">終律：華の宴</option>
-                                <option value="終律：蛇穴の苦鳴">終律：蛇穴の苦鳴</option>
-                                <option value="終律：火竜の舞">終律：火竜の舞</option>
-                                <option value="終律：水竜の轟">終律：水竜の轟</option>
-                                <option value="終律：蒼月の光">終律：蒼月の光</option>
-                                <option value="終律：白日の暖">終律：白日の暖</option>
-                                <option value="グラント">グラント</option>
-                                <option value="ヒム">ヒム</option>
-                                <option value="リラックス">リラックス</option>
-                                <option value="free">その他（自由記入）</option>
-                            </select>
-                        </dd>
-                    </dl>
-                    <dl class="col">
-                        <dt></dt>
-                        <dd>
-                            <input class="col form-control form-control-sm" type="text" name="craftSong20Free">
-                        </dd>
-                    </dl>
-                </div>
+                <table class="table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>Lv</th>
+                            <th>呪歌</th>
+                            <th>効果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input type="text" class="form-control form-control-sm">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="craftSong1"
+                                    oninput="selectInputCheck('craftSong1',this);">
+                                    <option></option>
+                                    <option value="アーリーバード">アーリーバード</option>
+                                    <option value="アンビエント">アンビエント</option>
+                                    <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
+                                    <option value="サモン・フィッシュ">サモン・フィッシュ</option>
+                                    <option value="ノイズ">ノイズ</option>
+                                    <option value="バラード">バラード</option>
+                                    <option value="モラル">モラル</option>
+                                    <option value="レクイエム">レクイエム</option>
+                                    <option value="レジスタンス">レジスタンス</option>
+                                    <option value="終律：春の強風">終律：春の強風</option>
+                                    <option value="終律：夏の生命">終律：夏の生命</option>
+                                    <option value="終律：秋の実り">終律：秋の実り</option>
+                                    <option value="終律：冬の寒風">終律：冬の寒風</option>
+                                    <option value="free">その他（自由記入）</option>
+                                </select>
+                            </td>
+                            <td class="col-9 ps-0">
+                                <input class="col form-control form-control-sm" type="text" name="craftEnhance1Free">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
             <div class="card mb-1 px-2" id="language">
                 <h2 class="fs-4">言語</h2>
-                <table class="edit-table side-margin">
+                <table class="edit-table side-margin mb-2">
                     <tbody>
                         <tr>
                             <th></th>
@@ -1504,7 +1302,7 @@
                     <dd>○</dd>
                     <dd>○</dd>
                 </dl>
-                <table class="edit-table side-margin" id="language-table">
+                <table class="table table-sm table-striped mb-2" id="language-table">
                     <tbody>
                         <template id="language-template">
                             <tr id="language-itemTMPL">

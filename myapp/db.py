@@ -52,7 +52,7 @@ class Character(Base):
     # warleader = Column(Integer)
     # geomancer = Column(Integer)
     memo = Column(String)
-    update_time = Column(DateTime)
+    updated_at = Column(DateTime)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     user = relationship("User", back_populates="characters")
 
