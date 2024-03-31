@@ -530,9 +530,8 @@
                             <td class="col pe-0">
                                 <input class="form-control form-control-sm" type="text" readonly value="1">
                             </td>
-                            <td class="col-2 px-0" id="combat-feats-lv1" data-lv="1">
-                                <select class="form-control form-control-sm" name="combatFeatsLv1"
-                                    oninput="checkFeats()">
+                            <td class="col-2 px-0" id="combat-skill-lv1" data-lv="1">
+                                <select class="form-control form-control-sm" name="combat-skill-Lv1">
                                     <option></option>
                                     <optgroup label="常時特技">
                                         <option>かいくぐり</option>
@@ -574,6 +573,82 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div class="card mb-1 px-2">
+                <h2 class="fs-4">流派</h2>
+                <table class="table table-sm table-striped mb-2">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>流派</th>
+                            <th>秘伝</th>
+                            <th>分類</th>
+                            <th>効果</th>
+                        </tr>
+                    </thead>
+                    <tbody id="secret-skill-tbody">
+                        <template id="secret-skill-template">
+                            <tr>
+                                <th class="col pt-2 pe-2">
+                                    <input type="checkbox" class="form-check-input">
+                                </th>
+                                <td class="col-2 px-0">
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                                <td class="col-2 px-0">
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                                <td class="col-1 px-0">
+                                    <select class="form-control form-control-sm px-1" name="" id="">
+                                        <option value=""></option>
+                                        <option value="">常時型</option>
+                                        <option value="">主動作型</option>
+                                        <option value="">宣言型</option>
+                                    </select>
+                                </td>
+                                <td class="col-7 ps-0">
+                                    <input class="form-control form-control-sm" type="text">
+                                </td>
+                            </tr>
+                        </template>
+                        <tr>
+                            <th class="col pt-2 pe-2">
+                                <input type="checkbox" class="form-check-input">
+                            </th>
+                            <td class="col-2 px-0">
+                                <select class="form-control form-control-sm" name="" id="">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                            <td class="col-2 px-0">
+                                <select class="form-control form-control-sm" name="" id="">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                            <td class="col-1 px-0">
+                                <select class="form-control form-control-sm px-1" name="" id="">
+                                    <option value=""></option>
+                                    <option value="">常時型</option>
+                                    <option value="">主動作型</option>
+                                    <option value="">宣言型</option>
+                                </select>
+                            </td>
+                            <td class="col-7 ps-0">
+                                <input class="form-control form-control-sm" type="text">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="add-del-button mx-auto">
+                    <button class="btn btn-outline-primary btn-sm" id="add-secret-skill-button"
+                        type="button">＋増やす</button>
+                    <button class="btn btn-outline-danger btn-sm" id="delete-secret-skill-button"
+                        type="button">－減らす</button>
+                </div>
             </div>
             <div class="card mb-1 px-2" id="weapons">
                 <h2 class="fs-4">武器・防具</h2>
@@ -1199,326 +1274,267 @@
                     </dd>
                 </dl>
             </div>
-            <div class="card mb-1 px-2" id="craft-enhance" style="display: block;">
-                <h2 class="fs-4">練技</h2>
-                <table class="table table-sm table-striped mb-2">
-                    <thead>
-                        <tr>
-                            <th>Lv</th>
-                            <th>練技</th>
-                            <th>効果</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-1 pe-0">
-                                <input type="text" class="form-control form-control-sm">
-                            </td>
-                            <td class="col px-0">
-                                <select class="form-control form-control-sm" name="craftEnhance1"
-                                    oninput="selectInputCheck('craftEnhance1',this);">
-                                    <option></option>
-                                    <option value="アンチボディ">アンチボディ</option>
-                                    <option value="オウルビジョン">オウルビジョン</option>
-                                    <option value="ガゼルフット">ガゼルフット</option>
-                                    <option value="キャッツアイ">キャッツアイ</option>
-                                    <option value="スケイルレギンス">スケイルレギンス</option>
-                                    <option value="ストロングブラッド">ストロングブラッド</option>
-                                    <option value="チックチック">チックチック</option>
-                                    <option value="ドラゴンテイル">ドラゴンテイル</option>
-                                    <option value="ビートルスキン">ビートルスキン</option>
-                                    <option value="マッスルベアー">マッスルベアー</option>
-                                    <option value="メディテーション">メディテーション</option>
-                                    <option value="ラビットイヤー">ラビットイヤー</option>
-                                    <option value="free">その他（自由記入）</option>
-                                </select>
-                            </td>
-                            <td class="col-9 ps-0">
-                                <dd>
-                                    <input type="text" class="col form-control form-control-sm"
-                                        name="craftEnhance1Free">
-                                </dd>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card mb-1 px-2" id="craft-song" style="display: block;">
-                <h2 class="fs-4">呪歌</h2>
-                <table class="table table-sm table-striped">
-                    <thead>
-                        <tr>
-                            <th>Lv</th>
-                            <th>呪歌</th>
-                            <th>効果</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="col-1 pe-0">
-                                <input type="text" class="form-control form-control-sm">
-                            </td>
-                            <td class="col px-0">
-                                <select class="form-control form-control-sm" name="craftSong1"
-                                    oninput="selectInputCheck('craftSong1',this);">
-                                    <option></option>
-                                    <option value="アーリーバード">アーリーバード</option>
-                                    <option value="アンビエント">アンビエント</option>
-                                    <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
-                                    <option value="サモン・フィッシュ">サモン・フィッシュ</option>
-                                    <option value="ノイズ">ノイズ</option>
-                                    <option value="バラード">バラード</option>
-                                    <option value="モラル">モラル</option>
-                                    <option value="レクイエム">レクイエム</option>
-                                    <option value="レジスタンス">レジスタンス</option>
-                                    <option value="終律：春の強風">終律：春の強風</option>
-                                    <option value="終律：夏の生命">終律：夏の生命</option>
-                                    <option value="終律：秋の実り">終律：秋の実り</option>
-                                    <option value="終律：冬の寒風">終律：冬の寒風</option>
-                                    <option value="free">その他（自由記入）</option>
-                                </select>
-                            </td>
-                            <td class="col-9 ps-0">
-                                <input class="col form-control form-control-sm" type="text" name="craftEnhance1Free">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card mb-1 px-2" id="language">
-                <h2 class="fs-4">言語</h2>
-                <table class="edit-table side-margin mb-2">
-                    <tbody>
-                        <tr>
-                            <th></th>
-                            <th>会話</th>
-                            <th>読文
-                            </th>
-                        </tr>
-                    </tbody>
-                </table>
-                <dl class="edit-table side-margin" id="language-default">
-                    <dt>交易共通語</dt>
-                    <dd>○</dd>
-                    <dd>○</dd>
-                </dl>
-                <table class="table table-sm table-striped mb-2" id="language-table">
-                    <tbody>
-                        <template id="language-template">
-                            <tr id="language-itemTMPL">
-                                <td class="handle"></td>
-                                <td><input type="text" name="languageTMPL" value="" list="list-language"
-                                        oninput="checkLanguage()">
+            <div class="row mx-0">
+                <div class="card mb-1 px-2 col-6" id="language">
+                    <h2 class="fs-4">言語</h2>
+                    <table class="table table-sm table-striped mb-2" id="language-table">
+                        <thead>
+                            <tr>
+                                <th>言語</th>
+                                <th>会話/読文</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template id="language-template">
+                                <tr>
+                                    <td><input type="text" class="form-control form-control-sm" name="languageTMPL"
+                                            value="" list="list-language" oninput="checkLanguage()">
+                                    </td>
+                                    <td>
+                                        <select class="form-control form-control-sm" name="" id="">
+                                            <option value="">会話</option>
+                                            <option value="">読文</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </template>
+                            <tr>
+                                <td><input type="text" class="form-control form-control-sm" name="languageTMPL" value=""
+                                        list="list-language" oninput="checkLanguage()">
                                 </td>
                                 <td>
-                                    <select name="languageTMPLTalk" oninput="checkLanguage()">
-                                        <option value=""></option>
-                                        <option value="Sag">○ セージ技能による習得</option>
-                                        <option value="Bar">○ バード技能による習得</option>
-                                        <option value="auto">○ 自動習得／その他の習得</option>
-                                        <option value="listen">△ 聞き取り限定（通辞の耳飾りなど）</option>
-                                    </select><span class="lang-select-view"></span>
-                                </td>
-                                <td>
-                                    <select name="languageTMPLRead" oninput="checkLanguage()">
-                                        <option value=""></option>
-                                        <option value="Sag">○ セージ技能による習得</option>
-                                        <option value="auto">○ 自動習得／その他の習得</option>
-                                    </select><span class="lang-select-view"></span>
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        <option value="">会話</option>
+                                        <option value="">読文</option>
+                                    </select>
                                 </td>
                             </tr>
-                        </template>
-                        <tr id="language-item1">
-                            <td class="handle"></td>
-                            <td><input type="text" name="language1" value="" list="list-language"
-                                    oninput="checkLanguage()">
-                            </td>
-                            <td><select name="language1Talk" oninput="checkLanguage()" data-type="">
-                                    <option value=""></option>
-                                    <option value="Sag">○ セージ技能による習得</option>
-                                    <option value="Bar">○ バード技能による習得</option>
-                                    <option value="auto">○ 自動習得／その他の習得</option>
-                                    <option value="listen">△ 聞き取り限定（通辞の耳飾りなど）</option>
-                                </select><span class="lang-select-view"></span></td>
-                            <td><select name="language1Read" oninput="checkLanguage()" data-type="">
-                                    <option value=""></option>
-                                    <option value="Sag">○ セージ技能による習得</option>
-                                    <option value="auto">○ 自動習得／その他の習得</option>
-                                </select><span class="lang-select-view"></span>
-                            </td>
-                        </tr>
-                        <tr id="language-item2">
-                            <td class="handle"></td>
-                            <td><input type="text" name="language2" value="" list="list-language"
-                                    oninput="checkLanguage()">
-                            </td>
-                            <td><select name="language2Talk" oninput="checkLanguage()" data-type="">
-                                    <option value=""></option>
-                                    <option value="Sag">○ セージ技能による習得</option>
-                                    <option value="Bar">○ バード技能による習得</option>
-                                    <option value="auto">○ 自動習得／その他の習得</option>
-                                    <option value="listen">△ 聞き取り限定（通辞の耳飾りなど）</option>
-                                </select><span class="lang-select-view"></span></td>
-                            <td><select name="language2Read" oninput="checkLanguage()" data-type="">
-                                    <option value=""></option>
-                                    <option value="Sag">○ セージ技能による習得</option>
-                                    <option value="auto">○ 自動習得／その他の習得</option>
-                                </select><span class="lang-select-view"></span>
-                            </td>
-                        </tr>
-                        <tr id="language-item3">
-                            <td class="handle"></td>
-                            <td>
-                                <input type="text" name="language3" value="" list="list-language"
-                                    oninput="checkLanguage()">
-                            </td>
-                            <td><select name="language3Talk" oninput="checkLanguage()" data-type="">
-                                    <option value=""></option>
-                                    <option value="Sag">○ セージ技能による習得</option>
-                                    <option value="Bar">○ バード技能による習得</option>
-                                    <option value="auto">○ 自動習得／その他の習得</option>
-                                    <option value="listen">△ 聞き取り限定（通辞の耳飾りなど）</option>
-                                </select><span class="lang-select-view"></span>
-                            </td>
-                            <td>
-                                <select name="language3Read" oninput="checkLanguage()" data-type="">
-                                    <option value=""></option>
-                                    <option value="Sag">○ セージ技能による習得</option>
-                                    <option value="auto">○ 自動習得／その他の習得</option>
-                                </select><span class="lang-select-view"></span>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <tr>
+                                <td><input type="text" class="form-control form-control-sm" name="languageTMPL" value=""
+                                        list="list-language" oninput="checkLanguage()">
+                                </td>
+                                <td>
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        <option value="">会話</option>
+                                        <option value="">読文</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" class="form-control form-control-sm" name="languageTMPL" value=""
+                                        list="list-language" oninput="checkLanguage()">
+                                </td>
+                                <td>
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        <option value="">会話</option>
+                                        <option value="">読文</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card mb-1 px-2 col-6" id="craft-enhance" style="display: block;">
+                    <h2 class="fs-4">練技</h2>
+                    <table class="table table-sm table-striped mb-2">
+                        <thead>
+                            <tr>
+                                <th>Lv</th>
+                                <th>練技</th>
+                                <th>効果</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-1 pe-0">
+                                    <input type="text" class="form-control form-control-sm">
+                                </td>
+                                <td class="col px-0">
+                                    <select class="form-control form-control-sm" name="craftEnhance1"
+                                        oninput="selectInputCheck('craftEnhance1',this);">
+                                        <option></option>
+                                        <option value="アンチボディ">アンチボディ</option>
+                                        <option value="オウルビジョン">オウルビジョン</option>
+                                        <option value="ガゼルフット">ガゼルフット</option>
+                                        <option value="キャッツアイ">キャッツアイ</option>
+                                        <option value="スケイルレギンス">スケイルレギンス</option>
+                                        <option value="ストロングブラッド">ストロングブラッド</option>
+                                        <option value="チックチック">チックチック</option>
+                                        <option value="ドラゴンテイル">ドラゴンテイル</option>
+                                        <option value="ビートルスキン">ビートルスキン</option>
+                                        <option value="マッスルベアー">マッスルベアー</option>
+                                        <option value="メディテーション">メディテーション</option>
+                                        <option value="ラビットイヤー">ラビットイヤー</option>
+                                        <option value="free">その他（自由記入）</option>
+                                    </select>
+                                </td>
+                                <td class="col-8 ps-0">
+                                    <dd>
+                                        <input type="text" class="col form-control form-control-sm"
+                                            name="craftEnhance1Free">
+                                    </dd>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card mb-1 px-2 col-6" id="craft-song" style="display: block;">
+                    <h2 class="fs-4">呪歌</h2>
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Lv</th>
+                                <th>呪歌</th>
+                                <th>効果</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-1 pe-0">
+                                    <input type="text" class="form-control form-control-sm">
+                                </td>
+                                <td class="col px-0">
+                                    <select class="form-control form-control-sm" name="craftSong1"
+                                        oninput="selectInputCheck('craftSong1',this);">
+                                        <option></option>
+                                        <option value="アーリーバード">アーリーバード</option>
+                                        <option value="アンビエント">アンビエント</option>
+                                        <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
+                                        <option value="サモン・フィッシュ">サモン・フィッシュ</option>
+                                        <option value="ノイズ">ノイズ</option>
+                                        <option value="バラード">バラード</option>
+                                        <option value="モラル">モラル</option>
+                                        <option value="レクイエム">レクイエム</option>
+                                        <option value="レジスタンス">レジスタンス</option>
+                                        <option value="終律：春の強風">終律：春の強風</option>
+                                        <option value="終律：夏の生命">終律：夏の生命</option>
+                                        <option value="終律：秋の実り">終律：秋の実り</option>
+                                        <option value="終律：冬の寒風">終律：冬の寒風</option>
+                                        <option value="free">その他（自由記入）</option>
+                                    </select>
+                                </td>
+                                <td class="col-8 ps-0">
+                                    <input class="col form-control form-control-sm" type="text"
+                                        name="craftEnhance1Free">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card mb-1 px-2 col-6">
+                    <h2 class="fs-4">騎芸</h2>
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Lv</th>
+                                <th>騎芸</th>
+                                <th>効果</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-1 pe-0">
+                                    <input type="text" class="form-control form-control-sm">
+                                </td>
+                                <td class="col px-0">
+                                    <select class="form-control form-control-sm" name="" id="">
+                                        <option value=""></option>
+                                    </select>
+                                </td>
+                                <td class="col-8 ps-0">
+                                    <input type="text" class="form-control form-control-sm">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="card mb-1 px-2" id="history">
                 <h2 class="fs-4">セッション履歴</h2>
                 <input type="hidden" name="historyNum" value="3">
-                <table class="edit-table line-tbody no-border-cells" id="history-table">
+                <table class="table table-sm table-striped" id="history-table">
                     <thead id="history-head">
                         <tr>
-                            <th>
-                            </th>
-                            <th class="date  ">日付
-                            </th>
-                            <th class="title ">タイトル
-                            </th>
-                            <th class="exp   ">経験点
-                            </th>
-                            <th class="money ">ガメル
-                            </th>
-                            <th class="honor ">名誉点
-                            </th>
-                            <th class="grow  ">成長
-                            </th>
+                            <th class="grow">成長</th>
+                            <th class="exp">経験点</th>
+                            <th class="money">ガメル</th>
+                            <th class="honor">名誉点</th>
+                            <th>備考</th>
                         </tr>
-                        <tr>
-                            <td>-
-                            </td>
-                            <td>
-                            </td>
-                            <td>キャラクター作成
-                            </td>
-                            <td id="history0-exp">3000
-                            </td>
-                            <td id="history0-money">1200
-                            </td>
-                            <td id="history0-honor">0
-                            </td>
-                            <td id="history0-grow">
-                            </td>
-                        </tr>
-                        <template id="history-template">
-                    <tbody id="historyTMPL">
-                        <tr>
-                            <td class="handle" rowspan="2">
-                            </td>
-                            <td class="date  " rowspan="2"><input type="text" name="historyTMPLDate" value="">
-                            </td>
-                            <td class="title " rowspan="2"><input type="text" name="historyTMPLTitle" value="">
-                            </td>
-                            <td class="exp   "><input type="text" name="historyTMPLExp" value="" oninput="calcExp()">
-                            </td>
-                            <td class="money "><input type="text" name="historyTMPLMoney" value="" oninput="calcCash()">
-                            </td>
-                            <td class="honor "><input type="text" name="historyTMPLHonor" value=""
-                                    oninput="calcHonor()">
-                            </td>
-                            <td class="grow  "><input type="text" name="historyTMPLGrow" value="" list="list-grow"
-                                    oninput="calcStt()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" class="left"><input type="text" name="historyTMPLNote" value=""
-                                    placeholder="備考">
-                            </td>
-                        </tr>
-                    </tbody></template> </thead>
+                    </thead>
+                    <template id="history-template">
+                        <tbody id="historyTMPL">
+                            <tr>
+                                <td class="exp   "><input type="text" name="historyTMPLExp" value=""
+                                        oninput="calcExp()">
+                                </td>
+                                <td class="money "><input type="text" name="historyTMPLMoney" value=""
+                                        oninput="calcCash()">
+                                </td>
+                                <td class="honor "><input type="text" name="historyTMPLHonor" value=""
+                                        oninput="calcHonor()">
+                                </td>
+                                <td class="grow  "><input type="text" name="historyTMPLGrow" value="" list="list-grow"
+                                        oninput="calcStt()">
+                                <td colspan="6" class="left"><input type="text" name="historyTMPLNote" value=""
+                                        placeholder="備考">
+                                </td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </template>
                     <tbody id="history1">
                         <tr>
-                            <td class="handle" rowspan="2">
+                            <td class="col-1 pe-0">
+                                <select class="form-control form-control-sm" type="text" name="history1Grow" value=""
+                                    list="list-grow" oninput="calcStt()">
+                                    <option value=""></option>
+                                    <option value="">器用度</option>
+                                </select>
                             </td>
-                            <td class="date  " rowspan="2"><input type="text" name="history1Date" value="">
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="history1Exp" value=""
+                                    oninput="calcExp()">
                             </td>
-                            <td class="title " rowspan="2"><input type="text" name="history1Title" value="">
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="history1Money" value=""
+                                    oninput="calcCash()">
                             </td>
-                            <td class="exp   "><input type="text" name="history1Exp" value="" oninput="calcExp()">
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text" name="history1Honor" value=""
+                                    oninput="calcHonor()">
                             </td>
-                            <td class="money "><input type="text" name="history1Money" value="" oninput="calcCash()">
-                            </td>
-                            <td class="honor "><input type="text" name="history1Honor" value="" oninput="calcHonor()">
-                            </td>
-                            <td class="grow  "><input type="text" name="history1Grow" value="" list="list-grow"
-                                    oninput="calcStt()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="6" class="left"><input type="text" name="history1Note" value=""
+                            <td class="col-8 ps-0">
+                                <input class="form-control form-control-sm" type="text" name="history1Note" value=""
                                     placeholder="備考">
                             </td>
                         </tr>
                     </tbody>
                     <tfoot id="history-foot">
                         <tr>
-                            <td>
+                            <th class="text-center">総計</th>
+                            <td id="history-exp-total">
+                                <input type="text" class="form-control form-control-sm" readonly>
                             </td>
-                            <td>
+                            <td id="history-money-total">
+                                <input type="text" class="form-control form-control-sm" readonly>
                             </td>
-                            <td>取得総計
+                            <td id="history-honor-total">
+                                <input type="text" class="form-control form-control-sm" readonly>
                             </td>
-                            <td id="history-exp-total">3,000</td>
-                            <td id="history-money-total">1,200</td>
-                            <td id="history-honor-total">0</td>
-                            <td id="history-grow-total"><span id="history-grow-total-value">0</span><span
-                                    id="history-grow-max-value"></span>
-                            </td>
-                            <td colspan="2">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                            </th>
-                            <th class="date  ">日付
-                            </th>
-                            <th class="title ">タイトル
-                            </th>
-                            <th class="exp   ">経験点
-                            </th>
-                            <th class="money ">ガメル
-                            </th>
-                            <th class="honor ">名誉点
-                            </th>
-                            <th class="grow  ">成長
-                            </th>
+                            <td></td>
                         </tr>
                     </tfoot>
                 </table>
-                <div class="add-del-button"><a onclick="addHistory()">▼</a><a onclick="delHistory()">▲</a>
+                <div class="add-del-button mx-auto">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-session-history">＋増やす</button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" id="del-session-history"
+                        disabled>－減らす</button>
                 </div>
             </div>
             <div class="card mb-1 px-2" id="free-note">
                 <h2 class="fs-4">容姿・経歴・その他メモ</h2>
-                <textarea name="freeNote"></textarea>
+                <textarea class="form-control form-control-sm" name="freeNote" style="height: 200px"></textarea>
             </div>
         </section>
     </form>
