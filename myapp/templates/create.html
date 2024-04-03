@@ -10,8 +10,8 @@
                 <div class="row">
                     <dl class="col-5 pe-2" id="character-name">
                         <dt>キャラクター名</dt>
-                        <dd><input class="form-control form-control-sm" type="text" name="characterName" value=""
-                                oninput="nameSet()">
+                        <dd>
+                            <input class="form-control form-control-sm" type="text" name="characterName" value="">
                         </dd>
                     </dl>
                     <dl class="col px-2" id="level">
@@ -22,35 +22,32 @@
                     </dl>
                     <dl class="col px-2" id="sin">
                         <dt>穢れ</dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="sin" value="" min="0">
+                        <dd>
+                            <input class="form-control form-control-sm" type="number" name="sin" value="" min="0">
                         </dd>
                     </dl>
                     <dl class="col px-2">
-                        <dt id="vit-resist">生命抵抗
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="vitResistAdd" value=""
-                                oninput="calcSubStt()">
+                        <dt id="vit-resist">生命抵抗</dt>
+                        <dd>
+                            <input class="form-control form-control-sm" type="number" name="vitResistAdd" value="">
                         </dd>
                     </dl>
                     <dl class="col px-2">
-                        <dt id="mnd-resist">精神抵抗
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="mndResistAdd" value=""
-                                oninput="calcSubStt()">
+                        <dt id="mnd-resist">精神抵抗</dt>
+                        <dd>
+                            <input class="form-control form-control-sm" type="number" name="mndResistAdd" value="">
                         </dd>
                     </dl>
                     <dl class="col px-2">
-                        <dt id="hp">ＨＰ
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="hpAdd" value=""
-                                oninput="calcSubStt()">
+                        <dt id="hp">ＨＰ</dt>
+                        <dd>
+                            <input class="form-control form-control-sm" type="number" name="hpAdd" value="">
                         </dd>
                     </dl>
                     <dl class="col ps-2">
-                        <dt id="mp">ＭＰ
-                        </dt>
-                        <dd><input class="form-control form-control-sm" type="number" name="mpAdd" value=""
-                                oninput="calcSubStt()">
+                        <dt id="mp">ＭＰ</dt>
+                        <dd>
+                            <input class="form-control form-control-sm" type="number" name="mpAdd" value="">
                         </dd>
                     </dl>
                 </div>
@@ -59,58 +56,55 @@
                         <dt>種族</dt>
                         <dd>
                             <div class="select-input">
-                                <select class="form-control form-control-sm" name="race"
-                                    oninput="selectInputCheck('race',this);changeRace(this.value)">
+                                <select class="form-control form-control-sm" name="race">
                                     <option value=""></option>
-                                    <optgroup label="人族">
-                                        <option value="人間">人間</option>
-                                        <option value="エルフ">エルフ</option>
-                                        <option value="スノウエルフ">スノウエルフ</option>
-                                        <option value="ミストエルフ">ミストエルフ</option>
-                                        <option value="ドワーフ">ドワーフ</option>
-                                        <option value="ダークドワーフ">ダークドワーフ</option>
-                                        <option value="タビット">タビット</option>
-                                        <option value="パイカ種タビット">パイカ種タビット</option>
-                                        <option value="リパス種タビット">リパス種タビット</option>
-                                        <option value="ルーンフォーク">ルーンフォーク</option>
-                                        <option value="護衛型ルーンフォーク">護衛型ルーンフォーク</option>
-                                        <option value="戦闘型ルーンフォーク">戦闘型ルーンフォーク</option>
-                                        <option value="ナイトメア（人間）">ナイトメア（人間）</option>
-                                        <option value="ナイトメア（エルフ）">ナイトメア（エルフ）</option>
-                                        <option value="ナイトメア（ドワーフ）">ナイトメア（ドワーフ）</option>
-                                        <option value="ナイトメア（リルドラケン）">ナイトメア（リルドラケン）</option>
-                                        <option value="ナイトメア（シャドウ）">ナイトメア（シャドウ）</option>
-                                        <option value="ナイトメア（ソレイユ）">ナイトメア（ソレイユ）</option>
-                                        <option value="リカント">リカント</option>
-                                        <option value="大型草食獣リカント">大型草食獣リカント</option>
-                                        <option value="小型草食獣リカント">小型草食獣リカント</option>
-                                        <option value="リルドラケン">リルドラケン</option>
-                                        <option value="小翼種リルドラケン">小翼種リルドラケン</option>
-                                        <option value="有毛種リルドラケン">有毛種リルドラケン</option>
-                                        <option value="グラスランナー">グラスランナー</option>
-                                        <option value="アリーシャ">アリーシャ</option>
-                                        <option value="クリメノス">クリメノス</option>
-                                        <option value="メリア">メリア</option>
-                                        <option value="カーニバラスメリア">カーニバラスメリア</option>
-                                        <option value="ファンギーメリア">ファンギーメリア</option>
-                                        <option value="ティエンス">ティエンス</option>
-                                        <option value="ティエンス機解種">ティエンス機解種</option>
-                                        <option value="ティエンス魔解種">ティエンス魔解種</option>
-                                        <option value="レプラカーン">レプラカーン</option>
-                                        <option value="放浪種レプラカーン">放浪種レプラカーン</option>
-                                        <option value="探索種レプラカーン">探索種レプラカーン</option>
-                                        <option value="アルヴ">アルヴ</option>
-                                        <option value="シャドウ">シャドウ</option>
-                                        <option value="ソレイユ">ソレイユ</option>
-                                        <option value="スプリガン">スプリガン</option>
-                                        <option value="アビスボーン">アビスボーン</option>
-                                        <option value="ハイマン">ハイマン</option>
-                                        <option value="フロウライト">フロウライト</option>
-                                        <option value="ウィークリング（ガルーダ）">ウィークリング（ガルーダ）</option>
-                                        <option value="ウィークリング（タンノズ）">ウィークリング（タンノズ）</option>
-                                        <option value="ウィークリング（バジリスク）">ウィークリング（バジリスク）</option>
-                                        <option value="ウィークリング（ミノタウロス）">ウィークリング（ミノタウロス）</option>
-                                    </optgroup>
+                                    <option value="人間">人間</option>
+                                    <option value="エルフ">エルフ</option>
+                                    <option value="スノウエルフ">スノウエルフ</option>
+                                    <option value="ミストエルフ">ミストエルフ</option>
+                                    <option value="ドワーフ">ドワーフ</option>
+                                    <option value="ダークドワーフ">ダークドワーフ</option>
+                                    <option value="タビット">タビット</option>
+                                    <option value="パイカ種タビット">パイカ種タビット</option>
+                                    <option value="リパス種タビット">リパス種タビット</option>
+                                    <option value="ルーンフォーク">ルーンフォーク</option>
+                                    <option value="護衛型ルーンフォーク">護衛型ルーンフォーク</option>
+                                    <option value="戦闘型ルーンフォーク">戦闘型ルーンフォーク</option>
+                                    <option value="ナイトメア（人間）">ナイトメア（人間）</option>
+                                    <option value="ナイトメア（エルフ）">ナイトメア（エルフ）</option>
+                                    <option value="ナイトメア（ドワーフ）">ナイトメア（ドワーフ）</option>
+                                    <option value="ナイトメア（リルドラケン）">ナイトメア（リルドラケン）</option>
+                                    <option value="ナイトメア（シャドウ）">ナイトメア（シャドウ）</option>
+                                    <option value="ナイトメア（ソレイユ）">ナイトメア（ソレイユ）</option>
+                                    <option value="リカント">リカント</option>
+                                    <option value="大型草食獣リカント">大型草食獣リカント</option>
+                                    <option value="小型草食獣リカント">小型草食獣リカント</option>
+                                    <option value="リルドラケン">リルドラケン</option>
+                                    <option value="小翼種リルドラケン">小翼種リルドラケン</option>
+                                    <option value="有毛種リルドラケン">有毛種リルドラケン</option>
+                                    <option value="グラスランナー">グラスランナー</option>
+                                    <option value="アリーシャ">アリーシャ</option>
+                                    <option value="クリメノス">クリメノス</option>
+                                    <option value="メリア">メリア</option>
+                                    <option value="カーニバラスメリア">カーニバラスメリア</option>
+                                    <option value="ファンギーメリア">ファンギーメリア</option>
+                                    <option value="ティエンス">ティエンス</option>
+                                    <option value="ティエンス機解種">ティエンス機解種</option>
+                                    <option value="ティエンス魔解種">ティエンス魔解種</option>
+                                    <option value="レプラカーン">レプラカーン</option>
+                                    <option value="放浪種レプラカーン">放浪種レプラカーン</option>
+                                    <option value="探索種レプラカーン">探索種レプラカーン</option>
+                                    <option value="アルヴ">アルヴ</option>
+                                    <option value="シャドウ">シャドウ</option>
+                                    <option value="ソレイユ">ソレイユ</option>
+                                    <option value="スプリガン">スプリガン</option>
+                                    <option value="アビスボーン">アビスボーン</option>
+                                    <option value="ハイマン">ハイマン</option>
+                                    <option value="フロウライト">フロウライト</option>
+                                    <option value="ウィークリング（ガルーダ）">ウィークリング（ガルーダ）</option>
+                                    <option value="ウィークリング（タンノズ）">ウィークリング（タンノズ）</option>
+                                    <option value="ウィークリング（バジリスク）">ウィークリング（バジリスク）</option>
+                                    <option value="ウィークリング（ミノタウロス）">ウィークリング（ミノタウロス）</option>
                                 </select>
                             </div>
                         </dd>
@@ -169,42 +163,42 @@
                                 <dt>Ａ</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number"
-                                        name="sttBaseA" value="" oninput="calcStt()">
+                                        name="sttBaseA" value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-B">
                                 <dt>Ｂ</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number"
-                                        name="sttBaseB" value="" oninput="calcStt()">
+                                        name="sttBaseB" value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-C">
                                 <dt>Ｃ</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number"
-                                        name="sttBaseC" value="" oninput="calcStt()">
+                                        name="sttBaseC" value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-D">
                                 <dt>Ｄ</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number"
-                                        name="sttBaseD" value="" oninput="calcStt()">
+                                        name="sttBaseD" value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-E">
                                 <dt>Ｅ</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number"
-                                        name="sttBaseE" value="" oninput="calcStt()">
+                                        name="sttBaseE" value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-base-F">
                                 <dt>Ｆ</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number"
-                                        name="sttBaseF" value="" oninput="calcStt()">
+                                        name="sttBaseF" value="">
                                 </dd>
                             </dl>
                         </div>
@@ -240,42 +234,42 @@
                                 <dt>増強</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number" name="sttAddA"
-                                        value="" oninput="calcStt()">
+                                        value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-B">
                                 <dt>増強</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number" name="sttAddB"
-                                        value="" oninput="calcStt()">
+                                        value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-C">
                                 <dt>増強</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number" name="sttAddC"
-                                        value="" oninput="calcStt()">
+                                        value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-D">
                                 <dt>増強</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number" name="sttAddD"
-                                        value="" oninput="calcStt()">
+                                        value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-E">
                                 <dt>増強</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number" name="sttAddE"
-                                        value="" oninput="calcStt()">
+                                        value="">
                                 </dd>
                             </dl>
                             <dl class="col" id="stt-add-F">
                                 <dt>増強</dt>
                                 <dd>
                                     <input class="form-control form-control-sm text-center" type="number" name="sttAddF"
-                                        value="" oninput="calcStt()">
+                                        value="">
                                 </dd>
                             </dl>
                         </div>
@@ -346,124 +340,206 @@
                     <div class="col" id="classes-weapon-user">
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classFig">ファイター</span>
-                            <input type="number" class="form-control form-control text-end" name="lvFig" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="fighter-lv" name="fighter-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classGra">グラップラー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvGra" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="grappler-lv" name="grappler-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classBat">バトルダンサー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvBat" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="battledancer-lv"
+                                name="battledancer-lv" type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classFen">フェンサー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvFen" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="fencer-lv" name="fencer-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classSho">シューター</span>
-                            <input type="number" class="form-control form-control text-end" name="lvSho" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="shooter-lv" name="shooter-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="col" id="classes-magic-user">
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classSor">ソーサラー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvSor" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="sorcerer-lv" name="sorcerer-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classCon">コンジャラー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvCon" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="conjurer-lv" name="conjurer-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classPri">プリースト</span>
-                            <input type="number" class="form-control form-control text-end" name="lvPri" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="priest-lv" name="priest-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classMag">マギテック</span>
-                            <input type="number" class="form-control form-control text-end" name="lvMag" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="magitech-lv" name="magitech-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classFai">フェアリーテイマー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvFai" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="fairytamer-lv"
+                                name="fairytamer-lv" type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classDru">ドルイド</span>
-                            <input type="number" class="form-control form-control text-end" name="lvDru" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="druid-lv" name="druid-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classDem">デーモンルーラー</span>
-                            <input type="number" class="form-control form-control text-end" name="lvDem" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="demonruler-lv"
+                                name="demonruler-lv" type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         </dd>
                     </div>
                     <div class="col" id="classes-other-user">
-                        <div class="input-group input-group-sm my-3">
-                            <span class="input-group-text" id="classEnh">エンハンサー</span>
-                            <input type="number" class="form-control form-control-sm text-end" name="lvEnh" value=""
-                                min="0" max="17" oninput="changeLv()">
+                        <div class="input-group input-group-sm my-3 flex-nowrap">
+                            <span class="input-group-text w-75" id="classEnh">エンハンサー</span>
+                            <select class="form-control form-control-sm text-end" id="enhancer-lv" name="enhancer-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
-                            <span class="input-group-text" id="classBar">バード</span>
-                            <input type="number" class="form-control form-control-sm text-end" name="lvBar" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <span class="input-group-text w-75" id="classBar">バード</span>
+                            <select class="form-control form-control-sm text-end" id="bard-lv" name="bard-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classRid">ライダー</span>
-                            <input type="number" class="form-control form-control-sm text-end" name="lvRid" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="rider-lv" name="rider-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classAlc">アルケミスト</span>
-                            <input type="number" class="form-control form-control-sm text-end" name="lvAlc" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="alchemist-lv" name="alchemist-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classGeo">ジオマンサー</span>
-                            <input type="number" class="form-control form-control-sm text-end" name="lvGeo" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="geomancer-lv" name="geomancer-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="input-group input-group-sm my-3">
                             <span class="input-group-text" id="classWar">ウォーリーダー</span>
-                            <input type="number" class="form-control form-control-sm text-end" name="lvWar" value=""
-                                min="0" max="17" oninput="changeLv()">
+                            <select class="form-control form-control-sm text-end" id="warleader-lv" name="warleader-lv"
+                                type="number" value="0" min="0" max="17">
+                                {% for i in range(0,18) %}
+                                <option value="{{ i }}">{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="col">
                         <dl>
                             <div class="input-group input-group-sm my-3">
                                 <span class="input-group-text" id="classSco">スカウト</span>
-                                <input type="number" class="form-control form-control-sm text-end" name="lvSco" value=""
-                                    min="0" max="17" oninput="changeLv()">
+                                <select class="form-control form-control-sm text-end" id="scout-lv" name="scout-lv"
+                                    type="number" value="0" min="0" max="17">
+                                    {% for i in range(0,18) %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-
                             <div class="input-group input-group-sm my-3">
                                 <span class="input-group-text" id="classRan">レンジャー</span>
-                                <input type="number" class="form-control form-control-sm text-end" name="lvRan" value=""
-                                    min="0" max="17" oninput="changeLv()">
+                                <select class="form-control form-control-sm text-end" id="ranger-lv" name="ranger-lv"
+                                    type="number" value="0" min="0" max="17">
+                                    {% for i in range(0,18) %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
-
                             <div class="input-group input-group-sm my-3">
                                 <span class="input-group-text" id="classSag">セージ</span>
-                                <input type="number" class="form-control form-control-sm text-end" name="lvSag" value=""
-                                    min="0" max="17" oninput="changeLv()">
+                                <select class="form-control form-control-sm text-end" id="sage-lv" name="sage-lv"
+                                    type="number" value="0" min="0" max="17">
+                                    {% for i in range(0,18) %}
+                                    <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
                             </div>
                     </div>
                     <div class="col">
@@ -588,45 +664,42 @@
                         </tr>
                     </thead>
                     <tbody id="secret-skill-tbody">
-                        <template id="secret-skill-template">
-                            <tr>
-                                <th class="col pt-2 pe-2">
-                                    <input class="form-check-input" id="" name="secret-skill-checkbox" type="checkbox">
-                                </th>
-                                <td class="col-2 px-0">
-                                    <select class="form-control form-control-sm" id="" name="secret-skill-school">
-                                        <option value=""></option>
-                                    </select>
-                                </td>
-                                <td class="col-2 px-0" hidden>
-                                    <input class="form-control form-control-sm" id="" name="secret-skill-school"
-                                        type="text">
-                                </td>
-                                <td class="col-2 px-0">
-                                    <select class="form-control form-control-sm" id="" name="secret-skill-name>
-                                        <option value=""></option>
-                                    </select>
-                                </td>
-                                <td class=" col-1 px-0">
-                                        <input class="form-control form-control-sm" id="" name="secret-skill-honor"
-                                            type="text">
-                                </td>
-                                <td class=" col-1 px-0">
-                                    <select class="form-control form-control-sm px-1" id=""
-                                        name="secret-skill-category">
-                                        <option value=""></option>
-                                        <option value="">常時型</option>
-                                        <option value="">主動作型</option>
-                                        <option value="">宣言型</option>
-                                    </select>
-                                </td>
-                                <td class="col-6 ps-0">
-                                    <input class="form-control form-control-sm" name="secret-skill-effect" type="text">
-                                </td>
-                            </tr>
-                        </template>
                     </tbody>
                 </table>
+                <template id="secret-skill-template">
+                    <tr>
+                        <th class="col pt-2 pe-2">
+                            <input class="form-check-input" id="" name="secret-skill-checkbox" type="checkbox">
+                        </th>
+                        <td class="col-2 px-0">
+                            <select class="form-control form-control-sm" id="" name="secret-skill-school">
+                                <option value=""></option>
+                            </select>
+                        </td>
+                        <td class="col-2 px-0" hidden>
+                            <input class="form-control form-control-sm" id="" name="secret-skill-school" type="text">
+                        </td>
+                        <td class="col-2 px-0">
+                            <select class="form-control form-control-sm" id="" name="secret-skill-name>
+                                <option value=""></option>
+                            </select>
+                        </td>
+                        <td class=" col-1 px-0">
+                                <input class="form-control form-control-sm" id="" name="secret-skill-honor" type="text">
+                        </td>
+                        <td class=" col-1 px-0">
+                            <select class="form-control form-control-sm px-1" id="" name="secret-skill-category">
+                                <option value=""></option>
+                                <option value="">常時型</option>
+                                <option value="">主動作型</option>
+                                <option value="">宣言型</option>
+                            </select>
+                        </td>
+                        <td class="col-6 ps-0">
+                            <input class="form-control form-control-sm" name="secret-skill-effect" type="text">
+                        </td>
+                    </tr>
+                </template>
                 <div class="add-del-button mx-auto">
                     <button class="btn btn-outline-primary btn-sm" id="add-secret-skill-button"
                         type="button">＋増やす</button>
@@ -653,83 +726,78 @@
                         </tr>
                     </thead>
                     <tbody id="weapon-tbody">
-                        <template id="weapon-template">
-                            <tr>
-                                <th class="col pt-2 pe-2">
-                                    <input class="form-check-input" id="weapon-checkbox" name="weapon-checkbox"
-                                        type="checkbox">
-                                </th>
-                                <td class="col-2 px-0">
-                                    <select class="form-control form-control-sm" id="weapon-name-select"
-                                        name="weapon-name" type="text">
-                                        <option></option>
-                                    </select>
-                                    <input class="form-control form-control-sm" id="weapon-name-input"
-                                        name="weapon-name" type="text" hidden>
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" type="text"
-                                        name="weapon-required-strength" value="">
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="weapon-hit" type="text" value="">
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="weapon-power" type="text"
-                                        value="">
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="weapon-critical" type="text"
-                                        value="">
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="weapon-damage" type="text"
-                                        value="">
-                                </td>
-                                <td class="col-1 px-0">
-                                    <select class="form-control form-control-sm text-center px-0"
-                                        name="weapon-category">
-                                        <option value=""></option>
-                                        <option value="ソード">ソード</option>
-                                        <option value="アックス">アックス</option>
-                                        <option value="スピア">スピア</option>
-                                        <option value="メイス">メイス</option>
-                                        <option value="スタッフ">スタッフ</option>
-                                        <option value="フレイル">フレイル</option>
-                                        <option value="ウォーハンマー">ウォーハンマー</option>
-                                        <option value="絡み">絡み</option>
-                                        <option value="格闘">格闘</option>
-                                        <option value="投擲">投擲</option>
-                                        <option value="ボウ">ボウ</option>
-                                        <option value="クロスボウ">クロスボウ</option>
-                                        <option value="ブロウガン">ブロウガン</option>
-                                        <option value="ガン">ガン</option>
-                                        <option value="ガン（物理）">ガン（物理）</option>
-                                        <option value="盾">盾</option>
-                                    </select>
-                                </td>
-                                <td class="col px-0">
-                                    <select class="form-control form-control-sm px-1" name="weapon-class">
-                                        <option value=""></option>
-                                        <option value="戦">戦</option>
-                                        <option value="拳">拳</option>
-                                        <option value="踊">踊</option>
-                                        <option value="軽">軽</option>
-                                        <option value="射">射</option>
-                                        <option value="練">練</option>
-                                        <option value="魔">魔</option>
-                                    </select>
-                                </td>
-                                <td class="col-1 px-0">
-                                    <input class="form-control form-control-sm" name="weapon-price" type="text">
-                                </td>
-                                <td class="col-4 ps-0">
-                                    <input class="form-control form-control-sm" name="weapon-note" type="text" value="">
-                                </td>
-                            </tr>
-                        </template>
                     </tbody>
                 </table>
+                <template id="weapon-template">
+                    <tr>
+                        <th class="col pt-2 pe-2">
+                            <input class="form-check-input" id="weapon-checkbox" name="weapon-checkbox" type="checkbox">
+                        </th>
+                        <td class="col-2 px-0">
+                            <select class="form-control form-control-sm" id="weapon-name-select" name="weapon-name"
+                                type="text">
+                                <option></option>
+                            </select>
+                            <input class="form-control form-control-sm" id="weapon-name-input" name="weapon-name"
+                                type="text" hidden>
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" type="text" name="weapon-required-strength"
+                                value="">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="weapon-hit" type="text" value="">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="weapon-power" type="text" value="">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="weapon-critical" type="text" value="">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="weapon-damage" type="text" value="">
+                        </td>
+                        <td class="col-1 px-0">
+                            <select class="form-control form-control-sm text-center px-0" name="weapon-category">
+                                <option value=""></option>
+                                <option value="ソード">ソード</option>
+                                <option value="アックス">アックス</option>
+                                <option value="スピア">スピア</option>
+                                <option value="メイス">メイス</option>
+                                <option value="スタッフ">スタッフ</option>
+                                <option value="フレイル">フレイル</option>
+                                <option value="ウォーハンマー">ウォーハンマー</option>
+                                <option value="絡み">絡み</option>
+                                <option value="格闘">格闘</option>
+                                <option value="投擲">投擲</option>
+                                <option value="ボウ">ボウ</option>
+                                <option value="クロスボウ">クロスボウ</option>
+                                <option value="ブロウガン">ブロウガン</option>
+                                <option value="ガン">ガン</option>
+                                <option value="ガン（物理）">ガン（物理）</option>
+                                <option value="盾">盾</option>
+                            </select>
+                        </td>
+                        <td class="col px-0">
+                            <select class="form-control form-control-sm px-1" name="weapon-class">
+                                <option value=""></option>
+                                <option value="戦">戦</option>
+                                <option value="拳">拳</option>
+                                <option value="踊">踊</option>
+                                <option value="軽">軽</option>
+                                <option value="射">射</option>
+                                <option value="練">練</option>
+                                <option value="魔">魔</option>
+                            </select>
+                        </td>
+                        <td class="col-1 px-0">
+                            <input class="form-control form-control-sm" name="weapon-price" type="text">
+                        </td>
+                        <td class="col-4 ps-0">
+                            <input class="form-control form-control-sm" name="weapon-note" type="text" value="">
+                        </td>
+                    </tr>
+                </template>
                 <div class="add-del-button mx-auto">
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-weapon-button">＋増やす</button>
                     <button type="button" class="btn btn-outline-danger btn-sm" id="delete-weapon-button">－減らす</button>
@@ -761,8 +829,7 @@
                                 <th class="type handle">
                                 </th>
                                 <td class="col-1 px-0">
-                                    <select class="form-control form-control-sm" name="armourTMPLCategory"
-                                        oninput="calcDefense()">
+                                    <select class="form-control form-control-sm" name="armourTMPLCategory">
                                         <option value=""></option>
                                         <option value="金属鎧">金属鎧</option>
                                         <option value="非金属鎧">非金属鎧</option>
@@ -772,19 +839,19 @@
                                 </td>
                                 <td class="col-2 px-0">
                                     <input class="form-control form-control-sm" type="text" name="armourTMPLName"
-                                        value="" oninput="calcDefense()">
+                                        value="">
                                 </td>
                                 <td class="col px-0">
                                     <input class="form-control form-control-sm" type="text" name="armourTMPLReqd"
-                                        value="" oninput="calcDefense()">
+                                        value="">
                                 </td>
                                 <td class="col px-0">
                                     <input class="form-control form-control-sm" type="number" name="armourTMPLEva"
-                                        value="" oninput="calcDefense()">
+                                        value="">
                                 </td>
                                 <td class="col px-0">
                                     <input class="form-control form-control-sm" type="number" name="armourTMPLDef"
-                                        value="" oninput="calcDefense()">
+                                        value="">
                                 </td>
                                 <td class="col px-0">
                                     <input class="form-control form-control-sm" type="text">
@@ -798,28 +865,23 @@
                         <tr id="armour1" data-type="">
                             <th>鎧</th>
                             <td class="col-1 px-0">
-                                <select class="form-control form-control-sm" name="armour1Category"
-                                    oninput="calcDefense()">
+                                <select class="form-control form-control-sm" name="armour1Category">
                                     <option value=""></option>
                                     <option value="金属鎧">金属鎧</option>
                                     <option value="非金属鎧">非金属鎧</option>
                                 </select>
                             </td>
                             <td class="col-2 px-0">
-                                <input class="form-control form-control-sm" type="text" name="armour1Name" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="text" name="armour1Name" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="text" name="armour1Reqd" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="text" name="armour1Reqd" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="number" name="armour1Eva" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="number" name="armour1Eva" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="number" name="armour1Def" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="number" name="armour1Def" value="">
                             </td>
                             <td class="col px-0">
                                 <input class="form-control form-control-sm" type="text">
@@ -831,27 +893,22 @@
                         <tr id="armour2" data-type="">
                             <th>盾</th>
                             <td class="col-1 px-0">
-                                <select class="form-control form-control-sm" name="armour2Category"
-                                    oninput="calcDefense()">
+                                <select class="form-control form-control-sm" name="armour2Category">
                                     <option value=""></option>
                                     <option value="盾">盾</option>
                                 </select>
                             </td>
                             <td class="col-2 px-0">
-                                <input class="form-control form-control-sm" type="text" name="armour2Name" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="text" name="armour2Name" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="text" name="armour2Reqd" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="text" name="armour2Reqd" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="number" name="armour2Eva" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="number" name="armour2Eva" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="number" name="armour2Def" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="number" name="armour2Def" value="">
                             </td>
                             <td class="col px-0">
                                 <input class="form-control form-control-sm" type="text">
@@ -863,8 +920,7 @@
                         <tr id="armour3" data-type="">
                             <th>他</th>
                             <td class="col-1 px-0">
-                                <select class="form-control form-control-sm" name="armour3Category"
-                                    oninput="calcDefense()">
+                                <select class="form-control form-control-sm" name="armour3Category">
                                     <option value=""></option>
                                     <option value="金属鎧">金属鎧</option>
                                     <option value="非金属鎧">非金属鎧</option>
@@ -873,20 +929,16 @@
                                 </select>
                             </td>
                             <td class="col-2 px-0">
-                                <input class="form-control form-control-sm" type="text" name="armour3Name" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="text" name="armour3Name" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="text" name="armour3Reqd" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="text" name="armour3Reqd" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="number" name="armour3Eva" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="number" name="armour3Eva" value="">
                             </td>
                             <td class="col px-0">
-                                <input class="form-control form-control-sm" type="number" name="armour3Def" value=""
-                                    oninput="calcDefense()">
+                                <input class="form-control form-control-sm" type="number" name="armour3Def" value="">
                             </td>
                             <td class="col px-0">
                                 <input class="form-control form-control-sm" type="text">
@@ -1074,29 +1126,27 @@
                         </tr>
                     </tbody>
                     <tbody id="add-accessory-tbody">
-                        <template id="accessory-template">
-                            <tr id="accessory-row">
-                                <th>
-                                    <select class="form-control form-control-sm" name="accessory-body-parts">
-                                        <option value=""></option>
-                                        <option value="">頭</option>
-                                    </select>
-                                </th>
-                                <td class="col px-0">
-                                    <input type="text" class="form-control form-control-sm" name="accessory-name"
-                                        value="">
-                                </td>
-                                <td class="col-1 px-0">
-                                    <input type="text" class="form-control form-control-sm" name="accessory-price">
-                                </td>
-                                <td class="col-7 ps-0">
-                                    <input type="text" class="form-control form-control-sm" name="accessory-note"
-                                        value="">
-                                </td>
-                            </tr>
-                        </template>
                     </tbody>
                 </table>
+                <template id="accessory-template">
+                    <tr id="accessory-row">
+                        <th>
+                            <select class="form-control form-control-sm" name="accessory-body-parts">
+                                <option value=""></option>
+                                <option value="">頭</option>
+                            </select>
+                        </th>
+                        <td class="col px-0">
+                            <input type="text" class="form-control form-control-sm" name="accessory-name" value="">
+                        </td>
+                        <td class="col-1 px-0">
+                            <input type="text" class="form-control form-control-sm" name="accessory-price">
+                        </td>
+                        <td class="col-7 ps-0">
+                            <input type="text" class="form-control form-control-sm" name="accessory-note" value="">
+                        </td>
+                    </tr>
+                </template>
                 <div class="add-del-button mx-auto mb-1">
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-accessory-button">＋増やす</button>
                     <button type="button" class="btn btn-outline-danger btn-sm"
@@ -1116,27 +1166,27 @@
                         </tr>
                     </thead>
                     <tbody id="item-tbody">
-                        <template id="item-template">
-                            <tr>
-                                <td class="col-3 pe-0">
-                                    <input type="text" class="form-control form-control-sm" name="item-name">
-                                </td>
-                                <td class="col px-0">
-                                    <input type="text" class="form-control form-control-sm" name="item-unit-price">
-                                </td>
-                                <td class="col px-0">
-                                    <input type="number" class="form-control form-control-sm" name="item-quantity">
-                                </td>
-                                <td class="col px-0">
-                                    <input type="text" class="form-control form-control-sm" name="item-price" readonly>
-                                </td>
-                                <td class="col-6 ps-0">
-                                    <input type="text" class="form-control form-control-sm" name="item-note">
-                                </td>
-                            </tr>
-                        </template>
                     </tbody>
                 </table>
+                <template id="item-template">
+                    <tr>
+                        <td class="col-3 pe-0">
+                            <input type="text" class="form-control form-control-sm" name="item-name">
+                        </td>
+                        <td class="col px-0">
+                            <input type="text" class="form-control form-control-sm" name="item-unit-price">
+                        </td>
+                        <td class="col px-0">
+                            <input type="number" class="form-control form-control-sm" name="item-quantity">
+                        </td>
+                        <td class="col px-0">
+                            <input type="text" class="form-control form-control-sm" name="item-price" readonly>
+                        </td>
+                        <td class="col-6 ps-0">
+                            <input type="text" class="form-control form-control-sm" name="item-note">
+                        </td>
+                    </tr>
+                </template>
                 <div class="add-del-button mx-auto">
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-item-button">＋増やす</button>
                     <button type="button" class="btn btn-outline-danger btn-sm" id="delete-item-button">－減らす</button>
@@ -1195,63 +1245,59 @@
                                 <th>会話/読文</th>
                             </tr>
                         </thead>
-                        <tbody id="auto-language-tbody">
-                            <template id="auto-language-template">
-                                <tr>
-                                    <td>
-                                        <input class="form-control form-control-sm" name="auto-language-name"
-                                            type="text">
-                                    </td>
-                                    <td>
-                                        <select class="form-control form-control-sm" name="auto-language-use">
-                                            <option>会話</option>
-                                            <option>読文</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </template>
+                        <tbody>
                             <tr>
                                 <td>
-                                    <input class="form-control form-control-sm" name="auto-language-name-1" type="text"
-                                        value="交易共通語">
+                                    <input class="form-control form-control-sm" id="default-language-name-1" type="text"
+                                        value="交易共通語" readonly>
                                 </td>
                                 <td>
-                                    <select class="form-control form-control-sm" name="auto-language-use-1">
-                                        <option selected>会話</option>
-                                        <option>読文</option>
-                                    </select>
+                                    <input class="form-control form-control-sm" id="default-language-use-1" value="会話"
+                                        readonly>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="form-control form-control-sm" name="auto-language-name-2" type="text"
-                                        value="交易共通語">
+                                    <input class="form-control form-control-sm" id="default-language-name-2" type="text"
+                                        value="交易共通語" readonly>
                                 </td>
                                 <td>
-                                    <select class="form-control form-control-sm" name="auto-language-use-2">
-                                        <option>会話</option>
-                                        <option selected>読文</option>
-                                    </select>
+                                    <input class="form-control form-control-sm" id="default-language-use-2" value="読文"
+                                        readonly>
                                 </td>
                             </tr>
                         </tbody>
-                        <tbody id="manual-language-tbody">
-                            <template id="manual-language-template">
-                                <tr>
-                                    <td>
-                                        <input class="form-control form-control-sm" name="manual-language-name"
-                                            type="text">
-                                    </td>
-                                    <td>
-                                        <select class="form-control form-control-sm" name="manual-language-use">
-                                            <option>会話</option>
-                                            <option>読文</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </template>
-                        </tbody>
+                        <tbody id="auto-language-tbody"></tbody>
+                        <tbody id="manual-language-tbody"></tbody>
                     </table>
+                    <template id="auto-language-template">
+                        <tr>
+                            <td>
+                                <input class="form-control form-control-sm" name="auto-language-name" type="text">
+                            </td>
+                            <td>
+                                <select class="form-control form-control-sm" name="auto-language-use">
+                                    <option></option>
+                                    <option>会話</option>
+                                    <option>読文</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </template>
+                    <template id="manual-language-template">
+                        <tr>
+                            <td>
+                                <input class="form-control form-control-sm" name="manual-language-name" type="text">
+                            </td>
+                            <td>
+                                <select class="form-control form-control-sm" name="manual-language-use">
+                                    <option></option>
+                                    <option>会話</option>
+                                    <option>読文</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </template>
                     <div class="add-del-button mx-auto">
                         <button class="btn btn-outline-primary btn-sm" id="add-language-button"
                             type="button">＋増やす</button>
@@ -1259,7 +1305,7 @@
                             type="button">－減らす</button>
                     </div>
                 </div>
-                <div class="card mb-1 px-2 col-6" id="craft-enhance" style="display: block;">
+                <div class="card mb-1 px-2 col-6" id="enhancer-skill-card" style="display: block;">
                     <h2 class="fs-4">練技</h2>
                     <table class="table table-sm table-striped mb-2">
                         <thead>
@@ -1269,41 +1315,39 @@
                                 <th>効果</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-1 pe-0">
-                                    <input type="text" class="form-control form-control-sm">
-                                </td>
-                                <td class="col px-0">
-                                    <select class="form-control form-control-sm" name="craftEnhance1"
-                                        oninput="selectInputCheck('craftEnhance1',this);">
-                                        <option></option>
-                                        <option value="アンチボディ">アンチボディ</option>
-                                        <option value="オウルビジョン">オウルビジョン</option>
-                                        <option value="ガゼルフット">ガゼルフット</option>
-                                        <option value="キャッツアイ">キャッツアイ</option>
-                                        <option value="スケイルレギンス">スケイルレギンス</option>
-                                        <option value="ストロングブラッド">ストロングブラッド</option>
-                                        <option value="チックチック">チックチック</option>
-                                        <option value="ドラゴンテイル">ドラゴンテイル</option>
-                                        <option value="ビートルスキン">ビートルスキン</option>
-                                        <option value="マッスルベアー">マッスルベアー</option>
-                                        <option value="メディテーション">メディテーション</option>
-                                        <option value="ラビットイヤー">ラビットイヤー</option>
-                                        <option value="free">その他（自由記入）</option>
-                                    </select>
-                                </td>
-                                <td class="col-8 ps-0">
-                                    <dd>
-                                        <input type="text" class="col form-control form-control-sm"
-                                            name="craftEnhance1Free">
-                                    </dd>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="enhancer-skill-tbody"></tbody>
                     </table>
+                    <template id="enhancer-skill-template">
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input class="form-control form-control-sm" name="enhancer-skill-lv" type="text">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="enhancer-skill-name">
+                                    <option></option>
+                                    <option value="アンチボディ">アンチボディ</option>
+                                    <option value="オウルビジョン">オウルビジョン</option>
+                                    <option value="ガゼルフット">ガゼルフット</option>
+                                    <option value="キャッツアイ">キャッツアイ</option>
+                                    <option value="スケイルレギンス">スケイルレギンス</option>
+                                    <option value="ストロングブラッド">ストロングブラッド</option>
+                                    <option value="チックチック">チックチック</option>
+                                    <option value="ドラゴンテイル">ドラゴンテイル</option>
+                                    <option value="ビートルスキン">ビートルスキン</option>
+                                    <option value="マッスルベアー">マッスルベアー</option>
+                                    <option value="メディテーション">メディテーション</option>
+                                    <option value="ラビットイヤー">ラビットイヤー</option>
+                                    <option value="free">その他（自由記入）</option>
+                                </select>
+                            </td>
+                            <td class="col-8 ps-0">
+                                <input class="col form-control form-control-sm" name="enhancer-skill-effect"
+                                    type="text">
+                            </td>
+                        </tr>
+                    </template>
                 </div>
-                <div class="card mb-1 px-2 col-6" id="craft-song" style="display: block;">
+                <div class="card mb-1 px-2 col-6" id="bard-skill-card" style="display: block;">
                     <h2 class="fs-4">呪歌</h2>
                     <table class="table table-sm table-striped">
                         <thead>
@@ -1313,40 +1357,42 @@
                                 <th>効果</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-1 pe-0">
-                                    <input type="text" class="form-control form-control-sm">
-                                </td>
-                                <td class="col px-0">
-                                    <select class="form-control form-control-sm" name="craftSong1"
-                                        oninput="selectInputCheck('craftSong1',this);">
-                                        <option></option>
-                                        <option value="アーリーバード">アーリーバード</option>
-                                        <option value="アンビエント">アンビエント</option>
-                                        <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
-                                        <option value="サモン・フィッシュ">サモン・フィッシュ</option>
-                                        <option value="ノイズ">ノイズ</option>
-                                        <option value="バラード">バラード</option>
-                                        <option value="モラル">モラル</option>
-                                        <option value="レクイエム">レクイエム</option>
-                                        <option value="レジスタンス">レジスタンス</option>
-                                        <option value="終律：春の強風">終律：春の強風</option>
-                                        <option value="終律：夏の生命">終律：夏の生命</option>
-                                        <option value="終律：秋の実り">終律：秋の実り</option>
-                                        <option value="終律：冬の寒風">終律：冬の寒風</option>
-                                        <option value="free">その他（自由記入）</option>
-                                    </select>
-                                </td>
-                                <td class="col-8 ps-0">
-                                    <input class="col form-control form-control-sm" type="text"
-                                        name="craftEnhance1Free">
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="bard-skill-tbody"></tbody>
                     </table>
+                    <template id="bard-skill-template">
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input class="form-control form-control-sm" id="bard-skill-lv" name="bard-skill-lv"
+                                    type="text">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" id="bard-skill-name"
+                                    name="bard-skill-name">
+                                    <option></option>
+                                    <option value="アーリーバード">アーリーバード</option>
+                                    <option value="アンビエント">アンビエント</option>
+                                    <option value="サモン・スモールアニマル">サモン・スモールアニマル</option>
+                                    <option value="サモン・フィッシュ">サモン・フィッシュ</option>
+                                    <option value="ノイズ">ノイズ</option>
+                                    <option value="バラード">バラード</option>
+                                    <option value="モラル">モラル</option>
+                                    <option value="レクイエム">レクイエム</option>
+                                    <option value="レジスタンス">レジスタンス</option>
+                                    <option value="終律：春の強風">終律：春の強風</option>
+                                    <option value="終律：夏の生命">終律：夏の生命</option>
+                                    <option value="終律：秋の実り">終律：秋の実り</option>
+                                    <option value="終律：冬の寒風">終律：冬の寒風</option>
+                                    <option value="free">その他（自由記入）</option>
+                                </select>
+                            </td>
+                            <td class="col-8 ps-0">
+                                <input class="col form-control form-control-sm" id="bard-skill-effect"
+                                    name="bard-skill-effect" type="text">
+                            </td>
+                        </tr>
+                    </template>
                 </div>
-                <div class="card mb-1 px-2 col-6">
+                <div class="card mb-1 px-2 col-6" id="rider-skill-card">
                     <h2 class="fs-4">騎芸</h2>
                     <table class="table table-sm table-striped">
                         <thead>
@@ -1356,22 +1402,110 @@
                                 <th>効果</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-1 pe-0">
-                                    <input type="text" class="form-control form-control-sm">
-                                </td>
-                                <td class="col px-0">
-                                    <select class="form-control form-control-sm" name="" id="">
-                                        <option value=""></option>
-                                    </select>
-                                </td>
-                                <td class="col-8 ps-0">
-                                    <input type="text" class="form-control form-control-sm">
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="rider-skill-tbody"></tbody>
                     </table>
+                    <template id="rider-skill-template">
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input class="form-control form-control-sm" name="rider-skill-lv" type="text">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="rider-skill-name" id="">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                            <td class="col-8 ps-0">
+                                <input class="form-control form-control-sm" name="rider-skill-effect" type="text">
+                            </td>
+                        </tr>
+                    </template>
+                </div>
+                <div class="card mb-1 px-2 col-6" id="alchemist-skill-card">
+                    <h2 class="fs-4">賦術</h2>
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Lv</th>
+                                <th>賦術</th>
+                                <th>効果</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alchemist-skill-tbody"></tbody>
+                    </table>
+                    <template id="alchemist-skill-template">
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input class="form-control form-control-sm" name="alchemist-skill-lv" type="text">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="alchemist-skill-name" id="">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                            <td class="col-8 ps-0">
+                                <input class="form-control form-control-sm" name="alchemist-skill-effect" type="text">
+                            </td>
+                        </tr>
+                    </template>
+                </div>
+                <div class="card mb-1 px-2 col-6" id="geomancer-skill-card">
+                    <h2 class="fs-4">相域</h2>
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Lv</th>
+                                <th>相域</th>
+                                <th>効果</th>
+                            </tr>
+                        </thead>
+                        <tbody id="geomancer-skill-tbody"></tbody>
+                    </table>
+                    <template id="geomancer-skill-template">
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input class="form-control form-control-sm" name="geomancer-skill-lv" type="text">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" name="geomancer-skill-name" id="">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                            <td class="col-8 ps-0">
+                                <input class="form-control form-control-sm" name="geomancer-skill-effect" type="text">
+                            </td>
+                        </tr>
+                    </template>
+                </div>
+                <div class="card mb-1 px-2 col-6" id="warleader-skill-card">
+                    <h2 class="fs-4">鼓咆/陣率</h2>
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>Lv</th>
+                                <th>鼓咆/陣率</th>
+                                <th>効果</th>
+                            </tr>
+                        </thead>
+                        <tbody id="warleader-skill-tbody"></tbody>
+                    </table>
+                    <template id="warleader-skill-template">
+                        <tr>
+                            <td class="col-1 pe-0">
+                                <input class="form-control form-control-sm" id="warleader-skill-lv"
+                                    name="warleader-skill-lv" type="text">
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm" id="warleader-skill-name"
+                                    name="warleader-skill-name">
+                                    <option value=""></option>
+                                </select>
+                            </td>
+                            <td class="col-8 ps-0">
+                                <input class="form-control form-control-sm" id="warleader-skill-effect"
+                                    name="warleader-skill-effect" type="text">
+                            </td>
+                        </tr>
+                    </template>
                 </div>
             </div>
             <div class="card mb-1 px-2" id="history">
@@ -1387,33 +1521,6 @@
                         </tr>
                     </thead>
                     <tbody id="history-tbody">
-                        <template id="history-template">
-                            <tr>
-                                <td class="col-1 pe-0">
-                                    <select class="form-control form-control-sm" name="history-growth" type="text">
-                                        <option></option>
-                                        <option>器用度</option>
-                                        <option>敏捷度</option>
-                                        <option>筋力</option>
-                                        <option>生命力</option>
-                                        <option>知力</option>
-                                        <option>精神力</option>
-                                    </select>
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="history-xp" type="text">
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="history-money" type="text">
-                                </td>
-                                <td class="col px-0">
-                                    <input class="form-control form-control-sm" name="history-honor" type="text">
-                                </td>
-                                <td class="col-8 ps-0">
-                                    <input class="form-control form-control-sm" name="history-note" type="text">
-                                </td>
-                            </tr>
-                        </template>
                     </tbody>
                     <tfoot id="history-foot">
                         <tr>
@@ -1431,6 +1538,33 @@
                         </tr>
                     </tfoot>
                 </table>
+                <template id="history-template">
+                    <tr>
+                        <td class="col-1 pe-0">
+                            <select class="form-control form-control-sm" name="history-growth" type="text">
+                                <option></option>
+                                <option>器用度</option>
+                                <option>敏捷度</option>
+                                <option>筋力</option>
+                                <option>生命力</option>
+                                <option>知力</option>
+                                <option>精神力</option>
+                            </select>
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="history-xp" type="text">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="history-money" type="text">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" name="history-honor" type="text">
+                        </td>
+                        <td class="col-8 ps-0">
+                            <input class="form-control form-control-sm" name="history-note" type="text">
+                        </td>
+                    </tr>
+                </template>
                 <div class="add-del-button mx-auto">
                     <button type="button" class="btn btn-outline-primary btn-sm" id="add-history-button">＋増やす</button>
                     <button type="button" class="btn btn-outline-danger btn-sm" id="delete-history-button">－減らす</button>
