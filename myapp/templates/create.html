@@ -669,26 +669,32 @@
                 <template id="secret-skill-template">
                     <tr>
                         <th class="col pt-2 pe-2">
-                            <input class="form-check-input" id="" name="secret-skill-checkbox" type="checkbox">
+                            <input class="form-check-input" id="secret-skill-checkbox" name="secret-skill-checkbox"
+                                type="checkbox">
                         </th>
                         <td class="col-2 px-0">
-                            <select class="form-control form-control-sm" id="" name="secret-skill-school">
+                            <select class="form-control form-control-sm" id="secret-skill-school-select"
+                                name="secret-skill-school-select">
                                 <option value=""></option>
                             </select>
                         </td>
                         <td class="col-2 px-0" hidden>
-                            <input class="form-control form-control-sm" id="" name="secret-skill-school" type="text">
+                            <input class="form-control form-control-sm" id="secret-skill-school-input"
+                                name="secret-skill-school-input" type="text">
                         </td>
                         <td class="col-2 px-0">
-                            <select class="form-control form-control-sm" id="" name="secret-skill-name>
+                            <select class="form-control form-control-sm" id="secret-skill-name"
+                                name="secret-skill-name">
                                 <option value=""></option>
                             </select>
                         </td>
                         <td class=" col-1 px-0">
-                                <input class="form-control form-control-sm" id="" name="secret-skill-honor" type="text">
+                            <input class="form-control form-control-sm" id="secret-skill-honor"
+                                name="secret-skill-honor" type="text">
                         </td>
                         <td class=" col-1 px-0">
-                            <select class="form-control form-control-sm px-1" id="" name="secret-skill-category">
+                            <select class="form-control form-control-sm px-1" id="secret-skill-category"
+                                name="secret-skill-category">
                                 <option value=""></option>
                                 <option value="">常時型</option>
                                 <option value="">主動作型</option>
@@ -696,7 +702,8 @@
                             </select>
                         </td>
                         <td class="col-6 ps-0">
-                            <input class="form-control form-control-sm" name="secret-skill-effect" type="text">
+                            <input class="form-control form-control-sm" id="secret-skill-effect"
+                                name="secret-skill-effect" type="text">
                         </td>
                     </tr>
                 </template>
@@ -726,6 +733,76 @@
                         </tr>
                     </thead>
                     <tbody id="weapon-tbody">
+                        <tr>
+                            <th class="col pt-2 pe-2">
+                                <input class="form-check-input" id="weapon-checkbox" name="weapon-checkbox-1"
+                                    type="checkbox">
+                            </th>
+                            <td class="col-2 px-0">
+                                <select class="form-control form-control-sm" id="weapon-name-select"
+                                    name="weapon-name-1" type="text">
+                                    <option></option>
+                                </select>
+                                <input class="form-control form-control-sm" id="weapon-name-input" name="weapon-name-1"
+                                    type="text" hidden>
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" type="text"
+                                    name="weapon-required-strength-1" value="">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" name="weapon-hit-1" type="text" value="">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" name="weapon-power-1" type="text" value="">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" name="weapon-critical-1" type="text"
+                                    value="">
+                            </td>
+                            <td class="col px-0">
+                                <input class="form-control form-control-sm" name="weapon-damage-1" type="text" value="">
+                            </td>
+                            <td class="col-1 px-0">
+                                <select class="form-control form-control-sm text-center px-0" name="weapon-category-1">
+                                    <option value=""></option>
+                                    <option value="ソード">ソード</option>
+                                    <option value="アックス">アックス</option>
+                                    <option value="スピア">スピア</option>
+                                    <option value="メイス">メイス</option>
+                                    <option value="スタッフ">スタッフ</option>
+                                    <option value="フレイル">フレイル</option>
+                                    <option value="ウォーハンマー">ウォーハンマー</option>
+                                    <option value="絡み">絡み</option>
+                                    <option value="格闘">格闘</option>
+                                    <option value="投擲">投擲</option>
+                                    <option value="ボウ">ボウ</option>
+                                    <option value="クロスボウ">クロスボウ</option>
+                                    <option value="ブロウガン">ブロウガン</option>
+                                    <option value="ガン">ガン</option>
+                                    <option value="ガン（物理）">ガン（物理）</option>
+                                    <option value="盾">盾</option>
+                                </select>
+                            </td>
+                            <td class="col px-0">
+                                <select class="form-control form-control-sm px-1" name="weapon-class-1">
+                                    <option value=""></option>
+                                    <option value="戦">戦</option>
+                                    <option value="拳">拳</option>
+                                    <option value="踊">踊</option>
+                                    <option value="軽">軽</option>
+                                    <option value="射">射</option>
+                                    <option value="練">練</option>
+                                    <option value="魔">魔</option>
+                                </select>
+                            </td>
+                            <td class="col-1 px-0">
+                                <input class="form-control form-control-sm" name="weapon-price-1" type="text">
+                            </td>
+                            <td class="col-4 ps-0">
+                                <input class="form-control form-control-sm" name="weapon-note-1" type="text" value="">
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <template id="weapon-template">
@@ -742,23 +819,28 @@
                                 type="text" hidden>
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" type="text" name="weapon-required-strength"
+                            <input class="form-control form-control-sm" id="weapon-required-strength"
+                                name="weapon-required-strength" type="text" value="">
+                        </td>
+                        <td class="col px-0">
+                            <input class="form-control form-control-sm" id="weapon-hit" name="weapon-hit" type="text"
                                 value="">
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" name="weapon-hit" type="text" value="">
+                            <input class="form-control form-control-sm" id="weapon-power" name="weapon-power"
+                                type="text" value="">
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" name="weapon-power" type="text" value="">
+                            <input class="form-control form-control-sm" id="weapon-critical" name="weapon-critical"
+                                type="text" value="">
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" name="weapon-critical" type="text" value="">
-                        </td>
-                        <td class="col px-0">
-                            <input class="form-control form-control-sm" name="weapon-damage" type="text" value="">
+                            <input class="form-control form-control-sm" id="weapon-damage" name="weapon-damage"
+                                type="text" value="">
                         </td>
                         <td class="col-1 px-0">
-                            <select class="form-control form-control-sm text-center px-0" name="weapon-category">
+                            <select class="form-control form-control-sm text-center px-0" id="weapon-category"
+                                name="weapon-category">
                                 <option value=""></option>
                                 <option value="ソード">ソード</option>
                                 <option value="アックス">アックス</option>
@@ -779,7 +861,7 @@
                             </select>
                         </td>
                         <td class="col px-0">
-                            <select class="form-control form-control-sm px-1" name="weapon-class">
+                            <select class="form-control form-control-sm px-1" id="weapon-class" name="weapon-class">
                                 <option value=""></option>
                                 <option value="戦">戦</option>
                                 <option value="拳">拳</option>
@@ -791,10 +873,12 @@
                             </select>
                         </td>
                         <td class="col-1 px-0">
-                            <input class="form-control form-control-sm" name="weapon-price" type="text">
+                            <input class="form-control form-control-sm" id="weapon-price" name="weapon-price"
+                                type="text">
                         </td>
                         <td class="col-4 ps-0">
-                            <input class="form-control form-control-sm" name="weapon-note" type="text" value="">
+                            <input class="form-control form-control-sm" id="weapon-note" name="weapon-note" type="text"
+                                value="">
                         </td>
                     </tr>
                 </template>
@@ -829,7 +913,8 @@
                                 <th class="type handle">
                                 </th>
                                 <td class="col-1 px-0">
-                                    <select class="form-control form-control-sm" name="armourTMPLCategory">
+                                    <select class="form-control form-control-sm" id="armour-category"
+                                        name="armour-category">
                                         <option value=""></option>
                                         <option value="金属鎧">金属鎧</option>
                                         <option value="非金属鎧">非金属鎧</option>
@@ -838,26 +923,26 @@
                                     </select>
                                 </td>
                                 <td class="col-2 px-0">
-                                    <input class="form-control form-control-sm" type="text" name="armourTMPLName"
+                                    <input class="form-control form-control-sm" name="armourTMPLName" type="text"
                                         value="">
                                 </td>
                                 <td class="col px-0">
-                                    <input class="form-control form-control-sm" type="text" name="armourTMPLReqd"
+                                    <input class="form-control form-control-sm" name="armourTMPLReqd" type="text"
                                         value="">
                                 </td>
                                 <td class="col px-0">
-                                    <input class="form-control form-control-sm" type="number" name="armourTMPLEva"
+                                    <input class="form-control form-control-sm" name="armourTMPLEva" type="number"
                                         value="">
                                 </td>
                                 <td class="col px-0">
-                                    <input class="form-control form-control-sm" type="number" name="armourTMPLDef"
+                                    <input class="form-control form-control-sm" name="armourTMPLDef" type="number"
                                         value="">
                                 </td>
                                 <td class="col px-0">
                                     <input class="form-control form-control-sm" type="text">
                                 </td>
                                 <td class="col-5 ps-0">
-                                    <input class="form-control form-control-sm" type="text" name="armourTMPLNote"
+                                    <input class="form-control form-control-sm" name="armourTMPLNote" type="text"
                                         value="">
                                 </td>
                             </tr>
@@ -1131,19 +1216,23 @@
                 <template id="accessory-template">
                     <tr id="accessory-row">
                         <th>
-                            <select class="form-control form-control-sm" name="accessory-body-parts">
+                            <select class="form-control form-control-sm" id="accessory-body-parts"
+                                name="accessory-body-parts">
                                 <option value=""></option>
                                 <option value="">頭</option>
                             </select>
                         </th>
                         <td class="col px-0">
-                            <input type="text" class="form-control form-control-sm" name="accessory-name" value="">
+                            <input type="text" class="form-control form-control-sm" id="accessory-name"
+                                name="accessory-name" value="">
                         </td>
                         <td class="col-1 px-0">
-                            <input type="text" class="form-control form-control-sm" name="accessory-price">
+                            <input type="text" class="form-control form-control-sm" id="accessory-price"
+                                name="accessory-price">
                         </td>
                         <td class="col-7 ps-0">
-                            <input type="text" class="form-control form-control-sm" name="accessory-note" value="">
+                            <input type="text" class="form-control form-control-sm" id="accessory-note"
+                                name="accessory-note" value="">
                         </td>
                     </tr>
                 </template>
@@ -1171,19 +1260,22 @@
                 <template id="item-template">
                     <tr>
                         <td class="col-3 pe-0">
-                            <input type="text" class="form-control form-control-sm" name="item-name">
+                            <input type="text" class="form-control form-control-sm" id="item-name" name="item-name">
                         </td>
                         <td class="col px-0">
-                            <input type="text" class="form-control form-control-sm" name="item-unit-price">
+                            <input type="text" class="form-control form-control-sm" id="item-unit-price"
+                                name="item-unit-price">
                         </td>
                         <td class="col px-0">
-                            <input type="number" class="form-control form-control-sm" name="item-quantity">
+                            <input type="number" class="form-control form-control-sm" id="item-quantity"
+                                name="item-quantity">
                         </td>
                         <td class="col px-0">
-                            <input type="text" class="form-control form-control-sm" name="item-price" readonly>
+                            <input type="text" class="form-control form-control-sm" id="item-price" name="item-price"
+                                readonly>
                         </td>
                         <td class="col-6 ps-0">
-                            <input type="text" class="form-control form-control-sm" name="item-note">
+                            <input type="text" class="form-control form-control-sm" id="item-note" name="item-note">
                         </td>
                     </tr>
                 </template>
@@ -1212,13 +1304,16 @@
                         <template id="honor-template">
                             <tr>
                                 <td class="col-4 pe-0">
-                                    <input class="form-control form-control-sm" name="honor-spent" type="text">
+                                    <input class="form-control form-control-sm" id="honor-spent" name="honor-spent"
+                                        type="text">
                                 </td>
                                 <td class="col-1 px-0">
-                                    <input class="form-control form-control-sm" name="honor-point" type="text">
+                                    <input class="form-control form-control-sm" id="honor-point" name="honor-point"
+                                        type="text">
                                 </td>
                                 <td class="col-7 ps-0">
-                                    <input class="form-control form-control-sm" name="honor-note" type="text">
+                                    <input class="form-control form-control-sm" id="honor-note" name="honor-note"
+                                        type="text">
                                 </td>
                             </tr>
                         </template>
@@ -1273,10 +1368,12 @@
                     <template id="auto-language-template">
                         <tr>
                             <td>
-                                <input class="form-control form-control-sm" name="auto-language-name" type="text">
+                                <input class="form-control form-control-sm" id="auto-language-name"
+                                    name="auto-language-name" type="text">
                             </td>
                             <td>
-                                <select class="form-control form-control-sm" name="auto-language-use">
+                                <select class="form-control form-control-sm" id="auto-language-use"
+                                    name="auto-language-use">
                                     <option></option>
                                     <option>会話</option>
                                     <option>読文</option>
@@ -1287,10 +1384,12 @@
                     <template id="manual-language-template">
                         <tr>
                             <td>
-                                <input class="form-control form-control-sm" name="manual-language-name" type="text">
+                                <input class="form-control form-control-sm" id="manual-language-name"
+                                    name="manual-language-name" type="text">
                             </td>
                             <td>
-                                <select class="form-control form-control-sm" name="manual-language-use">
+                                <select class="form-control form-control-sm" id="manual-language-use"
+                                    name="manual-language-use">
                                     <option></option>
                                     <option>会話</option>
                                     <option>読文</option>
@@ -1320,10 +1419,12 @@
                     <template id="enhancer-skill-template">
                         <tr>
                             <td class="col-1 pe-0">
-                                <input class="form-control form-control-sm" name="enhancer-skill-lv" type="text">
+                                <input class="form-control form-control-sm" id="enhancer-skill-lv"
+                                    name="enhancer-skill-lv" type="text">
                             </td>
                             <td class="col px-0">
-                                <select class="form-control form-control-sm" name="enhancer-skill-name">
+                                <select class="form-control form-control-sm" id="enhancer-skill-name"
+                                    name="enhancer-skill-name">
                                     <option></option>
                                     <option value="アンチボディ">アンチボディ</option>
                                     <option value="オウルビジョン">オウルビジョン</option>
@@ -1341,8 +1442,8 @@
                                 </select>
                             </td>
                             <td class="col-8 ps-0">
-                                <input class="col form-control form-control-sm" name="enhancer-skill-effect"
-                                    type="text">
+                                <input class="col form-control form-control-sm" id="enhancer-skill-effect"
+                                    name="enhancer-skill-effect" type="text">
                             </td>
                         </tr>
                     </template>
@@ -1407,15 +1508,18 @@
                     <template id="rider-skill-template">
                         <tr>
                             <td class="col-1 pe-0">
-                                <input class="form-control form-control-sm" name="rider-skill-lv" type="text">
+                                <input class="form-control form-control-sm" id="rider-skill-lv" name="rider-skill-lv"
+                                    type="text">
                             </td>
                             <td class="col px-0">
-                                <select class="form-control form-control-sm" name="rider-skill-name" id="">
+                                <select class="form-control form-control-sm" id="rider-skill-name"
+                                    name="rider-skill-name" id="">
                                     <option value=""></option>
                                 </select>
                             </td>
                             <td class="col-8 ps-0">
-                                <input class="form-control form-control-sm" name="rider-skill-effect" type="text">
+                                <input class="form-control form-control-sm" id="rider-skill-effect"
+                                    name="rider-skill-effect" type="text">
                             </td>
                         </tr>
                     </template>
@@ -1435,15 +1539,18 @@
                     <template id="alchemist-skill-template">
                         <tr>
                             <td class="col-1 pe-0">
-                                <input class="form-control form-control-sm" name="alchemist-skill-lv" type="text">
+                                <input class="form-control form-control-sm" id="alchemist-skill-lv"
+                                    name="alchemist-skill-lv" type="text">
                             </td>
                             <td class="col px-0">
-                                <select class="form-control form-control-sm" name="alchemist-skill-name" id="">
+                                <select class="form-control form-control-sm" id="alchemist-skill-nam"
+                                    name="alchemist-skill-name" id="">
                                     <option value=""></option>
                                 </select>
                             </td>
                             <td class="col-8 ps-0">
-                                <input class="form-control form-control-sm" name="alchemist-skill-effect" type="text">
+                                <input class="form-control form-control-sm" id="alchemist-skill-effect"
+                                    name="alchemist-skill-effect" type="text">
                             </td>
                         </tr>
                     </template>
@@ -1463,15 +1570,18 @@
                     <template id="geomancer-skill-template">
                         <tr>
                             <td class="col-1 pe-0">
-                                <input class="form-control form-control-sm" name="geomancer-skill-lv" type="text">
+                                <input class="form-control form-control-sm" id="geomancer-skill-lv"
+                                    name="geomancer-skill-lv" type="text">
                             </td>
                             <td class="col px-0">
-                                <select class="form-control form-control-sm" name="geomancer-skill-name" id="">
+                                <select class="form-control form-control-sm" id="geomancer-skill-name"
+                                    name="geomancer-skill-name" id="">
                                     <option value=""></option>
                                 </select>
                             </td>
                             <td class="col-8 ps-0">
-                                <input class="form-control form-control-sm" name="geomancer-skill-effect" type="text">
+                                <input class="form-control form-control-sm" id="geomancer-skill-effect"
+                                    name="geomancer-skill-effect" type="text">
                             </td>
                         </tr>
                     </template>
@@ -1526,13 +1636,13 @@
                         <tr>
                             <th class="text-center">総計</th>
                             <td id="history-exp-total">
-                                <input type="text" class="form-control form-control-sm" readonly>
+                                <input type="text" class="form-control form-control-sm" id="history-sum-xp" readonly>
                             </td>
                             <td id="history-money-total">
-                                <input type="text" class="form-control form-control-sm" readonly>
+                                <input type="text" class="form-control form-control-sm" id="history-sum-money" readonly>
                             </td>
                             <td id="history-honor-total">
-                                <input type="text" class="form-control form-control-sm" readonly>
+                                <input type="text" class="form-control form-control-sm" id="history-sum-honor" readonly>
                             </td>
                             <td></td>
                         </tr>
@@ -1541,7 +1651,8 @@
                 <template id="history-template">
                     <tr>
                         <td class="col-1 pe-0">
-                            <select class="form-control form-control-sm" name="history-growth" type="text">
+                            <select class="form-control form-control-sm" id="history-growth" name="history-growth"
+                                type="text">
                                 <option></option>
                                 <option>器用度</option>
                                 <option>敏捷度</option>
@@ -1552,16 +1663,19 @@
                             </select>
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" name="history-xp" type="text">
+                            <input class="form-control form-control-sm" id="history-xp" name="history-xp" type="text">
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" name="history-money" type="text">
+                            <input class="form-control form-control-sm" id="history-money" name="history-money"
+                                type="text">
                         </td>
                         <td class="col px-0">
-                            <input class="form-control form-control-sm" name="history-honor" type="text">
+                            <input class="form-control form-control-sm" id="history-honor" name="history-honor"
+                                type="text">
                         </td>
                         <td class="col-8 ps-0">
-                            <input class="form-control form-control-sm" name="history-note" type="text">
+                            <input class="form-control form-control-sm" id="history-note" name="history-note"
+                                type="text">
                         </td>
                     </tr>
                 </template>
