@@ -41,7 +41,7 @@ const displayTotal = (outputId, inputIdBase, tbody) => {
 const addRowWithSumCalc = (tbody, template, sumCalcElements) => {
     addRow(tbody, template);
     const newRow = tbody.lastElementChild; // 追加された最後の行を取得
-    sumCalcElements.forEach(({ inputIdBase, outputId }) => {
+    sumCalcElements.forEach(({ inputIdBase, outputId, totalPointId, initialValue }) => {
         const inputElements = newRow.querySelectorAll(`input[id^="${inputIdBase}-"]`); // 新しい行内の対象の入力欄を取得
         inputElements.forEach(input => {
             input.addEventListener("input", () => {
@@ -50,21 +50,36 @@ const addRowWithSumCalc = (tbody, template, sumCalcElements) => {
                 const outputElement = document.getElementById(outputId);
                 if (outputElement) {
                     outputElement.value = total;
+                    const totalPointElement = document.getElementById(totalPointId);
+                    totalPointElement.value = total + initialValue
+
+                    const totalXp = document.getElementById("total-xp");
+                    const usedXp = document.getElementById("used-xp");
+                    const remainingXp = document.getElementById("remaining-xp")
+                    remainingXp.value = parseInt(totalXp.value) - parseInt(usedXp.value);
                 }
             });
         });
     });
 };
+
 // 行を削除した後に合計を再計算する関数
 const deleteRowWithSumCalc = (tbody, sumCalcElements) => {
     if (tbody.lastElementChild) {
         tbody.removeChild(tbody.lastElementChild);
         // 行を削除した後に合計を再計算
-        sumCalcElements.forEach(({ inputIdBase, outputId }) => {
+        sumCalcElements.forEach(({ inputIdBase, outputId, totalPointId, initialValue }) => {
             const total = calculateSum(inputIdBase, tbody);
             const outputElement = document.getElementById(outputId);
             if (outputElement) {
                 outputElement.value = total;
+                const totalPointElement = document.getElementById(totalPointId);
+                totalPointElement.value = total + initialValue
+
+                const totalXp = document.getElementById("total-xp");
+                const usedXp = document.getElementById("used-xp");
+                const remainingXp = document.getElementById("remaining-xp")
+                remainingXp.value = parseInt(totalXp.value) - parseInt(usedXp.value);
             }
         });
     }
@@ -183,9 +198,9 @@ const manualAddDeleteRowWithSumCalcElements = [
         tbodyId: "history-tbody",
         templateId: "history-template",
         sumCalcElements: [
-            { inputIdBase: "history-xp", outputId: "history-sum-xp" },
-            { inputIdBase: "history-money", outputId: "history-sum-money" },
-            { inputIdBase: "history-honor", outputId: "history-sum-honor" }
+            { inputIdBase: "history-xp", outputId: "history-sum-xp", totalPointId: "total-xp", initialValue: 3000 },
+            { inputIdBase: "history-money", outputId: "history-sum-money", totalPointId: "total-money", initialValue: 1200 },
+            { inputIdBase: "history-honor", outputId: "history-sum-honor", totalPointId: "total-honor", initialValue: 0 }
         ]
     }
 ];
@@ -199,3 +214,47 @@ manualAddDeleteRowWithSumCalcElements.forEach(({ addButtonId, deleteButtonId, tb
     addButton.addEventListener("click", () => addRowWithSumCalc(tbodyElement, templateElement, sumCalcElements));
     deleteButton.addEventListener("click", () => deleteRowWithSumCalc(tbodyElement, sumCalcElements));
 });
+
+
+const updateUsedXpElements = [
+    {
+        xpTableListA: [0, 1000, 2000, 3500, 5000, 7000, 9500, 12500, 16500, 21500, 27500, 35000, 44000, 54500, 66500, 80000],
+        inputLvElementsA: ["fighter-lv", "grappler-lv", "battledancer-lv", "sorcerer-lv", "conjurer-lv", "priest-lv", "magitech-lv", "fairytamer-lv", "druid-lv", "demonruler-lv"],
+        xpTableListB: [0, 500, 1500, 2500, 4000, 5500, 7500, 10000, 13000, 17000, 22000, 28000, 35500, 44500, 55000, 67000],
+        inputLvElementsB: ["fencer-lv", "shooter-lv", "enhancer-lv", "bard-lv", "rider-lv", "alchemist-lv", "geomancer-lv", "warleader-lv", "scout-lv", "ranger-lv", "sage-lv"]
+    }
+];
+
+updateUsedXpElements.forEach(({ xpTableListA, inputLvElementsA, xpTableListB, inputLvElementsB }) => {
+    inputLvElementsA.concat(inputLvElementsB).forEach(inputLvId => {
+        const inputLvElement = document.getElementById(inputLvId);
+        inputLvElement.addEventListener("input", () => {
+            const totalXp = document.getElementById("total-xp");
+            const usedXp = document.getElementById("used-xp");
+            const remainingXp = document.getElementById("remaining-xp")
+            let sum = 0;
+            for (const inputLvIdA of inputLvElementsA) {
+                const inputLvElementA = document.getElementById(inputLvIdA);
+                const inputLvValueA = parseInt(inputLvElementA.value);
+                if (!isNaN(inputLvValueA)) {
+                    const usedXpByLvA = xpTableListA[inputLvValueA];
+                    sum += usedXpByLvA;
+                }
+            }
+            for (const inputLvIdB of inputLvElementsB) {
+                const inputLvElementB = document.getElementById(inputLvIdB);
+                const inputLvValueB = parseInt(inputLvElementB.value);
+                if (!isNaN(inputLvValueB)) {
+                    const usedXpByLvB = xpTableListB[inputLvValueB];
+                    sum += usedXpByLvB;
+                }
+            }
+            usedXp.value = sum;
+            remainingXp.value = parseInt(totalXp.value) - sum;
+        });
+    });
+});
+
+
+
+

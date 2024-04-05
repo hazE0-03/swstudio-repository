@@ -545,15 +545,18 @@
                     <div class="col">
                         <dt>総経験点</dt>
                         <dd>
-                            <input type="text" class="form-control form-control-sm" readonly="true">
+                            <input type="text" class="form-control form-control-sm" id="total-xp" name="total-xp"
+                                value="3000" readonly="true">
                         </dd>
                         <dt>使用経験点</dt>
                         <dd>
-                            <input type="text" class="form-control form-control-sm" readonly="true">
+                            <input type="text" class="form-control form-control-sm" id="used-xp" name="used-xp"
+                                value="0" readonly="true">
                         </dd>
                         <dt>残り経験点</dt>
                         <dd>
-                            <input type="text" class="form-control form-control-sm" readonly="true">
+                            <input type="text" class="form-control form-control-sm" id="remaining-xp"
+                                name="remaining-xp" value="3000" readonly="true">
                         </dd>
                     </div>
                 </div>
@@ -1286,7 +1289,8 @@
                 <dl class="ms-auto" id="money">
                     <dt>所持金</dt>
                     <dd>
-                        <input type="text" class="form-control form-control-sm" name="money" value="自動"> G
+                        <input type="text" class="form-control form-control-sm" id="total-money" name="total-money"
+                            value="1200">
                     </dd>
                 </dl>
             </div>
@@ -1326,7 +1330,8 @@
                 <dl class="ms-auto" id="honor">
                     <dt>名誉点</dt>
                     <dd>
-                        <input type="text" class="form-control form-control-sm" name="honor" value="自動">
+                        <input type="text" class="form-control form-control-sm" id="total-honor" name="total-honor"
+                            value="0">
                     </dd>
                 </dl>
             </div>
@@ -1636,7 +1641,7 @@
                         <tr>
                             <th class="text-center">総計</th>
                             <td id="history-exp-total">
-                                <input type="text" class="form-control form-control-sm" id="history-sum-xp" readonly>
+                                <input type="text" class="form-control form-control-sm" id="history-sum-xp">
                             </td>
                             <td id="history-money-total">
                                 <input type="text" class="form-control form-control-sm" id="history-sum-money" readonly>
