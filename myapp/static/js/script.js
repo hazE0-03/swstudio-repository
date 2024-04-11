@@ -19,6 +19,28 @@ const deleteRow = (tbody) => {
     }
 };
 
+const calculateMoney = () => {
+    const getTotalFromTable = (tbodyId, inputIdPrefix) => {
+        const tbody = document.getElementById(tbodyId);
+        let total = 0;
+        tbody.querySelectorAll(`input[id^="${inputIdPrefix}"]`).forEach(input => {
+            total += parseInt(input.value) || 0;
+        });
+        return total;
+    };
+
+    const historyTotal = getTotalFromTable('history-tbody', 'history-money');
+    const itemTotal = getTotalFromTable('item-tbody', 'item-price');
+    const weaponTotal = getTotalFromTable('weapon-tbody', 'weapon-price');
+    const armorTotal = getTotalFromTable('armor-tbody', 'armor-price');
+    const accessoryTotal = getTotalFromTable('accessory-tbody', 'accessory-price');
+    const addAccessoryTotal = getTotalFromTable('addAccessory-tbody', 'accessory-price');
+
+    const total = historyTotal - itemTotal - weaponTotal - armorTotal - accessoryTotal - addAccessoryTotal;
+    return total;
+};
+
+
 // 合計を計算する関数
 const calculateSum = (inputIdBase, tbody) => {
     let total = 0;
@@ -48,30 +70,6 @@ const addRowWithSumCalc = (tbody, template, sumCalcElements) => {
                 // 合計を計算して表示
                 const total = calculateSum(inputIdBase, tbody);
                 const outputElement = document.getElementById(outputId);
-                if (outputElement) {
-                    outputElement.value = total;
-                    const totalPointElement = document.getElementById(totalPointId);
-                    totalPointElement.value = total + initialValue
-
-                    const totalXp = document.getElementById("total-xp");
-                    const usedXp = document.getElementById("used-xp");
-                    const remainingXp = document.getElementById("remaining-xp")
-                    remainingXp.value = parseInt(totalXp.value) - parseInt(usedXp.value);
-                }
-            });
-        });
-    });
-};
-
-// 行を削除した後に合計を再計算する関数
-const deleteRowWithSumCalc = (tbody, sumCalcElements) => {
-    if (tbody.lastElementChild) {
-        tbody.removeChild(tbody.lastElementChild);
-        // 行を削除した後に合計を再計算
-        sumCalcElements.forEach(({ inputIdBase, outputId, totalPointId, initialValue }) => {
-            const total = calculateSum(inputIdBase, tbody);
-            const outputElement = document.getElementById(outputId);
-            if (outputElement) {
                 outputElement.value = total;
                 const totalPointElement = document.getElementById(totalPointId);
                 totalPointElement.value = total + initialValue
@@ -80,10 +78,54 @@ const deleteRowWithSumCalc = (tbody, sumCalcElements) => {
                 const usedXp = document.getElementById("used-xp");
                 const remainingXp = document.getElementById("remaining-xp")
                 remainingXp.value = parseInt(totalXp.value) - parseInt(usedXp.value);
-            }
+
+            });
+        });
+    });
+};
+
+// 行を削除した後に合計を再計算する関数
+const deleteRowWithSumCalc = (tbody, sumCalcElements) => {
+    if (tbody.lastElementChild) {
+        deleteRow(tbody);
+        // 行を削除した後に合計を再計算
+        sumCalcElements.forEach(({ inputIdBase, outputId, totalPointId, initialValue }) => {
+            const total = calculateSum(inputIdBase, tbody);
+            const outputElement = document.getElementById(outputId);
+            outputElement.value = total;
+            const totalPointElement = document.getElementById(totalPointId);
+            totalPointElement.value = total + initialValue
+
+            const totalXp = document.getElementById("total-xp");
+            const usedXp = document.getElementById("used-xp");
+            const remainingXp = document.getElementById("remaining-xp")
+            remainingXp.value = parseInt(totalXp.value) - parseInt(usedXp.value);
         });
     }
 };
+
+const AddRowWithSpentCalc = (tbody, template, inputIdBase, totalPointId) => {
+    addRow(tbody, template);
+    const newRow = tbody.lastElementChild;
+    const inputElements = newRow.querySelectorAll(`input[id^="${inputIdBase}-"]`);
+    inputElements.forEach(input => {
+        input.addEventListener("input", () => {
+            const totalSpentPoint = calculateSum(inputIdBase, tbody);
+            const totalPoint = parseInt(document.getElementById(totalPointId).value);
+            document.getElementById(totalPointId).value = totalPoint - totalSpentPoint;
+        });
+    });
+};
+
+const DeleteRowWithSpentCalc = (tbody, inputIdBase, totalPointId) => {
+    if (tbody.lastElementChild) {
+        deleteRow(tbody);
+        const totalSpentPoint = calculateSum(inputIdBase, tbody);
+        const totalPoint = parseInt(document.getElementById(totalPointId).value);
+        document.getElementById(totalPointId).value = totalPoint - totalSpentPoint;
+    }
+};
+
 
 const defaultValueInputElements = [
     { inputNumberId: "fighter-lv" },
@@ -175,8 +217,6 @@ const manualAddDeleteRowElements = [
     { addButtonId: "add-secret-skill-button", deleteButtonId: "delete-secret-skill-button", tbodyId: "secret-skill-tbody", templateId: "secret-skill-template" },
     { addButtonId: "add-weapon-button", deleteButtonId: "delete-weapon-button", tbodyId: "weapon-tbody", templateId: "weapon-template" },
     { addButtonId: "add-accessory-button", deleteButtonId: "delete-accessory-button", tbodyId: "add-accessory-tbody", templateId: "accessory-template" },
-    { addButtonId: "add-item-button", deleteButtonId: "delete-item-button", tbodyId: "item-tbody", templateId: "item-template" },
-    { addButtonId: "add-honor-button", deleteButtonId: "delete-honor-button", tbodyId: "honor-tbody", templateId: "honor-template" },
     { addButtonId: "add-language-button", deleteButtonId: "delete-language-button", tbodyId: "manual-language-tbody", templateId: "manual-language-template" }
 ];
 // ボタンで行を追加および削除するテーブルの処理
@@ -190,30 +230,18 @@ manualAddDeleteRowElements.forEach(({ addButtonId, deleteButtonId, tbodyId, temp
     deleteButton.addEventListener("click", () => deleteRow(tbodyElement));
 });
 
-// ボタンで行を追加および削除した後に、指定のカラムの合計を表示するテーブルの要素
-const manualAddDeleteRowWithSumCalcElements = [
-    {
-        addButtonId: "add-history-button",
-        deleteButtonId: "delete-history-button",
-        tbodyId: "history-tbody",
-        templateId: "history-template",
-        sumCalcElements: [
-            { inputIdBase: "history-xp", outputId: "history-sum-xp", totalPointId: "total-xp", initialValue: 3000 },
-            { inputIdBase: "history-money", outputId: "history-sum-money", totalPointId: "total-money", initialValue: 1200 },
-            { inputIdBase: "history-honor", outputId: "history-sum-honor", totalPointId: "total-honor", initialValue: 0 }
-        ]
-    }
-];
 // ボタンで行を追加および削除した後に、指定のカラムの合計を表示するテーブルの処理
-manualAddDeleteRowWithSumCalcElements.forEach(({ addButtonId, deleteButtonId, tbodyId, templateId, sumCalcElements }) => {
-    const addButton = document.getElementById(addButtonId);
-    const deleteButton = document.getElementById(deleteButtonId);
-    const tbodyElement = document.getElementById(tbodyId);
-    const templateElement = document.getElementById(templateId);
-
-    addButton.addEventListener("click", () => addRowWithSumCalc(tbodyElement, templateElement, sumCalcElements));
-    deleteButton.addEventListener("click", () => deleteRowWithSumCalc(tbodyElement, sumCalcElements));
-});
+const addHistoryButton = document.getElementById("add-history-button");
+const deleteHistoryButton = document.getElementById("delete-history-button");
+const histoyTbodyElement = document.getElementById("history-tbody");
+const historyTemplateElement = document.getElementById("history-template");
+const historySumCalcElements = [
+    { inputIdBase: "history-xp", outputId: "history-sum-xp", totalPointId: "total-xp", initialValue: 3000 },
+    { inputIdBase: "history-money", outputId: "history-sum-money", totalPointId: "total-money", initialValue: 1200 },
+    { inputIdBase: "history-honor", outputId: "history-sum-honor", totalPointId: "total-honor", initialValue: 0 }
+];
+addHistoryButton.addEventListener("click", () => addRowWithSumCalc(histoyTbodyElement, historyTemplateElement, historySumCalcElements));
+deleteHistoryButton.addEventListener("click", () => deleteRowWithSumCalc(histoyTbodyElement, historySumCalcElements));
 
 
 const updateUsedXpElements = [
@@ -224,7 +252,6 @@ const updateUsedXpElements = [
         inputLvElementsB: ["fencer-lv", "shooter-lv", "enhancer-lv", "bard-lv", "rider-lv", "alchemist-lv", "geomancer-lv", "warleader-lv", "scout-lv", "ranger-lv", "sage-lv"]
     }
 ];
-
 updateUsedXpElements.forEach(({ xpTableListA, inputLvElementsA, xpTableListB, inputLvElementsB }) => {
     inputLvElementsA.concat(inputLvElementsB).forEach(inputLvId => {
         const inputLvElement = document.getElementById(inputLvId);
@@ -255,6 +282,41 @@ updateUsedXpElements.forEach(({ xpTableListA, inputLvElementsA, xpTableListB, in
     });
 });
 
+const manualAddDeleteRowWithSpentCalcElements = [
+    { addButtonId: "add-item-button", deleteButtonId: "delete-item-button", tbodyId: "item-tbody", templateId: "item-template", inputIdBase: "item-money", totalPointId: "total-money" },
+    { addButtonId: "add-honor-button", deleteButtonId: "delete-honor-button", tbodyId: "honor-tbody", templateId: "honor-template", inputIdBase: "honor-point", totalPointId: "total-honor" }
+]
 
+manualAddDeleteRowWithSpentCalcElements.forEach(({ addButtonId, deleteButtonId, tbodyId, templateId, inputIdBase: inputIdBaseValue, totalPointId }) => {
+    const addButton = document.getElementById(addButtonId);
+    const deleteButton = document.getElementById(deleteButtonId);
+    const tbodyElement = document.getElementById(tbodyId);
+    const templateElement = document.getElementById(templateId);
 
+    addButton.addEventListener("click", () => AddRowWithSpentCalc(tbodyElement, templateElement, inputIdBaseValue, totalPointId));
+    deleteButton.addEventListener("click", () => DeleteRowWithSpentCalc(tbodyElement, inputIdBaseValue, totalPointId));
+});
 
+const addButton = document.getElementById("add-item-button")
+const tbody = document.getElementById("item-tbody")
+const template = document.getElementById("item-template")
+const inputBase = "item-money"
+const outputId = document.getElementById("item-sum-money")
+addButton.addEventListener("click", () => {
+    addRow(tbody, template)
+    const newRow = tbody.lastElementChild; // 追加された最後の行を取得
+    sumCalcElements.forEach(({ inputIdBase, outputId, totalPointId, initialValue }) => {
+        const inputElements = newRow.querySelectorAll(`input[id^="${inputIdBase}-"]`); // 新しい行内の対象の入力欄を取得
+        inputElements.forEach(input => {
+            input.addEventListener("input", () => {
+                // 合計を計算して表示
+                const total = calculateSum(inputIdBase, tbody);
+                const outputElement = document.getElementById(outputId);
+                outputElement.value = total;
+                const totalPointElement = document.getElementById(totalPointId);
+                totalPointElement.value = total + initialValue
+
+            });
+        });
+    });
+});
