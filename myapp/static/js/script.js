@@ -8,6 +8,7 @@ const addRow = (tbody, template) => {
         const templateId = templateElements[index].getAttribute('id'); // 新しい行のidに使用する
         element.name = `${templateName}-${rowCount}`;
         element.id = `${templateId}-${rowCount}`; // 新しい行のid属性を設定
+        console.log("New Input ID:", element.id); // 新しい行のinput要素のIDをコンソールに出力
     });
     tbody.appendChild(newRow);
 };
@@ -113,49 +114,33 @@ addDeleteRowWithCalcTotalAndPriceElements.forEach(({ addButtonId, deleteButtonId
 });
 
 // 行を追加した後に合計を表示する関数
-const calcHistorySumAndTotal = (tbody) => {
-    const newRow = tbody.lastElementChild; // 追加された最後の行を取得
-    const calcSumElements = [
-        { inputIdBase: "history-xp", hiddenIdBase: "history-xp-hidden", sumId: "history-sum-xp", totalId: "total-xp"},
-        { inputIdBase: "history-money", hiddenIdBase: "history-money-hidden", sumId: "history-sum-money", totalId: "total-money"},
-        { inputIdBase: "history-honor", hiddenIdBase: "history-honor-hidden", sumId: "history-sum-honor", totalId: "total-honor"}
-    ];
-    calcSumElements.forEach(({ inputIdBase, hiddenIdBase, sumId, totalId}) => {
-        const inputElement = document.getElementById(`${inputIdBase}-${newRow.children.length}`);
-        const hiddenElement = document.getElementById(`${hiddenIdBase}-${newRow.children.length}`);
-        const sumElement = document.getElementById(sumId);
-        const totalElement = document.getElementById(totalId);
-        inputElement.addEventListener("input", () => {
-            const inputValue = parseInt(inputElement.value) || 0;
-            const hiddenValue = parseInt(hiddenElement.value) || 0;
-            const sumValue = parseInt(sumElement.value) || 0;
-            const totalValue = parseInt(totalElement.value) || 0;
-            sumElement.value = sumValue + inputValue - hiddenValue
-            totalElement.value = totalValue + inputValue - hiddenValue
-        });
+const calcSumAndTotal = (tbody, inputIdBase, hiddenIdBase, sumId, totalId) => {
+    const inputElement = document.getElementById(`${inputIdBase}-${tbody.children.length}`);
+    const hiddenElement = document.getElementById(`${hiddenIdBase}-${tbody.children.length}`);
+    const sumElement = document.getElementById(sumId);
+    const totalElement = document.getElementById(totalId);
+    inputElement.addEventListener('input', ()  => {
+        const inputValue = parseInt(inputElement.value) || 0;
+        const hiddenValue = parseInt(hiddenElement.value) || 0;
+        const sumValue = parseInt(sumElement.value) || 0;
+        const totalValue = parseInt(totalElement.value) || 0;
+        sumElement.value = sumValue + inputValue - hiddenValue;
+        totalElement.value = totalValue + inputValue - hiddenValue;
+        hiddenElement.value = inputValue
     });
 };
 
+
 // 行を削除した後に合計を再計算する関数
-const subtractFromHistorySumAndTotal = (tbody) => {
-    if (tbody.lastElementChild) {
-        const newRow = tbody.lastElementChild; // 追加された最後の行を取得
-        const calcSumElements = [
-            { inputIdBase: "history-xp", hiddenIdBase: "history-xp-hidden", sumId: "history-sum-xp", totalId: "total-xp"},
-            { inputIdBase: "history-money", hiddenIdBase: "history-money-hidden", sumId: "history-sum-money", totalId: "total-money"},
-            { inputIdBase: "history-honor", hiddenIdBase: "history-honor-hidden", sumId: "history-sum-honor", totalId: "total-honor"}
-        ];
-        calcSumElements.forEach(({ hiddenIdBase, sumId, totalId}) => {
-            const hiddenElement = document.getElementById(`${hiddenIdBase}-${newRow.children.length}`);
-            const sumElement = document.getElementById(sumId);
-            const totalElement = document.getElementById(totalId);
-            const hiddenValue = parseInt(hiddenElement.value) || 0;
-            const sumValue = parseInt(sumElement.value) || 0;
-            const totalValue = parseInt(totalElement.value) || 0;
-            sumElement.value = sumValue - hiddenValue
-            totalElement.value = totalValue - hiddenValue
-        });
-    };
+const subtractFromSumAndTotal = (tbody, hiddenIdBase, sumId, totalId) => {
+    const hiddenElement = document.getElementById(`${hiddenIdBase}-${tbody.children.length}`);
+    const sumElement = document.getElementById(sumId);
+    const totalElement = document.getElementById(totalId);
+    const hiddenValue = parseInt(hiddenElement.value) || 0;
+    const sumValue = parseInt(sumElement.value) || 0;
+    const totalValue = parseInt(totalElement.value) || 0;
+    sumElement.value = sumValue - hiddenValue
+    totalElement.value = totalValue - hiddenValue
 };
 
 // カードを非表示にする要素
@@ -240,15 +225,24 @@ const addHistoryButton = document.getElementById("add-history-button");
 const deleteHistoryButton = document.getElementById("delete-history-button");
 const historyTbodyElement = document.getElementById("history-tbody");
 const historyTemplateElement = document.getElementById("history-template");
+const calcSumElements = [
+    { inputIdBase: "history-xp", hiddenIdBase: "history-xp-hidden", sumId: "history-sum-xp", totalId: "total-xp"},
+    { inputIdBase: "history-money", hiddenIdBase: "history-money-hidden", sumId: "history-sum-money", totalId: "total-money"},
+    { inputIdBase: "history-honor", hiddenIdBase: "history-honor-hidden", sumId: "history-sum-honor", totalId: "total-honor"}
+];
 addHistoryButton.addEventListener("click", () => {
     const tbody = historyTbodyElement;
     const template = historyTemplateElement;
     addRow(tbody, template);
-    calcSumAndTotal(tbody);
+    calcSumElements.forEach(({ inputIdBase, hiddenIdBase, sumId, totalId}) => {
+    calcSumAndTotal(tbody, inputIdBase, hiddenIdBase, sumId, totalId);
+    });
 });
 deleteHistoryButton.addEventListener("click", () => {
     const tbody = historyTbodyElement;
-    subtractFromSumAndTotal(tbody);
+    calcSumElements.forEach(({ hiddenIdBase, sumId, totalId}) => {
+    subtractFromSumAndTotal(tbody, hiddenIdBase, sumId, totalId);
+    });
     deleteRow(tbody);
 });
 
