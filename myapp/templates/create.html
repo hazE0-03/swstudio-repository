@@ -708,6 +708,10 @@
                             <input class="form-control form-control-sm" id="secret-skill-effect"
                                 name="secret-skill-effect" type="text">
                         </td>
+                        <td hidden>
+                            <input id="secret-skill-honor-hidden"
+                                    name="secret-skill-honor-hidden" type="text" hidden>
+                        </td>
                     </tr>
                 </template>
                 <div class="add-del-button mx-auto">
@@ -1120,6 +1124,10 @@
                             <input type="text" class="form-control form-control-sm" id="accessory-effect"
                                 name="accessory-note" value="">
                         </td>
+                        <td hidden>
+                            <input type="text" class="form-control form-control-sm" id="accessory-price-hidden"
+                                name="accessory-price-hidden" hidden>
+                        </td>
                     </tr>
                 </template>
                 <div class="add-del-button mx-auto mb-1">
@@ -1159,6 +1167,10 @@
                         <td class="col px-0">
                             <input type="text" class="form-control form-control-sm" id="item-price" name="item-price"
                                 readonly>
+                        </td>
+                        <td hidden>
+                            <input type="text" class="form-control form-control-sm" id="item-price-hidden" name="item-price-hidden"
+                                hidden>
                         </td>
                         <td class="col-6 ps-0">
                             <input type="text" class="form-control form-control-sm" id="item-note" name="item-note">
@@ -1202,6 +1214,9 @@
                                     <input class="form-control form-control-sm" id="honor-note" name="honor-note"
                                         type="text">
                                 </td>
+                                <td hidden>
+                                    <input id="honor-point-hidden" name="honor-point-hidden" type="text" hidden>
+                                </td>
                             </tr>
                         </template>
                     </tbody>
@@ -1213,8 +1228,8 @@
                 <dl class="ms-auto" id="honor">
                     <dt>名誉点</dt>
                     <dd>
-                        <input type="text" class="form-control form-control-sm" id="total-honor" name="total-honor"
-                            value="0">
+                        <input type="number" class="form-control form-control-sm" id="total-honor" name="total-honor"
+                            value=0>
                     </dd>
                 </dl>
             </div>
@@ -1553,13 +1568,24 @@
                         <td class="col px-0">
                             <input class="form-control form-control-sm" id="history-xp" name="history-xp" type="text">
                         </td>
+                        <td hidden>
+                            <input class="form-control form-control-sm" id="history-xp-hidden" name="history-xp-hidden" type="text" hidden>
+                        </td>
                         <td class="col px-0">
                             <input class="form-control form-control-sm" id="history-money" name="history-money"
                                 type="text">
                         </td>
+                        <td hidden>
+                            <input class="form-control form-control-sm" id="history-money-hidden" name="history-money-hidden"
+                                type="text" hidden>
+                        </td>
                         <td class="col px-0">
                             <input class="form-control form-control-sm" id="history-honor" name="history-honor"
                                 type="text">
+                        </td>
+                        <td hidden>
+                            <input class="form-control form-control-sm" id="history-honor-hidden" name="history-honor-hidden"
+                                type="text" hidden>
                         </td>
                         <td class="col-8 ps-0">
                             <input class="form-control form-control-sm" id="history-note" name="history-note"
